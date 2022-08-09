@@ -1,0 +1,512 @@
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\ResolveAssemblyReference.cache
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\GenerateResource-ResGen.read.1.tlog
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\GenerateResource-ResGen.write.1.tlog
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\衣架demo\820DemoV2.1.20\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\衣架demo\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.21\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.22\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.23\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23 - beep\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+C:\Users\ken\Desktop\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.23.10\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.23.11\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\UDP\820DemoV2.1.24.1\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.24.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.24.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.24.5\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.24.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.24.5\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.5\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.24.6\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.24.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.24.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.24.8ones\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+D:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+E:\works\V2.19+\820DemoV2.1.25\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+E:\works\V2.19+\820DemoV2.1.25.3\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe.config
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.exe
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo.pdb
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.exe
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo.pdb
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+E:\works\V2.19+\820DemoV2.1.25.4\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe.config
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.4netreconnect\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe.config
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+E:\works\V2.19+\820DemoV2.1.25.5\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe.config
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.7\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe.config
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Form1.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.Test.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.23.9\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe.config
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.csproj.ResolveComReference.cache
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.exe
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\bin\Release\UHF RFID Demo V2.1.25.5.pdb
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.AdvanceParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.FormNET.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.OtherSet.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.PROFRECTESE.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.RegOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.Form1.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.Aboutus.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.BasicParaSet.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.Properties.Resources.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.TagOperate.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.TagSpecial.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.Test.resources
+E:\works\V2.19+\820DemoV2.1.25.8\820DemoV2.1.25.8\R2000Demo\obj\Release\R2000Demo.csproj.GenerateResource.Cache
