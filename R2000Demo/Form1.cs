@@ -51,8 +51,10 @@ namespace R2000Demo
         bool beepflag;
 
         //TODO: Definir una variable global que guarda la lectura de tag tipo C (1)
+        public string guardarLecturaTipoC;
 
         //TODO: Definir una variable de tipo lista para guargar los tag asigandos al usuario (2)
+        public List<AsignacionTag> listaTagsAsignados = new List<AsignacionTag>();
 
         //System.Media.SoundPlayer player = new System.Media.SoundPlayer(Application.StartupPath + @"/warning.wav");
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(R2000Demo.Properties.Resources.warning);
@@ -259,6 +261,9 @@ namespace R2000Demo
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
             //limpiar variables (1) y (2)
+            guardarLecturaTipoC = "";
+            listaTagsAsignados.Clear();
+
 
         }
         private void button_inv_mul_Click(object sender, EventArgs e)
@@ -3295,14 +3300,40 @@ namespace R2000Demo
                             if (asignacionTag.Tipo == "C")
                             {
                                 //TODO: Guardar en una variable Global
+                                
+                                guardarLecturaTipoC = item.SubItems[1].Text;
+
                                 //TODO: Traer la lista de los tag asignado al usuario y guardarlo en una lista (A)
+                            
+                                List<AsignacionTag> listaTagsAsignados = new List<AsignacionTag>();
+                                 
                                 return;
                             }
                             else
                             {
-                                //TODO: Verificar que existe una lectura de tipo C sino sonar la alarma
+                                //TODO:Verificar que existe una lectura de tipo C sino sonar la alarma
+                                if( asignacionTag.Tipo != "C")
+                                {
+                                    ActivarAlarma(100);
+                                }
+
                                 //TODO: Verificar si el tag se encuentra en la lista (A) 
-                                //TODO: Sino se encuentra en la lista (A) sonar alarma
+
+                                foreach (AsignacionTag asignacionTagA in listaTagsAsignados)
+                                {
+                                    if (asignacionTagA.Epc == asignacionTag.Epc)
+                                    {
+                                        //mostrar el tag leido
+                                        asignacionTagA.Tipo = asignacionTag.Tipo;
+                                    }
+                                    //TODO: Sino se encuentra en la lista (A) sonar alarma'
+                                    else
+                                    {
+                                        ActivarAlarma(100);
+                                    }
+                                }
+
+                                
                             }
 
                         }
@@ -3368,15 +3399,15 @@ namespace R2000Demo
                             listView_Disp.Items.Add(item);
                             this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
 
-                            int id = Guardarlectura(item);
-                            if (ReaderParams.ModuloRol == item.SubItems[10].Text && ReaderParams.ModuloRol == "Puerta") //Si el modulo se esta ejecutando para una puerta
-                            {
-                                if (!PasoPorCaja(id))
-                                {
-                                    ActivarAlarma(100);
-                                    return;
-                                }
-                            }
+                            //int id = Guardarlectura(item);
+                            //if (ReaderParams.ModuloRol == item.SubItems[10].Text && ReaderParams.ModuloRol == "Puerta") //Si el modulo se esta ejecutando para una puerta
+                            //{
+                            //    if (!PasoPorCaja(id))
+                            //    {
+                            //        ActivarAlarma(100);
+                            //        return;
+                            //    }
+                            //}
                         }
 
                         bool epc_paso_por_caja = new ReadRepository().GetReadInBox(item.SubItems[1].Text);
@@ -3445,15 +3476,15 @@ namespace R2000Demo
                         listView_Disp.Items.Add(item);
                         this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
 
-                        int id = Guardarlectura(item);
-                        if (ReaderParams.ModuloRol == item.SubItems[10].Text && ReaderParams.ModuloRol == "Puerta") //Si el modulo se esta ejecutando para una puerta
-                        {
-                            if (!PasoPorCaja(id))
-                            {
-                                ActivarAlarma(100);
-                                return;
-                            }
-                        }
+                        //int id = Guardarlectura(item);
+                        //if (ReaderParams.ModuloRol == item.SubItems[10].Text && ReaderParams.ModuloRol == "Puerta") //Si el modulo se esta ejecutando para una puerta
+                        //{
+                        //    if (!PasoPorCaja(id))
+                        //    {
+                        //        ActivarAlarma(100);
+                        //        return;
+                        //    }
+                        //}
                     }
 
                     bool epc_paso_por_caja = new ReadRepository().GetReadInBox(item.SubItems[1].Text);

@@ -1012,3 +1012,24 @@ D:\Proyecto\Pedro Clavijo\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.
 D:\Proyecto\Pedro Clavijo\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.CoreCompileInputs.cache
 D:\Proyecto\Pedro Clavijo\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.exe
 D:\Proyecto\Pedro Clavijo\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.pdb
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.AssemblyReference.cache
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.ResolveComReference.cache
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.AdvanceParaSet.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.FormNET.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.OtherSet.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.PROFRECTESE.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.RegOperate.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.Form1.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.Aboutus.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.BasicParaSet.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.Properties.Resources.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.TagOperate.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.TagSpecial.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.Test.resources
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.GenerateResource.cache
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.CoreCompileInputs.cache
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.exe
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.pdb
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\UHF RFID Demo V2.1.25.5.exe.config
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\UHF RFID Demo V2.1.25.5.exe
+C:\Users\rober\Documents\GitHub\RFID_CARD_ARTICULO\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\UHF RFID Demo V2.1.25.5.pdb

@@ -53,7 +53,7 @@ namespace R2000Demo
 
                     com = new SqlCommand("usp_BuscarTag", con);
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@TAG", result.Epc);
+                    com.Parameters.AddWithValue("@EPC", result.Epc);
                     con.Open();
                     SqlDataReader dr2 = com.ExecuteReader();
                     if (dr.Read())
