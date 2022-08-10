@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Configuration;
+using R2000Demo.Model;
 
 namespace R2000Demo
 {
@@ -48,6 +49,11 @@ namespace R2000Demo
         DateTime beeptime1;
         DateTime netovertime;
         bool beepflag;
+
+        //TODO: Definir una variable global que guarda la lectura de tag tipo C (1)
+
+        //TODO: Definir una variable de tipo lista para guargar los tag asigandos al usuario (2)
+
         //System.Media.SoundPlayer player = new System.Media.SoundPlayer(Application.StartupPath + @"/warning.wav");
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(R2000Demo.Properties.Resources.warning);
 
@@ -249,9 +255,11 @@ namespace R2000Demo
             label_speed.Text = "";
             label_NumOfTags.Text = "";
             lB_times.Text = "";
-            //StartTime = DateTime.Now;
+            StartTime = DateTime.Now;
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
+            //limpiar variables (1) y (2)
+
         }
         private void button_inv_mul_Click(object sender, EventArgs e)
         {
@@ -1428,7 +1436,7 @@ namespace R2000Demo
             {
                 if (m_Tags[keystr].tid.Equals(tag.tid))  //Se ubica en el registro del tag leido
                 {
-                    m_Tags[keystr].readcnt += 1;   
+                    m_Tags[keystr].readcnt += 1;
                     //m_Tags[keystr].epcid = tag.;
                     m_Tags[keystr].rxrssi = tag.rxrssi;
                     m_Tags[keystr].antID = tag.antID;
@@ -3277,21 +3285,26 @@ namespace R2000Demo
                         IEnumerable<ListViewItem> lv = listView_Disp.Items.Cast<ListViewItem>();
                         bool epc_existe = lv.Where(r => r.SubItems[1].Text == epc_leido && r.SubItems[5].Text == ant_leido).Count() > 0;
 
-                        //TODO: Comprobar si tag ya fue leido
                         if (!epc_existe)
                         {
                             listView_Disp.Items.Add(item);
                             this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
 
-                            int id = Guardarlectura(item);
-                            if (ReaderParams.ModuloRol == item.SubItems[10].Text && ReaderParams.ModuloRol == "Puerta") //Si el modulo se esta ejecutando para una puerta
+                            AsignacionTag asignacionTag = Guardarlectura(item);
+
+                            if (asignacionTag.Tipo == "C")
                             {
-                                if (!PasoPorCaja(id))
-                                {
-                                    ActivarAlarma(100);
-                                    return;
-                                }
+                                //TODO: Guardar en una variable Global
+                                //TODO: Traer la lista de los tag asignado al usuario y guardarlo en una lista (A)
+                                return;
                             }
+                            else
+                            {
+                                //TODO: Verificar que existe una lectura de tipo C sino sonar la alarma
+                                //TODO: Verificar si el tag se encuentra en la lista (A) 
+                                //TODO: Sino se encuentra en la lista (A) sonar alarma
+                            }
+
                         }
 
                         bool epc_paso_por_caja = new ReadRepository().GetReadInBox(item.SubItems[1].Text);
@@ -3458,7 +3471,7 @@ namespace R2000Demo
             return ValidarPago(id);
         }
         //Actualizacion - Jose Liza: 20210131
-        private int Guardarlectura(ListViewItem item)
+        private AsignacionTag Guardarlectura(ListViewItem item)
         {
             ReadRepository obj = new ReadRepository();
             return obj.AddReadTag(new ReadTag(int.Parse(item.SubItems[0].Text), item.SubItems[1].Text, item.SubItems[2].Text,

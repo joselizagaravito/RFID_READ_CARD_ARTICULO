@@ -1,4 +1,5 @@
-﻿using System;
+﻿using R2000Demo.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -20,7 +21,7 @@ namespace R2000Demo
         //To Add ReadTag details    
         public AsignacionTag AddReadTag(ReadTag obj)
         {
-            int result = 0;
+            AsignacionTag result = new AsignacionTag();
             string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
             {
@@ -38,14 +39,31 @@ namespace R2000Demo
                 com.Parameters.AddWithValue("@Color", obj.Color);
                 com.Parameters.AddWithValue("@ModuloId", obj.ModuloId);
                 com.Parameters.AddWithValue("@ModuloRol", obj.ModuloRol);
-
+                
                 try
                 {
                     con.Open();
                     SqlDataReader dr = com.ExecuteReader();
                     if (dr.Read())
-                        result = dr.GetInt32(0);
+                    {
+                        result.Idlectura = dr.GetInt32(0);
+                        result.Epc = dr.GetString(1);
+                    }
                     con.Close();
+
+                    com = new SqlCommand("usp_BuscarTag", con);
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@TAG", result.Epc);
+                    con.Open();
+                    SqlDataReader dr2 = com.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        result.UsuarioId = dr.GetInt32(0);
+                        result.Tipo = dr.GetString(2);
+                        result.FechaAsignacion = dr.GetDateTime(3);
+                        result.FechaSalida = dr.GetDateTime(4);
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -54,7 +72,7 @@ namespace R2000Demo
                 return result;
             }
         }
-        
+
         //AddIncidenciaReadTag
         public int AddIncidenciaReadTag(ReadTag obj)
         {
