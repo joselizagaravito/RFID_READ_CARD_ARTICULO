@@ -50,10 +50,8 @@ namespace R2000Demo
         DateTime netovertime;
         bool beepflag;
 
-        //TODO: Definir una variable global que guarda la lectura de tag tipo C (1)
+       
         public string guardarLecturaTipoC;
-
-        //TODO: Definir una variable de tipo lista para guargar los tag asigandos al usuario (2)
         public List<AsignacionTag> listaTagsAsignados = new List<AsignacionTag>();
 
         //System.Media.SoundPlayer player = new System.Media.SoundPlayer(Application.StartupPath + @"/warning.wav");
@@ -1432,7 +1430,6 @@ namespace R2000Demo
             return true;
         }
 
-        //TODO: Analizar que se lea solo una vez los tags
         void AddTagToBuf(TagInfo tag)
         {
             string keystr = tag.epcid + "-" + tag.tid;
@@ -3295,36 +3292,42 @@ namespace R2000Demo
                             listView_Disp.Items.Add(item);
                             this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
 
-                            AsignacionTag asignacionTag = Guardarlectura(item);
+                            AsignacionTag tagTipoC = Guardarlectura(item);
 
-                            if (asignacionTag.Tipo == "C")
+                            if (tagTipoC.Tipo == "C")
                             {
                                 //TODO: Guardar en una variable Global
-                                
-                                guardarLecturaTipoC = item.SubItems[1].Text;
+
+                                guardarLecturaTipoC = tagTipoC.Tipo; //item.SubItems[1].Text;
 
                                 //TODO: Traer la lista de los tag asignado al usuario y guardarlo en una lista (A)
-                            
-                                List<AsignacionTag> listaTagsAsignados = new List<AsignacionTag>();
-                                 
+                                listaTagsAsignados = GetTagsAsignados(tagTipoC.UsuarioId);
+
+
                                 return;
                             }
                             else
                             {
                                 //TODO:Verificar que existe una lectura de tipo C sino sonar la alarma
-                                if( asignacionTag.Tipo != "C")
+                                if(tagTipoC.Tipo != "C")
                                 {
                                     ActivarAlarma(100);
                                 }
 
                                 //TODO: Verificar si el tag se encuentra en la lista (A) 
 
-                                foreach (AsignacionTag asignacionTagA in listaTagsAsignados)
+                                AsignacionTag tagEncontrado= listaTagsAsignados.Find(a=>a.Epc.Equals(epc_existe));
+                                if (tagEncontrado != null)
                                 {
-                                    if (asignacionTagA.Epc == asignacionTag.Epc)
+                                    ActivarAlarma(100);
+                                }
+                                /*
+                                    foreach (AsignacionTag asignacionTagA in listaTagsAsignados)
+                                {
+                                    if (asignacionTagA.Epc == tagTipoC.Epc)
                                     {
                                         //mostrar el tag leido
-                                        asignacionTagA.Tipo = asignacionTag.Tipo;
+                                        asignacionTagA.Tipo = tagTipoC.Tipo;
                                     }
                                     //TODO: Sino se encuentra en la lista (A) sonar alarma'
                                     else
@@ -3332,6 +3335,7 @@ namespace R2000Demo
                                         ActivarAlarma(100);
                                     }
                                 }
+                                */
 
                                 
                             }
@@ -3509,6 +3513,13 @@ namespace R2000Demo
                int.Parse(item.SubItems[3].Text), int.Parse(item.SubItems[4].Text), int.Parse(item.SubItems[5].Text),
                DateTime.Parse(item.SubItems[6].Text), DateTime.Parse(item.SubItems[7].Text), item.SubItems[8].Text,
                item.SubItems[9].Text, item.SubItems[10].Text));
+        }
+
+        
+        private List<AsignacionTag> GetTagsAsignados(int idUsuario)
+        {
+            ReadRepository obj = new ReadRepository();
+            return obj.GetTagsAsignados(idUsuario);
         }
         private int GuardarIncidencia(ListViewItem item)
         {

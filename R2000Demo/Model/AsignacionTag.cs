@@ -10,5 +10,19 @@ namespace R2000Demo.Model
         public DateTime FechaAsignacion { get; set; }
         public DateTime FechaSalida { get; set; }
         public int Idlectura { get; set; }
+
+        public AsignacionTag()
+        {
+        }
+
+        public AsignacionTag(int usuarioId, string epc, string tipo, DateTime fechaAsignacion, DateTime fechaSalida, int idlectura)
+        {
+            UsuarioId = usuarioId;
+            Epc = epc;
+            Tipo = tipo;
+            FechaAsignacion = fechaAsignacion;
+            FechaSalida = fechaSalida;
+            Idlectura = idlectura;
+        }
     }
 }

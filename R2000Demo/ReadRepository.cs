@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+
 namespace R2000Demo
 {
     public class ReadRepository
@@ -18,6 +19,51 @@ namespace R2000Demo
             con = new SqlConnection(constr);
 
         }
+        public List<ReadTag> GetAllReadTags()
+        {
+            List<ReadTag> Result = new List<ReadTag>();
+            string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
+
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                SqlCommand com = new SqlCommand("GetReadTags", con);
+                com.CommandType = CommandType.StoredProcedure;
+                SqlDataReader dr;
+                DataTable dt = new DataTable();
+                try
+                {
+                    con.Open();
+                    dr = com.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        Result.Add(
+                            item: new ReadTag
+                            (
+                                id: dr.GetInt32(0),
+                                epc: dr.GetString(1),
+                                tid: dr.GetString(2),
+                                invtimes: dr.GetInt32(3),
+                                rssi: dr.GetInt32(4),
+                                antid: dr.GetInt32(5),
+                                lasttime: dr.GetDateTime(6),
+                                firstreadtime: dr.GetDateTime(7),
+                                color: dr.GetString(8),
+                                moduloid: dr.GetString(9),
+                                modulorol: dr.GetString(10)
+                            )
+                            );
+                    }
+                    dr.Close();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Hay un error en la Base de Datos" + ex.Message);
+                }
+            }
+            return Result;
+        }
+
         //To Add ReadTag details    
         public AsignacionTag AddReadTag(ReadTag obj)
         {
@@ -39,7 +85,7 @@ namespace R2000Demo
                 com.Parameters.AddWithValue("@Color", obj.Color);
                 com.Parameters.AddWithValue("@ModuloId", obj.ModuloId);
                 com.Parameters.AddWithValue("@ModuloRol", obj.ModuloRol);
-                
+
                 try
                 {
                     con.Open();
@@ -165,14 +211,15 @@ namespace R2000Demo
             return Result;
         }
         //To view ReadTag details with generic list     
-        public List<ReadTag> GetAllReadTags()
+        public List<AsignacionTag> GetTagsAsignados(int usuarioId)
         {
-            List<ReadTag> Result = new List<ReadTag>();
+            List<AsignacionTag> Result = new List<AsignacionTag>();
             string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
 
             using (SqlConnection con = new SqlConnection(constr))
             {
-                SqlCommand com = new SqlCommand("GetReadTags", con);
+                SqlCommand com = new SqlCommand("usp_TagDelUsuario", con);
+                com.Parameters.Add(new SqlParameter("@UsuarioId", usuarioId));
                 com.CommandType = CommandType.StoredProcedure;
                 SqlDataReader dr;
                 DataTable dt = new DataTable();
@@ -183,19 +230,14 @@ namespace R2000Demo
                     while (dr.Read())
                     {
                         Result.Add(
-                            item: new ReadTag
+                            item: new AsignacionTag
                             (
-                                id: dr.GetInt32(0),
+                                usuarioId: dr.GetInt32(0),
                                 epc: dr.GetString(1),
-                                tid: dr.GetString(2),
-                                invtimes: dr.GetInt32(3),
-                                rssi: dr.GetInt32(4),
-                                antid: dr.GetInt32(5),
-                                lasttime: dr.GetDateTime(6),
-                                firstreadtime: dr.GetDateTime(7),
-                                color: dr.GetString(8),
-                                moduloid: dr.GetString(9),
-                                modulorol: dr.GetString(10)
+                                tipo: dr.GetString(2),
+                                fechaAsignacion: dr.GetDateTime(3),
+                                fechaSalida: dr.GetDateTime(4),
+                                idlectura: 0
                             )
                             );
                     }
