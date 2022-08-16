@@ -3255,6 +3255,11 @@ namespace R2000Demo
                         item.SubItems.Add(m_SortTag[(i + 1).ToString()].times.ToString());
                         item.SubItems.Add(m_SortTag[(i + 1).ToString()].rptime);
                         item.SubItems.Add(m_SortTag[(i + 1).ToString()].color);
+
+                        //Actualizacion - José Liza: 2021-03-14 - Agregar columnas ModuloId y ModuloRol
+                        item.SubItems.Add(m_SortTag[(i + 1).ToString()].moduloid.ToString());
+                        item.SubItems.Add(m_SortTag[(i + 1).ToString()].modulorol);
+
                         if ((cB_OutLineClear.Checked == true))
                         {
                             /* Calcular el tiempo sin conexión */
@@ -3298,7 +3303,7 @@ namespace R2000Demo
                             {
                                 //TODO: Guardar en una variable Global
 
-                                guardarLecturaTipoC = tagTipoC.Tipo; //item.SubItems[1].Text;
+                                guardarLecturaTipoC = tagTipoC.Tipo;
 
                                 //TODO: Traer la lista de los tag asignado al usuario y guardarlo en una lista (A)
                                 listaTagsAsignados = GetTagsAsignados(tagTipoC.UsuarioId);
@@ -3364,6 +3369,10 @@ namespace R2000Demo
                         item.SubItems.Add(m_SortTag[(i + 1).ToString()].rptime);
                         //Actualizacion - Jose Liza: 20210123
                         item.SubItems.Add(m_SortTag[(i + 1).ToString()].color);
+
+                        //Actualizacion - José Liza: 2021-03-14 - Agregar columnas ModuloId y ModuloRol
+                        item.SubItems.Add(m_SortTag[(i + 1).ToString()].moduloid.ToString());
+                        item.SubItems.Add(m_SortTag[(i + 1).ToString()].modulorol);
 
                         if ((cB_OutLineClear.Checked == true))
                         {
@@ -3440,7 +3449,7 @@ namespace R2000Demo
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].color);
 
                     //Actualizacion - José Liza: 2021-03-14 - Agregar columnas ModuloId y ModuloRol
-                    item.SubItems.Add(m_SortTag[(i + 1).ToString()].moduloid);
+                    item.SubItems.Add(m_SortTag[(i + 1).ToString()].moduloid.ToString());
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].modulorol);
 
                     if ((cB_OutLineClear.Checked == true))
@@ -3475,26 +3484,46 @@ namespace R2000Demo
                     bool epc_existe = lv.Where(r => r.SubItems[1].Text == epc_leido && r.SubItems[5].Text == ant_leido).Count() > 0;
 
                     //TODO: Comprobar si tag ya fue leido
+                    AsignacionTag tagTipoC = Guardarlectura(item);
+
                     if (!epc_existe)
                     {
                         listView_Disp.Items.Add(item);
                         this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
 
-                        //int id = Guardarlectura(item);
-                        //if (ReaderParams.ModuloRol == item.SubItems[10].Text && ReaderParams.ModuloRol == "Puerta") //Si el modulo se esta ejecutando para una puerta
-                        //{
-                        //    if (!PasoPorCaja(id))
-                        //    {
-                        //        ActivarAlarma(100);
-                        //        return;
-                        //    }
-                        //}
-                    }
 
-                    bool epc_paso_por_caja = new ReadRepository().GetReadInBox(item.SubItems[1].Text);
-                    if (epc_existe && !epc_paso_por_caja)
-                    {
-                        ActivarAlarma(100);
+                        if (tagTipoC.Tipo == "C")
+                        {
+                            //TODO: Guardar en una variable Global
+
+                            guardarLecturaTipoC = tagTipoC.Tipo;
+                            //TODO: Traer la lista de los tag asignado al usuario y guardarlo en una lista (A)
+                            listaTagsAsignados = GetTagsAsignados(tagTipoC.UsuarioId);
+                            return;
+                        }
+                        //si los tags son iguales a la listaTagsAsignados no sonar alarma
+                        if (listaTagsAsignados.Where(x => x.Epc == epc_leido).Count() > 0)
+                        {
+                            AsignacionTag tagEncontrado = listaTagsAsignados.Find(a => a.Epc.Equals(epc_existe));
+                            if (tagEncontrado == null)
+                            {
+                                item.BackColor = Color.Green;
+                                item.SubItems[8].Text = Color.Green.Name.ToString();
+                            }
+                        }
+                        else
+                        {
+                            item.BackColor = Color.Red;
+                            item.SubItems[8].Text = Color.Red.Name.ToString();
+                            ActivarAlarma(100);
+                        }
+
+                        ////TODO:Verificar que existe una lectura de tipo C sino sonar la alarma
+                        //if (tagTipoC.Tipo != "C")
+                        //{
+                        //    ActivarAlarma(100);
+                        //}
+
                     }
                 }
             }
@@ -3509,13 +3538,26 @@ namespace R2000Demo
         private AsignacionTag Guardarlectura(ListViewItem item)
         {
             ReadRepository obj = new ReadRepository();
-            return obj.AddReadTag(new ReadTag(int.Parse(item.SubItems[0].Text), item.SubItems[1].Text, item.SubItems[2].Text,
-               int.Parse(item.SubItems[3].Text), int.Parse(item.SubItems[4].Text), int.Parse(item.SubItems[5].Text),
-               DateTime.Parse(item.SubItems[6].Text), DateTime.Parse(item.SubItems[7].Text), item.SubItems[8].Text,
-               item.SubItems[9].Text, item.SubItems[10].Text));
+            return obj.AddReadTag(new ReadTag(
+                int.Parse(item.SubItems[0].Text),
+                item.SubItems[1].Text,
+                item.SubItems[2].Text,
+                int.Parse(item.SubItems[3].Text),
+                int.Parse(item.SubItems[4].Text),
+                int.Parse(item.SubItems[5].Text),
+                DateTime.Parse(item.SubItems[6].Text),
+                DateTime.Parse(item.SubItems[7].Text),
+                item.SubItems[8].Text,
+                int.Parse(item.SubItems[9].Text),
+                item.SubItems[10].Text));
         }
 
-        
+        //private void LimpiarVariables()
+        //{
+        //    button_clr.Enabled = true;
+        //    button_clr.PerformClick();
+        //}
+
         private List<AsignacionTag> GetTagsAsignados(int idUsuario)
         {
             ReadRepository obj = new ReadRepository();
@@ -3524,10 +3566,19 @@ namespace R2000Demo
         private int GuardarIncidencia(ListViewItem item)
         {
             ReadRepository obj = new ReadRepository();
-            return obj.AddIncidenciaReadTag(new ReadTag(int.Parse(item.SubItems[0].Text), item.SubItems[1].Text, item.SubItems[2].Text,
-               int.Parse(item.SubItems[3].Text), int.Parse(item.SubItems[4].Text), int.Parse(item.SubItems[5].Text),
-               DateTime.Parse(item.SubItems[6].Text), DateTime.Parse(item.SubItems[7].Text), item.SubItems[8].Text,
-               item.SubItems[9].Text, item.SubItems[10].Text));
+
+            return obj.AddIncidenciaReadTag(new ReadTag(
+                int.Parse(item.SubItems[0].Text),
+                item.SubItems[1].Text,
+                item.SubItems[2].Text,
+                int.Parse(item.SubItems[3].Text),
+                int.Parse(item.SubItems[4].Text),
+                int.Parse(item.SubItems[5].Text),
+                DateTime.Parse(item.SubItems[6].Text),
+                DateTime.Parse(item.SubItems[7].Text),
+                item.SubItems[8].Text,
+                int.Parse(item.SubItems[9].Text),
+                item.SubItems[10].Text));
         }
         private bool ValidarPago(int id)
         {

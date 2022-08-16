@@ -21,11 +21,11 @@ namespace R2000Demo
 
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 
-            cbB_TxPower.SelectedIndex = 25;
+            cbB_TxPower.SelectedIndex = 5; //original 25
             cbB_SetRegion.SelectedIndex = 1;
             cB_SaveFlag.Checked = true;
             tB_FreqNum.Text = "0";
-            cbB_RxPower.SelectedIndex = 25;
+            cbB_RxPower.SelectedIndex = 5; //original 25
             cbB_PowerAnt.SelectedIndex = 0;
             tB_Frequency.Text = "922.375";
             comboBox_recommand.SelectedIndex = ReaderParams.Recommand;

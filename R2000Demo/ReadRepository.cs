@@ -39,7 +39,7 @@ namespace R2000Demo
                         Result.Add(
                             item: new ReadTag
                             (
-                                id: dr.GetInt32(0),
+                                tag: dr.GetInt32(0),
                                 epc: dr.GetString(1),
                                 tid: dr.GetString(2),
                                 invtimes: dr.GetInt32(3),
@@ -48,7 +48,7 @@ namespace R2000Demo
                                 lasttime: dr.GetDateTime(6),
                                 firstreadtime: dr.GetDateTime(7),
                                 color: dr.GetString(8),
-                                moduloid: dr.GetString(9),
+                                moduloid: dr.GetInt32(9),
                                 modulorol: dr.GetString(10)
                             )
                             );
@@ -102,12 +102,12 @@ namespace R2000Demo
                     com.Parameters.AddWithValue("@EPC", result.Epc);
                     con.Open();
                     SqlDataReader dr2 = com.ExecuteReader();
-                    if (dr.Read())
+                    if (dr2.Read())
                     {
-                        result.UsuarioId = dr.GetInt32(0);
-                        result.Tipo = dr.GetString(2);
-                        result.FechaAsignacion = dr.GetDateTime(3);
-                        result.FechaSalida = dr.GetDateTime(4);
+                        result.UsuarioId = dr2.GetInt32(0);
+                        result.Tipo = dr2.GetString(2);
+                        result.FechaAsignacion = dr2.GetDateTime(3);
+                        result.FechaSalida = dr2.GetDateTime(4);
                     }
 
                 }
@@ -128,6 +128,7 @@ namespace R2000Demo
             {
                 SqlCommand com = new SqlCommand("AddNewIncidenciaReadTag", con);
                 com.CommandType = CommandType.StoredProcedure;
+
                 com.Parameters.AddWithValue("@TAG", obj.TAG);
                 com.Parameters.AddWithValue("@EPC", obj.EPC);
                 com.Parameters.AddWithValue("@TID", obj.TID);
