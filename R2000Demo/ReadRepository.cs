@@ -106,8 +106,9 @@ namespace R2000Demo
                     {
                         result.UsuarioId = dr2.GetInt32(0);
                         result.Tipo = dr2.GetString(2);
-                        result.FechaAsignacion = dr2.GetDateTime(3);
-                        result.FechaSalida = dr2.GetDateTime(4);
+                        result.Color = dr2.GetString(3);
+                        result.FechaAsignacion = dr2.GetDateTime(4);
+                        result.FechaSalida = dr2.GetDateTime(5);
                     }
 
                 }
@@ -236,8 +237,9 @@ namespace R2000Demo
                                 usuarioId: dr.GetInt32(0),
                                 epc: dr.GetString(1),
                                 tipo: dr.GetString(2),
-                                fechaAsignacion: dr.GetDateTime(3),
-                                fechaSalida: dr.GetDateTime(4),
+                                color: dr.GetString(3),
+                                fechaAsignacion: dr.GetDateTime(4),
+                                fechaSalida: dr.GetDateTime(5),
                                 idlectura: 0
                             )
                             );
@@ -251,6 +253,55 @@ namespace R2000Demo
                 }
             }
             return Result;
+        }
+
+
+        //Actualizar color de un tag Test
+        public void UpdateReadTag(string epc, string ant, string color)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                SqlCommand com = new SqlCommand("UpdateReadTagColor", con);
+                try
+                {
+                    con.Open(); 
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@EPC", epc);
+                    com.Parameters.AddWithValue("@Color", color);
+                    com.Parameters.AddWithValue("@AntId", ant);
+                    com.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Hay un error en la Base de Datos" + ex.Message);
+                }
+            }
+        }
+
+        //Actualizar Color de AsignacionTag
+        public void UpdateAsignacionTag(string epc, string color)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                SqlCommand com = new SqlCommand("UpdateAsignacionTagColor", con);
+                try
+                {
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@EPC", epc);
+                    //com.Parameters.AddWithValue("@Tipo", tipo);
+                    com.Parameters.AddWithValue("@Color", color);
+                    com.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Hay un error en la Base de Datos" + ex.Message);
+                }
+            }
         }
 
     }

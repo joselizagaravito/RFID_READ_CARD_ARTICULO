@@ -115,6 +115,8 @@
             this.timer6 = new System.Windows.Forms.Timer(this.components);
             this.timer7 = new System.Windows.Forms.Timer(this.components);
             this.timPIO = new System.Windows.Forms.Timer(this.components);
+            this.tmr_Limpiar_TipoC = new System.Windows.Forms.Timer(this.components);
+            this.timer8 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -999,6 +1001,11 @@
             this.timPIO.Interval = 300;
             this.timPIO.Tick += new System.EventHandler(this.timPIO_Tick);
             // 
+            // tmr_Limpiar_TipoC
+            // 
+            this.tmr_Limpiar_TipoC.Interval = 9000;
+            this.tmr_Limpiar_TipoC.Tick += new System.EventHandler(this.tmr_Limpiar_TipoC_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1124,6 +1131,8 @@
         private System.Windows.Forms.Timer timPIO;
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.CheckBox chkTest;
+        private System.Windows.Forms.Timer tmr_Limpiar_TipoC;
+        private System.Windows.Forms.Timer timer8;
     }
 }
 

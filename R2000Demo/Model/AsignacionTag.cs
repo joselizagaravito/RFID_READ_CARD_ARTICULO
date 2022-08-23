@@ -7,6 +7,7 @@ namespace R2000Demo.Model
         public int UsuarioId { get; set; }
         public String Epc { get; set; }
         public String Tipo { get; set; }
+        public String Color { get; set; }
         public DateTime FechaAsignacion { get; set; }
         public DateTime FechaSalida { get; set; }
         public int Idlectura { get; set; }
@@ -15,11 +16,12 @@ namespace R2000Demo.Model
         {
         }
 
-        public AsignacionTag(int usuarioId, string epc, string tipo, DateTime fechaAsignacion, DateTime fechaSalida, int idlectura)
+        public AsignacionTag(int usuarioId, string epc, string tipo,string color, DateTime fechaAsignacion, DateTime fechaSalida, int idlectura)
         {
             UsuarioId = usuarioId;
             Epc = epc;
             Tipo = tipo;
+            Color = color;
             FechaAsignacion = fechaAsignacion;
             FechaSalida = fechaSalida;
             Idlectura = idlectura;

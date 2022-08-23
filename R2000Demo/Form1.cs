@@ -52,6 +52,8 @@ namespace R2000Demo
 
        
         public string guardarLecturaTipoC;
+        //variable global guardarLecturaTipoCTime
+        public DateTime guardarLecturaTipoCTime; 
         public List<AsignacionTag> listaTagsAsignados = new List<AsignacionTag>();
 
         //System.Media.SoundPlayer player = new System.Media.SoundPlayer(Application.StartupPath + @"/warning.wav");
@@ -1580,6 +1582,7 @@ namespace R2000Demo
             //}
         }
 
+        //TODO: UNO
         private bool IsReceiveData()
         {
             int recount = 50000;     //重试次数
@@ -2169,6 +2172,7 @@ namespace R2000Demo
 
         }
 
+        //TODO: DOS
         private void ReceiveDataFromUART()
         {
             byte[] buf = new byte[2];
@@ -3452,6 +3456,12 @@ namespace R2000Demo
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].moduloid.ToString());
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].modulorol);
 
+                    //Verificar si ya fue leido el EPC
+                    string epc_leido = item.SubItems[1].Text;
+                    string ant_leido = item.SubItems[5].Text;
+                    IEnumerable<ListViewItem> lv = listView_Disp.Items.Cast<ListViewItem>();
+                    bool epc_existe = lv.Where(r => r.SubItems[1].Text == epc_leido && r.SubItems[5].Text == ant_leido).Count() > 0;
+
                     if ((cB_OutLineClear.Checked == true))
                     {
                         /* Calcular el tiempo sin conexión */
@@ -3475,33 +3485,36 @@ namespace R2000Demo
                             item.BackColor = Color.White;
                             item.SubItems[8].Text = Color.White.Name.ToString();
                         }
+                        
                     }
 
-                    //Verificar si ya fue leido el EPC
-                    string epc_leido = item.SubItems[1].Text;
-                    string ant_leido = item.SubItems[5].Text;
-                    IEnumerable<ListViewItem> lv = listView_Disp.Items.Cast<ListViewItem>();
-                    bool epc_existe = lv.Where(r => r.SubItems[1].Text == epc_leido && r.SubItems[5].Text == ant_leido).Count() > 0;
+
 
                     //TODO: Comprobar si tag ya fue leido
                     AsignacionTag tagTipoC = Guardarlectura(item);
+
+                    //if (tagTipoC.Tipo == "C" && epc_existe)
+                    //{
+                    //    if (DateTime.Now.Subtract(guardarLecturaTipoCTime).TotalSeconds > 10)
+                    //    {
+                    //        button_clr.PerformClick();
+                    //        guardarLecturaTipoCTime = DateTime.Now;
+                    //    }
+                    //}
 
                     if (!epc_existe)
                     {
                         listView_Disp.Items.Add(item);
                         this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
 
-
                         if (tagTipoC.Tipo == "C")
                         {
                             //TODO: Guardar en una variable Global
-
                             guardarLecturaTipoC = tagTipoC.Tipo;
                             //TODO: Traer la lista de los tag asignado al usuario y guardarlo en una lista (A)
                             listaTagsAsignados = GetTagsAsignados(tagTipoC.UsuarioId);
                             return;
                         }
-                        //si los tags son iguales a la listaTagsAsignados no sonar alarma
                         if (listaTagsAsignados.Where(x => x.Epc == epc_leido).Count() > 0)
                         {
                             AsignacionTag tagEncontrado = listaTagsAsignados.Find(a => a.Epc.Equals(epc_existe));
@@ -3509,24 +3522,35 @@ namespace R2000Demo
                             {
                                 item.BackColor = Color.Green;
                                 item.SubItems[8].Text = Color.Green.Name.ToString();
+                                GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Green.Name.ToString());
+                                GuardarColorAsignacionTag(item.SubItems[1].Text, item.SubItems[8].Text);
+
                             }
                         }
                         else
                         {
                             item.BackColor = Color.Red;
                             item.SubItems[8].Text = Color.Red.Name.ToString();
+                            GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Red.Name.ToString());
+                            GuardarColorAsignacionTag(item.SubItems[1].Text, item.SubItems[8].Text);
                             ActivarAlarma(100);
                         }
-
-                        ////TODO:Verificar que existe una lectura de tipo C sino sonar la alarma
-                        //if (tagTipoC.Tipo != "C")
-                        //{
-                        //    ActivarAlarma(100);
-                        //}
-
                     }
                 }
             }
+        }
+
+        private void GuardarColor(string epc, string ant, string color)
+        {
+            ReadRepository readRepository = new ReadRepository();
+            readRepository.UpdateReadTag(epc, ant, color);
+        }
+
+        //Actualizar AsignacionagColor
+        private void GuardarColorAsignacionTag(string epc, string color) 
+        {
+            ReadRepository readRepository = new ReadRepository();
+            readRepository.UpdateAsignacionTag(epc, color);
         }
 
         //private bool PasoPorCaja(ListViewItem item)
@@ -3551,12 +3575,6 @@ namespace R2000Demo
                 int.Parse(item.SubItems[9].Text),
                 item.SubItems[10].Text));
         }
-
-        //private void LimpiarVariables()
-        //{
-        //    button_clr.Enabled = true;
-        //    button_clr.PerformClick();
-        //}
 
         private List<AsignacionTag> GetTagsAsignados(int idUsuario)
         {
@@ -3906,7 +3924,10 @@ namespace R2000Demo
             //ActivarAlarma(300);
         }
 
-
+        private void tmr_Limpiar_TipoC_Tick(object sender, EventArgs e)
+        {
+            button_clr.Enabled = true;
+        }
     }
 
 
