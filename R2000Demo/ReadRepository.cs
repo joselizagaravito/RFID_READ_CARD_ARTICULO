@@ -107,10 +107,11 @@ namespace R2000Demo
                         result.UsuarioId = dr2.GetInt32(0);
                         result.Tipo = dr2.GetString(2);
                         result.Color = dr2.GetString(3);
-                        result.FechaAsignacion = dr2.GetDateTime(4);
-                        result.FechaSalida = dr2.GetDateTime(5);
+                        result.Modulo = dr2.GetInt32(4);
+                        result.FechaAsignacion = dr2.GetDateTime(5);
+                        result.FechaSalida = dr2.GetDateTime(6);
                     }
-
+ 
                 }
                 catch (Exception ex)
                 {
@@ -238,8 +239,9 @@ namespace R2000Demo
                                 epc: dr.GetString(1),
                                 tipo: dr.GetString(2),
                                 color: dr.GetString(3),
-                                fechaAsignacion: dr.GetDateTime(4),
-                                fechaSalida: dr.GetDateTime(5),
+                                modulo: dr.GetInt32(4),
+                                fechaAsignacion: dr.GetDateTime(5),
+                                fechaSalida: dr.GetDateTime(6),
                                 idlectura: 0
                             )
                             );
@@ -281,7 +283,7 @@ namespace R2000Demo
         }
 
         //Actualizar Color de AsignacionTag
-        public void UpdateAsignacionTag(string epc, string color)
+        public void UpdateAsignacionTag(string epc, string color, int modulo)
         {
             string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
@@ -294,6 +296,7 @@ namespace R2000Demo
                     com.Parameters.AddWithValue("@EPC", epc);
                     //com.Parameters.AddWithValue("@Tipo", tipo);
                     com.Parameters.AddWithValue("@Color", color);
+                    com.Parameters.AddWithValue("@Modulo", modulo);
                     com.ExecuteNonQuery();
                     con.Close();
                 }

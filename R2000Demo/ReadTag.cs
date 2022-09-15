@@ -27,7 +27,6 @@ namespace R2000Demo
             EPC = epc;
             TID = tid;
             InvTimes = invtimes;
-            //rssi = RSSI;
             RSSI = rssi;
             AntID = antid;
             LastTime = lasttime;

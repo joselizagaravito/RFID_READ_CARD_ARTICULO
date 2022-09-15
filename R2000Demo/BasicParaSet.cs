@@ -1721,148 +1721,148 @@ namespace R2000Demo
             tB_TxPower.Text = "";
             groupBox5.Refresh();
 
-            //if (0 == ReaderParams.ProtocolFlag)
-            //{
-            //    ReadWriteIO.sendFrameBuild(WriteBuf, CMD.FRAME_CMD_GET_TX_POWER, len);
-            //}
-            //else
-            //{
-            //    ReadWriteIO.sendFrameBuild(WriteBuf, 0x0C, len);
-            //}
+            if (0 == ReaderParams.ProtocolFlag)
+            {
+                ReadWriteIO.sendFrameBuild(WriteBuf, CMD.FRAME_CMD_GET_TX_POWER, len);
+            }
+            else
+            {
+                ReadWriteIO.sendFrameBuild(WriteBuf, 0x0C, len);
+            }
 
 
-            //if (1 == ReaderParams.CommIntSelectFlag)
-            //{
-            //    if (ReadWriteIO.comm.IsOpen)
-            //    {
-            //        ReadWriteIO.comm.DiscardInBuffer();
-            //        ReadWriteIO.comm.DiscardOutBuffer();
-            //        revlen = 0;
-            //        if (0 == ReaderParams.ProtocolFlag)
-            //        {
-            //            ReadWriteIO.comm.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));
-            //        }
-            //        else
-            //        {
-            //            ReadWriteIO.comm.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN - 2));
-            //        }
+            if (1 == ReaderParams.CommIntSelectFlag)
+            {
+                if (ReadWriteIO.comm.IsOpen)
+                {
+                    ReadWriteIO.comm.DiscardInBuffer();
+                    ReadWriteIO.comm.DiscardOutBuffer();
+                    revlen = 0;
+                    if (0 == ReaderParams.ProtocolFlag)
+                    {
+                        ReadWriteIO.comm.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));
+                    }
+                    else
+                    {
+                        ReadWriteIO.comm.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN - 2));
+                    }
 
-            //    }
-            //    else
-            //    {
-            //        if (0 == ReaderParams.LanguageFlag)
-            //        {
-            //            MessageBox.Show("端口未打开，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            //            tB_TxPower.Text = "获取失败";
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Do not open the port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            //            tB_TxPower.Text = "Get failed";
-            //        }
+                }
+                else
+                {
+                    if (0 == ReaderParams.LanguageFlag)
+                    {
+                        MessageBox.Show("端口未打开，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        tB_TxPower.Text = "获取失败";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Do not open the port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        tB_TxPower.Text = "Get failed";
+                    }
 
-            //        return;
-            //    }
+                    return;
+                }
 
-            //    if (0 == ReaderParams.ProtocolFlag)
-            //    {
-            //        System.Threading.Thread.Sleep(20);
-            //        while ((revlen < 0x30) && (recount != 0))
-            //        //while ((recount != 0))
-            //        {                  
-            //            recount--;
-            //            revlen = ReadWriteIO.comm.BytesToRead;
+                if (0 == ReaderParams.ProtocolFlag)
+                {
+                    System.Threading.Thread.Sleep(20);
+                    while ((revlen < 0x30) && (recount != 0))
+                    //while ((recount != 0))
+                    {                  
+                        recount--;
+                        revlen = ReadWriteIO.comm.BytesToRead;
 
-            //            if ((lastlen == revlen) && (lastlen > 4))
-            //            {
-            //                break;
-            //            }
+                        if ((lastlen == revlen) && (lastlen > 4))
+                        {
+                            break;
+                        }
 
-            //            lastlen = revlen;
+                        lastlen = revlen;
 
-            //            if(lastlen >0)
-            //                System.Threading.Thread.Sleep(100);
+                        if(lastlen >0)
+                            System.Threading.Thread.Sleep(100);
 
-            //        }
-            //    }
-            //    else
-            //    {
-            //        while ((revlen < 0x09) && (recount != 0))
-            //        {
-            //            recount--;
-            //            revlen = ReadWriteIO.comm.BytesToRead;
-            //        }
-            //    }
-
-
-
-            //    if (recount == 0)       //未收到数据
-            //    {
-            //        if (0 == ReaderParams.LanguageFlag)
-            //        {
-            //            MessageBox.Show("未接收到数据");
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Set Failed");
-            //        }
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        revlen = ReadWriteIO.comm.BytesToRead;
-            //        ReadWriteIO.comm.Read(revbuf, 0, revlen);
-            //    }
-            //}
-            //else
-            //{
-            //    recount = ReaderParams.Netrecount;
-            //    if (true == ReaderParams.nsStream.CanRead)
-            //    {
-            //        while (true == ReaderParams.nsStream.DataAvailable)
-            //        {
-            //            ReaderParams.nsStream.Read(revbuf, 0, revbuf.Length);
-            //        }
-            //        revlen = 0;
-            //        ReaderParams.nsStream.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));//发送测试信息
-            //    }
-            //    else
-            //    {
-            //        if (0 == ReaderParams.LanguageFlag)
-            //        {
-            //            MessageBox.Show("网口未连接，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Network port is not connected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            //        }
-            //        return;
-            //    }
+                    }
+                }
+                else
+                {
+                    while ((revlen < 0x09) && (recount != 0))
+                    {
+                        recount--;
+                        revlen = ReadWriteIO.comm.BytesToRead;
+                    }
+                }
 
 
-            //    while ((recount != 0) && (false == ReaderParams.nsStream.DataAvailable))
-            //    {
-            //        recount--;
-            //    }
 
-            //    if (recount == 0)       //未收到数据
-            //    {
-            //        if (0 == ReaderParams.LanguageFlag)
-            //        {
-            //            MessageBox.Show("未接收到数据");
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Set Failed");
-            //        }
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        System.Threading.Thread.Sleep(100);
-            //        revlen = ReaderParams.nsStream.Read(revbuf, 0, revbuf.Length);
-            //    }
-            //}
+                if (recount == 0)       //未收到数据
+                {
+                    if (0 == ReaderParams.LanguageFlag)
+                    {
+                        MessageBox.Show("未接收到数据");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Set Failed");
+                    }
+                    return;
+                }
+                else
+                {
+                    revlen = ReadWriteIO.comm.BytesToRead;
+                    ReadWriteIO.comm.Read(revbuf, 0, revlen);
+                }
+            }
+            else
+            {
+                recount = ReaderParams.Netrecount;
+                if (true == ReaderParams.nsStream.CanRead)
+                {
+                    while (true == ReaderParams.nsStream.DataAvailable)
+                    {
+                        ReaderParams.nsStream.Read(revbuf, 0, revbuf.Length);
+                    }
+                    revlen = 0;
+                    ReaderParams.nsStream.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));//发送测试信息
+                }
+                else
+                {
+                    if (0 == ReaderParams.LanguageFlag)
+                    {
+                        MessageBox.Show("网口未连接，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Network port is not connected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    return;
+                }
+
+
+                while ((recount != 0) && (false == ReaderParams.nsStream.DataAvailable))
+                {
+                    recount--;
+                }
+
+                if (recount == 0)       //未收到数据
+                {
+                    if (0 == ReaderParams.LanguageFlag)
+                    {
+                        MessageBox.Show("未接收到数据");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Set Failed");
+                    }
+                    return;
+                }
+                else
+                {
+                    System.Threading.Thread.Sleep(100);
+                    revlen = ReaderParams.nsStream.Read(revbuf, 0, revbuf.Length);
+                }
+            }
             int result = 0;
             if (0 == ReaderParams.ProtocolFlag)
             {
@@ -1992,10 +1992,10 @@ namespace R2000Demo
                     }
                 }
                 MessageBox.Show(str);
-                //int power = revbuf[7] * 256 + revbuf[8];
-                //power = power / 100;
+                int power = revbuf[7] * 256 + revbuf[8];
+                power = power / 100;
 
-                //tB_TxPower.Text = power.ToString();
+                tB_TxPower.Text = power.ToString();
             }
             else
             {
