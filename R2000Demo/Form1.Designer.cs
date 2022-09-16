@@ -55,6 +55,7 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.chkTest = new System.Windows.Forms.CheckBox();
             this.btnTest = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -217,6 +218,7 @@
             this.天线设置ToolStripMenuItem.Name = "天线设置ToolStripMenuItem";
             this.天线设置ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.天线设置ToolStripMenuItem.Text = "天线设置";
+            this.天线设置ToolStripMenuItem.Visible = false;
             this.天线设置ToolStripMenuItem.Click += new System.EventHandler(this.天线设置ToolStripMenuItem_Click);
             // 
             // AboutusSet
@@ -234,6 +236,7 @@
             this.NETToolStripMenuItem.Name = "NETToolStripMenuItem";
             this.NETToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.NETToolStripMenuItem.Text = "网口设置";
+            this.NETToolStripMenuItem.Visible = false;
             this.NETToolStripMenuItem.Click += new System.EventHandler(this.网口模块ToolStripMenuItem_Click);
             // 
             // listView_Disp
@@ -326,6 +329,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.chkTest);
             this.groupBox1.Controls.Add(this.btnTest);
             this.groupBox1.Controls.Add(this.label13);
@@ -352,11 +356,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "工作区:";
             // 
+            // textBox4
+            // 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox4.Location = new System.Drawing.Point(1025, 367);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.PasswordChar = '*';
+            this.textBox4.Size = new System.Drawing.Size(129, 25);
+            this.textBox4.TabIndex = 26;
+            this.textBox4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyUp);
+            // 
             // chkTest
             // 
             this.chkTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkTest.AutoSize = true;
-            this.chkTest.Location = new System.Drawing.Point(932, 370);
+            this.chkTest.Location = new System.Drawing.Point(860, 370);
             this.chkTest.Name = "chkTest";
             this.chkTest.Size = new System.Drawing.Size(77, 19);
             this.chkTest.TabIndex = 25;
@@ -366,7 +381,7 @@
             // btnTest
             // 
             this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTest.Location = new System.Drawing.Point(1015, 367);
+            this.btnTest.Location = new System.Drawing.Point(943, 367);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 24;
@@ -1133,6 +1148,7 @@
         private System.Windows.Forms.CheckBox chkTest;
         private System.Windows.Forms.Timer tmr_Limpiar_TipoC;
         private System.Windows.Forms.Timer timer8;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 

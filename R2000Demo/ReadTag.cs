@@ -8,7 +8,7 @@ namespace R2000Demo
     public class ReadTag
     {
         public int Id { get; set; }
-        public int TAG { get; set; }
+        public string TAG { get; set; }
         public string EPC { get; set; }
         public string TID { get; set; }
         public int InvTimes { get; set; }
@@ -20,7 +20,7 @@ namespace R2000Demo
         public int ModuloId { get; set; }
         public string ModuloRol { get; set; }
 
-        public ReadTag(int tag,string epc, string tid, int invtimes, int rssi, int antid, DateTime lasttime, DateTime firstreadtime, string color, int moduloid, string modulorol)
+        public ReadTag(string tag,string epc, string tid, int invtimes, int rssi, int antid, DateTime lasttime, DateTime firstreadtime, string color, int moduloid, string modulorol)
         {
             //Id = id;
             TAG = tag;

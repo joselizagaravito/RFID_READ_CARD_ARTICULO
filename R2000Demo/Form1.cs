@@ -3490,20 +3490,29 @@ namespace R2000Demo
                         
                     }
 
-                    //TODO: Comprobar si tag ya fue leido
-                    AsignacionTag tagTipoC = Guardarlectura(item);
 
+                    //TODO: Comprobar si tag ya fue leido
+                    AsignacionTag tagTipoC = Guardarlectura(item);  
+                    //AsignacionTag tagTipoC = new AsignacionTag();
+                    
                     if (!epc_existe)
                     {
+                        //tagTipoC = Guardarlectura(item);
                         listView_Disp.Items.Add(item);
                         this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
 
                         //TODO: Si el tag es de tipo C traer la lista de tags de tipo A
                         if (tagTipoC.Tipo == "C")
-                        {
+                        {                            
                             guardarLecturaTipoC = tagTipoC.Tipo;
-
+                            
                             listaTagsAsignados = GetTagsAsignados(tagTipoC.UsuarioId);
+
+                            listView_Disp.Items[listView_Disp.Items.Count - 1].BackColor = Color.DodgerBlue;
+                            listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text = Color.DodgerBlue.Name.ToString();
+                            GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.DodgerBlue.Name.ToString());
+                            GuardarColorAsignacionTag(item.SubItems[1].Text, item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
+
                             return;
                         }
 
@@ -3512,8 +3521,7 @@ namespace R2000Demo
                         {
                             guardarLecturaTipoA = tagTipoC.Tipo;
 
-                            listaTagsLeidos.Add(tagTipoC);
-                            
+                            listaTagsLeidos.Add(tagTipoC); 
                         }     
                         
                     }
@@ -3525,6 +3533,7 @@ namespace R2000Demo
                             itemToUpdate.SubItems[8].Text = tagTipoC.Color;
                             itemToUpdate.BackColor = Color.FromName(tagTipoC.Color);
                         }
+                        
                     }
                     
                     if (guardarLecturaTipoC == "C" && guardarLecturaTipoA == "A")
@@ -3560,14 +3569,13 @@ namespace R2000Demo
                     else if (guardarLecturaTipoC != "C" && tagTipoC.Tipo == "A")
                     {
                         //TODO: Si el epc es de tipo A y no se ha leido un epc de tipo C
-                        item.BackColor = Color.SkyBlue;
-                        item.SubItems[8].Text = Color.SkyBlue.Name.ToString();
-                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.SkyBlue.Name.ToString());
-                        GuardarColorAsignacionTag(item.SubItems[1].Text, item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
+                        item.BackColor = Color.LightGray;
+                        item.SubItems[8].Text = Color.LightGray.Name.ToString();
                     }
-                }
-                      
+
+                }                      
             }
+            
         }
 
         private void GuardarColor(string epc, string ant, string color)
@@ -3593,7 +3601,7 @@ namespace R2000Demo
         {
             ReadRepository obj = new ReadRepository();
             return obj.AddReadTag(new ReadTag(
-                int.Parse(item.SubItems[0].Text),
+                item.SubItems[0].Text,
                 item.SubItems[1].Text,
                 item.SubItems[2].Text,
                 int.Parse(item.SubItems[3].Text),
@@ -3616,7 +3624,7 @@ namespace R2000Demo
             ReadRepository obj = new ReadRepository();
 
             return obj.AddIncidenciaReadTag(new ReadTag(
-                int.Parse(item.SubItems[0].Text),
+                item.SubItems[0].Text,
                 item.SubItems[1].Text,
                 item.SubItems[2].Text,
                 int.Parse(item.SubItems[3].Text),
@@ -3950,13 +3958,24 @@ namespace R2000Demo
         }
         private void btnTest_Click(object sender, EventArgs e)
         {
-            ActivarGPIO("3", chkTest.Checked);
+            天线设置ToolStripMenuItem.Visible = !天线设置ToolStripMenuItem.Visible;
+            //ActivarGPIO("3", chkTest.Checked);
             //ActivarAlarma(300);
         }
 
         private void tmr_Limpiar_TipoC_Tick(object sender, EventArgs e)
         {
             button_clr.Enabled = true;
+        }
+
+        private void textBox4_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (textBox4.Text=="jose")
+            {
+
+            天线设置ToolStripMenuItem.Visible = !天线设置ToolStripMenuItem.Visible;
+                textBox4.Text = String.Empty;
+            }
         }
     }
 

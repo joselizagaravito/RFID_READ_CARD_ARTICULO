@@ -26,7 +26,7 @@ namespace R2000Demo
 
             using (SqlConnection con = new SqlConnection(constr))
             {
-                SqlCommand com = new SqlCommand("GetReadTags", con);
+                SqlCommand com = new SqlCommand("usp_GetReadTags", con);
                 com.CommandType = CommandType.StoredProcedure;
                 SqlDataReader dr;
                 DataTable dt = new DataTable();
@@ -39,7 +39,7 @@ namespace R2000Demo
                         Result.Add(
                             item: new ReadTag
                             (
-                                tag: dr.GetInt32(0),
+                                tag: dr.GetString(0),
                                 epc: dr.GetString(1),
                                 tid: dr.GetString(2),
                                 invtimes: dr.GetInt32(3),
@@ -71,6 +71,7 @@ namespace R2000Demo
             string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
             {
+
                 SqlCommand com = new SqlCommand("AddNewReadTag", con);
                 com.CommandType = CommandType.StoredProcedure;
 
@@ -111,7 +112,7 @@ namespace R2000Demo
                         result.FechaAsignacion = dr2.GetDateTime(5);
                         result.FechaSalida = dr2.GetDateTime(6);
                     }
- 
+
                 }
                 catch (Exception ex)
                 {
