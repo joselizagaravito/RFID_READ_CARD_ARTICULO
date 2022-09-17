@@ -3490,22 +3490,22 @@ namespace R2000Demo
                         
                     }
 
+                    //TODO: Obtener el epc Leido
+                    var TagLeido = m_SortTag[(i + 1).ToString()].epcid;
+                    //TODO: Buscar el epc leido 
+                    var tagTipoC = BuscarEpc(TagLeido);
 
-                    //TODO: Comprobar si tag ya fue leido
-                    AsignacionTag tagTipoC = Guardarlectura(item);  
-                    //AsignacionTag tagTipoC = new AsignacionTag();
-                    
                     if (!epc_existe)
                     {
-                        //tagTipoC = Guardarlectura(item);
                         listView_Disp.Items.Add(item);
                         this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
+                        tagTipoC = Guardarlectura(item);
 
                         //TODO: Si el tag es de tipo C traer la lista de tags de tipo A
                         if (tagTipoC.Tipo == "C")
-                        {                            
+                        {
                             guardarLecturaTipoC = tagTipoC.Tipo;
-                            
+
                             listaTagsAsignados = GetTagsAsignados(tagTipoC.UsuarioId);
 
                             listView_Disp.Items[listView_Disp.Items.Count - 1].BackColor = Color.DodgerBlue;
@@ -3521,11 +3521,12 @@ namespace R2000Demo
                         {
                             guardarLecturaTipoA = tagTipoC.Tipo;
 
-                            listaTagsLeidos.Add(tagTipoC); 
-                        }     
-                        
+                            listaTagsLeidos.Add(tagTipoC);
+                        }
+
                     }
-                    else{
+                    else
+                    {
                         //TODO: Actualizar el color que tiene el epc de tipo A en el View
                         if (tagTipoC.Tipo == "A")
                         {
@@ -3533,14 +3534,15 @@ namespace R2000Demo
                             itemToUpdate.SubItems[8].Text = tagTipoC.Color;
                             itemToUpdate.BackColor = Color.FromName(tagTipoC.Color);
                         }
-                        
                     }
-                    
+
+
+
                     if (guardarLecturaTipoC == "C" && guardarLecturaTipoA == "A")
                     {
                         //TODO: Se busca el tag en la lista de tags tipo C
                         AsignacionTag tagTipoA = listaTagsAsignados.Where(x => x.Epc == tagTipoC.Epc).FirstOrDefault();
-                        
+
                         foreach (AsignacionTag tag in listaTagsLeidos)
                         {
                             if (tag.Epc == tagTipoC.Epc || item.SubItems[8].Text == Color.SkyBlue.Name.ToString())
@@ -3572,7 +3574,7 @@ namespace R2000Demo
                         item.BackColor = Color.LightGray;
                         item.SubItems[8].Text = Color.LightGray.Name.ToString();
                     }
-
+                    
                 }                      
             }
             
@@ -3612,6 +3614,32 @@ namespace R2000Demo
                 item.SubItems[8].Text,
                 int.Parse(item.SubItems[9].Text),
                 item.SubItems[10].Text));
+        }
+
+        private AsignacionTag GetTagsLeidos(ListViewItem item)
+        {
+            ReadRepository obj = new ReadRepository();
+            return obj.GetTagType(new ReadTag(
+                item.SubItems[0].Text,
+                item.SubItems[1].Text,
+                item.SubItems[2].Text,
+                int.Parse(item.SubItems[3].Text),
+                int.Parse(item.SubItems[4].Text),
+                int.Parse(item.SubItems[5].Text),
+                DateTime.Parse(item.SubItems[6].Text),
+                DateTime.Parse(item.SubItems[7].Text),
+                item.SubItems[8].Text,
+                int.Parse(item.SubItems[9].Text),
+                item.SubItems[10].Text
+            ));
+                   
+        }
+
+        //buscar epc 
+        private AsignacionTag BuscarEpc(string epc)
+        {
+            ReadRepository obj = new ReadRepository();
+            return obj.BuscarEpc(epc);
         }
 
         private List<AsignacionTag> GetTagsAsignados(int idUsuario)
@@ -3973,7 +4001,7 @@ namespace R2000Demo
             if (textBox4.Text=="jose")
             {
 
-            天线设置ToolStripMenuItem.Visible = !天线设置ToolStripMenuItem.Visible;
+                天线设置ToolStripMenuItem.Visible = !天线设置ToolStripMenuItem.Visible;
                 textBox4.Text = String.Empty;
             }
         }
