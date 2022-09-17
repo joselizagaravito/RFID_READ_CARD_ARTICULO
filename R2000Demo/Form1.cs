@@ -3616,25 +3616,6 @@ namespace R2000Demo
                 item.SubItems[10].Text));
         }
 
-        private AsignacionTag GetTagsLeidos(ListViewItem item)
-        {
-            ReadRepository obj = new ReadRepository();
-            return obj.GetTagType(new ReadTag(
-                item.SubItems[0].Text,
-                item.SubItems[1].Text,
-                item.SubItems[2].Text,
-                int.Parse(item.SubItems[3].Text),
-                int.Parse(item.SubItems[4].Text),
-                int.Parse(item.SubItems[5].Text),
-                DateTime.Parse(item.SubItems[6].Text),
-                DateTime.Parse(item.SubItems[7].Text),
-                item.SubItems[8].Text,
-                int.Parse(item.SubItems[9].Text),
-                item.SubItems[10].Text
-            ));
-                   
-        }
-
         //buscar epc 
         private AsignacionTag BuscarEpc(string epc)
         {
@@ -4000,8 +3981,13 @@ namespace R2000Demo
         {
             if (textBox4.Text=="jose")
             {
-
+                BasicParaSet.Visible = !BasicParaSet.Visible;
+                AdvanceParaSet.Visible = !AdvanceParaSet.Visible;
+                TagOperate.Visible = !TagOperate.Visible;
+                RegOperate.Visible = !RegOperate.Visible;
+                OtherSet.Visible = !OtherSet.Visible;
                 天线设置ToolStripMenuItem.Visible = !天线设置ToolStripMenuItem.Visible;
+
                 textBox4.Text = String.Empty;
             }
         }

@@ -307,66 +307,6 @@ namespace R2000Demo
                 }
             }
         }
-        //GetTagType
-        public AsignacionTag GetTagType(ReadTag obj)
-        {
-            AsignacionTag result = new AsignacionTag();
-            string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-
-                SqlCommand com = new SqlCommand("GetTagType", con);
-                com.CommandType = CommandType.StoredProcedure;
-
-                com.Parameters.AddWithValue("@TAG", obj.TAG);
-                com.Parameters.AddWithValue("@EPC", obj.EPC);
-                com.Parameters.AddWithValue("@TID", obj.TID);
-                com.Parameters.AddWithValue("@InvTimes", obj.InvTimes);
-                com.Parameters.AddWithValue("@RSSI", obj.RSSI);
-                com.Parameters.AddWithValue("@AntID", obj.AntID);
-                com.Parameters.AddWithValue("@LastTime", obj.LastTime);
-                com.Parameters.AddWithValue("@FirstReadTime", obj.FirstReadTime);
-                com.Parameters.AddWithValue("@Color", obj.Color);
-                com.Parameters.AddWithValue("@ModuloId", obj.ModuloId);
-                com.Parameters.AddWithValue("@ModuloRol", obj.ModuloRol);
-
-                try
-                {
-                    con.Open();
-                    SqlDataReader dr = com.ExecuteReader();
-                    //usar usp_BuscarTag para buscar el epc en la tabla de asignaciontag
-                    if(dr.Read())
-                    {
-                        result.Epc = dr.GetString(0);
-                    }
-                    con.Close();
-
-                    com = new SqlCommand("usp_BuscarTag", con);
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@EPC", result.Epc);
-                    con.Open();
-                    SqlDataReader dr2 = com.ExecuteReader();
-                    if (dr2.Read())
-                    {
-                        result.UsuarioId = dr2.GetInt32(0);
-                        result.Tipo = dr2.GetString(2);
-                        result.Color = dr2.GetString(3);
-                        result.Modulo = dr2.GetInt32(4);
-                        result.FechaAsignacion = dr2.GetDateTime(5);
-                        result.FechaSalida = dr2.GetDateTime(6);
-                    }
-
-
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Hay un error en la Base de Datos" + ex.Message);
-                }
-                return result;
-            }
-        }
-
-        //UpdateReadTagCardHolder
         public AsignacionTag BuscarEpc(string epc)
         {
             

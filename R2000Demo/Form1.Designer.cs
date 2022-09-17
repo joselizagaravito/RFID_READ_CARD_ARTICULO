@@ -139,7 +139,7 @@
             this.NETToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -148,32 +148,36 @@
             this.BasicParaSet.BackColor = System.Drawing.Color.DarkKhaki;
             this.BasicParaSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.BasicParaSet.Name = "BasicParaSet";
-            this.BasicParaSet.Size = new System.Drawing.Size(94, 22);
+            this.BasicParaSet.Size = new System.Drawing.Size(94, 24);
             this.BasicParaSet.Text = "基本设置";
+            this.BasicParaSet.Visible = false;
             this.BasicParaSet.Click += new System.EventHandler(this.ParaSet_Click);
             // 
             // AdvanceParaSet
             // 
             this.AdvanceParaSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AdvanceParaSet.Name = "AdvanceParaSet";
-            this.AdvanceParaSet.Size = new System.Drawing.Size(94, 22);
+            this.AdvanceParaSet.Size = new System.Drawing.Size(94, 24);
             this.AdvanceParaSet.Text = "高级设置";
+            this.AdvanceParaSet.Visible = false;
             this.AdvanceParaSet.Click += new System.EventHandler(this.标签操作ToolStripMenuItem_Click);
             // 
             // TagOperate
             // 
             this.TagOperate.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TagOperate.Name = "TagOperate";
-            this.TagOperate.Size = new System.Drawing.Size(94, 22);
+            this.TagOperate.Size = new System.Drawing.Size(94, 24);
             this.TagOperate.Text = "标签操作";
+            this.TagOperate.Visible = false;
             this.TagOperate.Click += new System.EventHandler(this.空口协议设置ToolStripMenuItem_Click);
             // 
             // RegOperate
             // 
             this.RegOperate.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.RegOperate.Name = "RegOperate";
-            this.RegOperate.Size = new System.Drawing.Size(76, 22);
+            this.RegOperate.Size = new System.Drawing.Size(76, 24);
             this.RegOperate.Text = "寄存器";
+            this.RegOperate.Visible = false;
             this.RegOperate.Click += new System.EventHandler(this.辅助信息ToolStripMenuItem_Click);
             // 
             // OtherSet
@@ -184,8 +188,9 @@
             this.双间隙读取测试ToolStripMenuItem});
             this.OtherSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.OtherSet.Name = "OtherSet";
-            this.OtherSet.Size = new System.Drawing.Size(94, 22);
+            this.OtherSet.Size = new System.Drawing.Size(94, 24);
             this.OtherSet.Text = "其他设置";
+            this.OtherSet.Visible = false;
             this.OtherSet.Click += new System.EventHandler(this.在线下载ToolStripMenuItem_Click);
             // 
             // 测试板切换分路功能ToolStripMenuItem
@@ -216,7 +221,7 @@
             // 
             this.天线设置ToolStripMenuItem.Font = new System.Drawing.Font("SimSun", 10.5F);
             this.天线设置ToolStripMenuItem.Name = "天线设置ToolStripMenuItem";
-            this.天线设置ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.天线设置ToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
             this.天线设置ToolStripMenuItem.Text = "天线设置";
             this.天线设置ToolStripMenuItem.Visible = false;
             this.天线设置ToolStripMenuItem.Click += new System.EventHandler(this.天线设置ToolStripMenuItem_Click);
@@ -225,7 +230,7 @@
             // 
             this.AboutusSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AboutusSet.Name = "AboutusSet";
-            this.AboutusSet.Size = new System.Drawing.Size(94, 22);
+            this.AboutusSet.Size = new System.Drawing.Size(94, 24);
             this.AboutusSet.Text = "关于我们";
             this.AboutusSet.Visible = false;
             this.AboutusSet.Click += new System.EventHandler(this.AboutusSet_Click);
@@ -234,7 +239,7 @@
             // 
             this.NETToolStripMenuItem.Font = new System.Drawing.Font("SimSun", 10.5F);
             this.NETToolStripMenuItem.Name = "NETToolStripMenuItem";
-            this.NETToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.NETToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
             this.NETToolStripMenuItem.Text = "网口设置";
             this.NETToolStripMenuItem.Visible = false;
             this.NETToolStripMenuItem.Click += new System.EventHandler(this.网口模块ToolStripMenuItem_Click);
