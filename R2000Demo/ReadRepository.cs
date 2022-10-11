@@ -284,7 +284,7 @@ namespace R2000Demo
         }
 
         //Actualizar Color de AsignacionTag
-        public void UpdateAsignacionTag(string epc, string color, int modulo)
+        public void UpdateAsignacionTag(string epc, DateTime fechaSalida, string color, int modulo)
         {
             string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
@@ -295,6 +295,7 @@ namespace R2000Demo
                     con.Open();
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.AddWithValue("@EPC", epc);
+                    com.Parameters.AddWithValue("@FechaSalida", fechaSalida);
                     //com.Parameters.AddWithValue("@Tipo", tipo);
                     com.Parameters.AddWithValue("@Color", color);
                     com.Parameters.AddWithValue("@Modulo", modulo);
@@ -310,7 +311,7 @@ namespace R2000Demo
         public AsignacionTag BuscarEpc(string epc)
         {
             
-            //usar usp_BuscarTag para buscar el epc en la tabla de asignaciontag
+            //TODO: BUSCAR EN LA LISTA DE LA GRILLA NO EN BD
             AsignacionTag result = new AsignacionTag();
             string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
             using (SqlConnection con = new SqlConnection(constr))
