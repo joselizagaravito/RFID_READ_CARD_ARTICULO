@@ -139,7 +139,7 @@
             this.NETToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -148,7 +148,7 @@
             this.BasicParaSet.BackColor = System.Drawing.Color.DarkKhaki;
             this.BasicParaSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.BasicParaSet.Name = "BasicParaSet";
-            this.BasicParaSet.Size = new System.Drawing.Size(94, 24);
+            this.BasicParaSet.Size = new System.Drawing.Size(94, 22);
             this.BasicParaSet.Text = "基本设置";
             this.BasicParaSet.Visible = false;
             this.BasicParaSet.Click += new System.EventHandler(this.ParaSet_Click);
@@ -157,7 +157,7 @@
             // 
             this.AdvanceParaSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AdvanceParaSet.Name = "AdvanceParaSet";
-            this.AdvanceParaSet.Size = new System.Drawing.Size(94, 24);
+            this.AdvanceParaSet.Size = new System.Drawing.Size(94, 22);
             this.AdvanceParaSet.Text = "高级设置";
             this.AdvanceParaSet.Visible = false;
             this.AdvanceParaSet.Click += new System.EventHandler(this.标签操作ToolStripMenuItem_Click);
@@ -166,7 +166,7 @@
             // 
             this.TagOperate.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TagOperate.Name = "TagOperate";
-            this.TagOperate.Size = new System.Drawing.Size(94, 24);
+            this.TagOperate.Size = new System.Drawing.Size(94, 22);
             this.TagOperate.Text = "标签操作";
             this.TagOperate.Visible = false;
             this.TagOperate.Click += new System.EventHandler(this.空口协议设置ToolStripMenuItem_Click);
@@ -175,7 +175,7 @@
             // 
             this.RegOperate.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.RegOperate.Name = "RegOperate";
-            this.RegOperate.Size = new System.Drawing.Size(76, 24);
+            this.RegOperate.Size = new System.Drawing.Size(76, 22);
             this.RegOperate.Text = "寄存器";
             this.RegOperate.Visible = false;
             this.RegOperate.Click += new System.EventHandler(this.辅助信息ToolStripMenuItem_Click);
@@ -188,7 +188,7 @@
             this.双间隙读取测试ToolStripMenuItem});
             this.OtherSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.OtherSet.Name = "OtherSet";
-            this.OtherSet.Size = new System.Drawing.Size(94, 24);
+            this.OtherSet.Size = new System.Drawing.Size(94, 22);
             this.OtherSet.Text = "其他设置";
             this.OtherSet.Visible = false;
             this.OtherSet.Click += new System.EventHandler(this.在线下载ToolStripMenuItem_Click);
@@ -221,7 +221,7 @@
             // 
             this.天线设置ToolStripMenuItem.Font = new System.Drawing.Font("SimSun", 10.5F);
             this.天线设置ToolStripMenuItem.Name = "天线设置ToolStripMenuItem";
-            this.天线设置ToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.天线设置ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.天线设置ToolStripMenuItem.Text = "天线设置";
             this.天线设置ToolStripMenuItem.Visible = false;
             this.天线设置ToolStripMenuItem.Click += new System.EventHandler(this.天线设置ToolStripMenuItem_Click);
@@ -230,7 +230,7 @@
             // 
             this.AboutusSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AboutusSet.Name = "AboutusSet";
-            this.AboutusSet.Size = new System.Drawing.Size(94, 24);
+            this.AboutusSet.Size = new System.Drawing.Size(94, 22);
             this.AboutusSet.Text = "关于我们";
             this.AboutusSet.Visible = false;
             this.AboutusSet.Click += new System.EventHandler(this.AboutusSet_Click);
@@ -239,7 +239,7 @@
             // 
             this.NETToolStripMenuItem.Font = new System.Drawing.Font("SimSun", 10.5F);
             this.NETToolStripMenuItem.Name = "NETToolStripMenuItem";
-            this.NETToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.NETToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.NETToolStripMenuItem.Text = "网口设置";
             this.NETToolStripMenuItem.Visible = false;
             this.NETToolStripMenuItem.Click += new System.EventHandler(this.网口模块ToolStripMenuItem_Click);
@@ -364,7 +364,7 @@
             // textBox4
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.textBox4.Location = new System.Drawing.Point(1025, 367);
             this.textBox4.Name = "textBox4";
             this.textBox4.PasswordChar = '*';
@@ -382,6 +382,7 @@
             this.chkTest.TabIndex = 25;
             this.chkTest.Text = "Alarma";
             this.chkTest.UseVisualStyleBackColor = true;
+            this.chkTest.Visible = false;
             // 
             // btnTest
             // 
@@ -392,6 +393,7 @@
             this.btnTest.TabIndex = 24;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Visible = false;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // label13
@@ -432,6 +434,7 @@
             this.tb_P2J.Size = new System.Drawing.Size(45, 25);
             this.tb_P2J.TabIndex = 22;
             this.tb_P2J.Text = "1";
+            this.tb_P2J.Visible = false;
             // 
             // button9
             // 
@@ -510,6 +513,7 @@
             this.button_export.TabIndex = 23;
             this.button_export.Text = "导出";
             this.button_export.UseVisualStyleBackColor = false;
+            this.button_export.Visible = false;
             this.button_export.Click += new System.EventHandler(this.button_export_Click);
             // 
             // button_clr
@@ -610,6 +614,7 @@
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "0";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox2.Visible = false;
             // 
             // btn_OPEN_CLOSE
             // 
@@ -957,6 +962,7 @@
             this.cB_Language.Name = "cB_Language";
             this.cB_Language.Size = new System.Drawing.Size(130, 23);
             this.cB_Language.TabIndex = 6;
+            this.cB_Language.Visible = false;
             this.cB_Language.SelectedIndexChanged += new System.EventHandler(this.cB_Language_SelectedIndexChanged);
             // 
             // timer3
@@ -1030,7 +1036,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkKhaki;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1180, 610);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cB_protocoltype);
