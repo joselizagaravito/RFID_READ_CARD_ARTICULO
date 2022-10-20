@@ -3593,7 +3593,7 @@ namespace R2000Demo
                                     DialogResult mensaje = MessageBox.Show("Se debe limpiar la lista de lecturas", "Lectura de Tags", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                                     break;
-                                    //TODO: Detener el ciclo aqui y que no ya pase por el For en la linea 3449
+                                    //TODO: Detener el ciclo aqui y que ya no pase por el For en la linea 3449
 
 
                                 }
