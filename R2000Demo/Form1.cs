@@ -3543,8 +3543,7 @@ namespace R2000Demo
                     else
                     {
                         //TODO: Actualizar el color que tiene el epc de tipo A si es verde o rojo
-
-                        if (tagNuevo.Tipo == "A")
+                        if (tagNuevo.Tipo == "A" && guardarLecturaTipoC == "C")
                         {
                            var itemToUpdate = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == tagNuevo.Epc).FirstOrDefault();
                            itemToUpdate.SubItems[8].Text = tagNuevo.Color;
@@ -3563,23 +3562,26 @@ namespace R2000Demo
                             if (tag.Epc == tagNuevo.Epc)
                             {
                                 //TODO: Si el tag tipo A fue encontrado en la lista de tags tipo C se guarda la lectura
-                                if (tagTipoA == null || tagTipoA.Epc != tag.Epc)
+                                if (tagTipoA == null)
                                 {
+
                                     item.BackColor = Color.Red;
                                     item.SubItems[8].Text = Color.Red.Name.ToString();
                                     GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Red.Name.ToString());
                                     GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
+                                    ActivarAlarma(100);
+                                    break;
+                                    
                                 }
-                                else if (tagTipoA != null)
+                                else if (tagTipoA != null && tagTipoA.Epc == tag.Epc)
                                 {
                                     //TODO: Si el tag tipo A no fue encontrado en la lista de tags tipo C se activa la alarma
                                     item.BackColor = Color.Green;
                                     item.SubItems[8].Text = Color.Green.Name.ToString();
                                     GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Green.Name.ToString());
                                     GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
-                                    ActivarAlarma(100);
-                                }
 
+                                }
                             }
 
                             if (guardarEpcTipoC != tagNuevo.Epc && tagNuevo.Tipo == "C")
@@ -3587,23 +3589,41 @@ namespace R2000Demo
                                 if (ExisteTipoCenLista(listView_Disp))
                                 {
                                     //Todo: Notificar que debe limpiar la lectura 
-                                    //ActivarAlarma(100);
                                     multiread();
                                     DialogResult mensaje = MessageBox.Show("Se debe limpiar la lista de lecturas", "Lectura de Tags", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                                     break;
+                                    //TODO: Detener el ciclo aqui y que no ya pase por el For en la linea 3449
+
 
                                 }
 
                             }
                         }
 
-                    }                    
-                    else if (tagNuevo.Tipo == "A")
-                    {
-                        //TODO: Si el epc es de tipo A y no se ha leido un epc de tipo C
-                        item.BackColor = Color.LightGray;
-                        item.SubItems[8].Text = Color.LightGray.Name.ToString();
                     }
+                    //TODO: Si el epc no a sido comparado se pintara de color orange
+                    else if (tagNuevo.Tipo == "A" || tagNuevo.Tipo == null)
+                    {
+
+                        item.BackColor = Color.Orange;
+                        item.SubItems[8].Text = Color.Orange.Name.ToString();
+
+                    }
+
+                    //if (guardarEpcTipoC != tagNuevo.Epc && tagNuevo.Tipo == "C")
+                    //{
+                    //    if (ExisteTipoCenLista(listView_Disp))
+                    //    {
+                    //        //Todo: Notificar que debe limpiar la lectura 
+                    //        multiread();
+                    //        DialogResult mensaje = MessageBox.Show("Se debe limpiar la lista de lecturas", "Lectura de Tags", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    //        break;
+
+                    //    }
+
+                    //}
 
                 } 
 
