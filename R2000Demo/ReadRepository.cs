@@ -87,10 +87,13 @@ namespace R2000Demo
                 com.Parameters.AddWithValue("@ModuloId", obj.ModuloId);
                 com.Parameters.AddWithValue("@ModuloRol", obj.ModuloRol);
 
+
                 try
                 {
                     con.Open();
                     SqlDataReader dr = com.ExecuteReader();
+
+                    //TODO: Revisar error The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ReadTag_Modulo". The conflict occurred in database "DB_A6BF8E_pedroclavijo", table "dbo.Modulo", column 'Id'.'
                     if (dr.Read())
                     {
                         result.Idlectura = dr.GetInt32(0);
@@ -112,8 +115,8 @@ namespace R2000Demo
                         result.FechaAsignacion = dr2.GetDateTime(5);
                         result.FechaSalida = dr2.GetDateTime(6);
                     }
-
                 }
+
                 catch (Exception ex)
                 {
                     throw new Exception("Hay un error en la Base de Datos" + ex.Message);
@@ -268,7 +271,7 @@ namespace R2000Demo
                 SqlCommand com = new SqlCommand("UpdateReadTagColor", con);
                 try
                 {
-                    con.Open(); 
+                    con.Open();
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.AddWithValue("@EPC", epc);
                     com.Parameters.AddWithValue("@Color", color);
@@ -310,7 +313,7 @@ namespace R2000Demo
         }
         public AsignacionTag BuscarEpc(string epc)
         {
-            
+
             //TODO: BUSCAR EN LA LISTA DE LA GRILLA NO EN BD
             AsignacionTag result = new AsignacionTag();
             string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();

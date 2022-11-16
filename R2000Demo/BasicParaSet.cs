@@ -52,6 +52,7 @@ namespace R2000Demo
             tB_Intervaltime.Text = "0";
 
             lB_GetGpioDisp.Text = "";
+            //TODO: lb_setIntTime.Text (Get Failed)
             lb_setIntTime.Text = "";
             label13.Text = "";
             label26.Text = "";
@@ -1202,6 +1203,7 @@ namespace R2000Demo
         {
             int result = 0;
 
+
             tB_SoftWare.Text = "";
             tB_Hardware.Text = "";
             tB_Firmware.Text = "";
@@ -1228,7 +1230,6 @@ namespace R2000Demo
             {
                 return;
             }
-
 
             UInt32[] data = new UInt32[1];
             ReaderParams.Read_Reg_Data((byte)1, 0x0000000B, data);
