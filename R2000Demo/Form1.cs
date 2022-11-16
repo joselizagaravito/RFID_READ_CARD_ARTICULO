@@ -52,6 +52,7 @@ namespace R2000Demo
 
        
         public string guardarLecturaTipoC;
+        public string guardarEpcTipoA;
         public string guardarEpcTipoC;
         public string guardarLecturaTipoA;
         //variable global guardarLecturaTipoCTime
@@ -3245,206 +3246,12 @@ namespace R2000Demo
         }
 
         DateTime OutLineTime;
+
         public void PageShow(int num)
         {
-            //listView_Disp.Items.Clear();
 
-            //if (num >= 100)
-            //{
-            //    if (tagnum - num >= 0)
-            //    {
-            //        for (long i = (num - 100); i < num; i++)
-            //        {
-            //            ListViewItem item = new ListViewItem((listView_Disp.Items.Count + num - 100 + 1).ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].epcid);
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].tid);
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].readcnt.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].rxrssi.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].antID.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].times.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].rptime);
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].color);
-
-            //            //Actualizacion - José Liza: 2021-03-14 - Agregar columnas ModuloId y ModuloRol
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].moduloid.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].modulorol);
-
-            //            if ((cB_OutLineClear.Checked == true))
-            //            {
-            //                /* Calcular el tiempo sin conexión */
-            //                if ((button_inv_mul.Text != "连续寻卡") && (button_inv_mul.Text != "Multiple"))
-            //                {
-            //                    OutLineTime = DateTime.Now;
-            //                }
-            //                TimeSpan span = OutLineTime - m_SortTag[(i + 1).ToString()].times;
-            //                if ((span.TotalSeconds >= 4) && (span.TotalSeconds < 8))
-            //                {
-            //                    item.BackColor = Color.Orange;
-            //                    item.SubItems[8].Text = Color.Orange.Name.ToString();
-            //                }
-            //                else if (span.TotalSeconds >= 8)
-            //                {
-            //                    item.BackColor = Color.Red;
-            //                    item.SubItems[8].Text = Color.Red.Name.ToString();
-            //                }
-            //                else
-            //                {
-            //                    item.BackColor = Color.White;
-            //                    item.SubItems[8].Text = Color.White.Name.ToString();
-            //                }
-            //            }
-
-
-            //            //Verificar si ya fue leido el EPC
-            //            string epc_leido = item.SubItems[1].Text;
-            //            string ant_leido = item.SubItems[5].Text;
-            //            IEnumerable<ListViewItem> lv = listView_Disp.Items.Cast<ListViewItem>();
-            //            bool epc_existe = lv.Where(r => r.SubItems[1].Text == epc_leido && r.SubItems[5].Text == ant_leido).Count() > 0;
-
-            //            if (!epc_existe)
-            //            {
-            //                listView_Disp.Items.Add(item);
-            //                this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
-
-            //                AsignacionTag tagTipoC = Guardarlectura(item);
-
-            //                if (tagTipoC.Tipo == "C")
-            //                {
-            //                    //TODO: Guardar en una variable Global
-
-            //                    guardarLecturaTipoC = tagTipoC.Tipo;
-
-            //                    //TODO: Traer la lista de los tag asignado al usuario y guardarlo en una lista (A)
-            //                    listaTagsAsignados = GetTagsAsignados(tagTipoC.UsuarioId);
-
-
-            //                    return;
-            //                }
-            //                else
-            //                {
-            //                    //TODO:Verificar que existe una lectura de tipo C sino sonar la alarma
-            //                    if(tagTipoC.Tipo != "C")
-            //                    {
-            //                        ActivarAlarma(100);
-            //                    }
-
-            //                    //TODO: Verificar si el tag se encuentra en la lista (A) 
-
-            //                    AsignacionTag tagEncontrado= listaTagsAsignados.Find(a=>a.Epc.Equals(epc_existe));
-            //                    if (tagEncontrado != null)
-            //                    {
-            //                        ActivarAlarma(100);
-            //                    }
-            //                    /*
-            //                        foreach (AsignacionTag asignacionTagA in listaTagsAsignados)
-            //                    {
-            //                        if (asignacionTagA.Epc == tagTipoC.Epc)
-            //                        {
-            //                            //mostrar el tag leido
-            //                            asignacionTagA.Tipo = tagTipoC.Tipo;
-            //                        }
-            //                        //TODO: Sino se encuentra en la lista (A) sonar alarma'
-            //                        else
-            //                        {
-            //                            ActivarAlarma(100);
-            //                        }
-            //                    }
-            //                    */
-
-                                
-            //                }
-
-            //            }
-
-            //            bool epc_paso_por_caja = new ReadRepository().GetReadInBox(item.SubItems[1].Text);
-            //            if (epc_existe && !epc_paso_por_caja)
-            //            {
-            //                ActivarAlarma(100);
-            //            }
-
-            //        }
-            //    }
-            //    else
-            //    {
-            //        for (long i = (num - 100); i < tagnum; i++)
-            //        {
-            //            ListViewItem item = new ListViewItem((listView_Disp.Items.Count + num - 100 + 1).ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].epcid);
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].tid);
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].readcnt.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].rxrssi.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].antID.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].times.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].rptime);
-            //            //Actualizacion - Jose Liza: 20210123
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].color);
-
-            //            //Actualizacion - José Liza: 2021-03-14 - Agregar columnas ModuloId y ModuloRol
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].moduloid.ToString());
-            //            item.SubItems.Add(m_SortTag[(i + 1).ToString()].modulorol);
-
-            //            if ((cB_OutLineClear.Checked == true))
-            //            {
-            //                /* Calcular el tiempo sin conexión */
-            //                if ((button_inv_mul.Text != "连续寻卡") && (button_inv_mul.Text != "Multiple"))
-            //                {
-            //                    OutLineTime = DateTime.Now;
-            //                }
-            //                TimeSpan span = OutLineTime - m_SortTag[(i + 1).ToString()].times;
-            //                if ((span.TotalSeconds >= 4) && (span.TotalSeconds < 8))
-            //                {
-            //                    item.BackColor = Color.Orange;
-            //                    item.SubItems[8].Text = Color.Orange.Name.ToString();
-            //                }
-            //                else if (span.TotalSeconds >= 8)
-            //                {
-            //                    item.BackColor = Color.Red;
-            //                    item.SubItems[8].Text = Color.Red.Name.ToString();
-            //                }
-            //                else
-            //                {
-            //                    item.BackColor = Color.White;
-            //                    item.SubItems[8].Text = Color.White.Name.ToString();
-            //                }
-            //            }
-
-
-            //            //Verificar si ya fue leido el EPC
-            //            string epc_leido = item.SubItems[1].Text;
-            //            string ant_leido = item.SubItems[5].Text;
-            //            IEnumerable<ListViewItem> lv = listView_Disp.Items.Cast<ListViewItem>();
-            //            bool epc_existe = lv.Where(r => r.SubItems[1].Text == epc_leido && r.SubItems[5].Text == ant_leido).Count() > 0;
-
-            //            //TODO: Comprobar si tag ya fue leido
-            //            if (!epc_existe)
-            //            {
-            //                listView_Disp.Items.Add(item);
-            //                this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
-
-            //                //int id = Guardarlectura(item);
-            //                //if (ReaderParams.ModuloRol == item.SubItems[10].Text && ReaderParams.ModuloRol == "Puerta") //Si el modulo se esta ejecutando para una puerta
-            //                //{
-            //                //    if (!PasoPorCaja(id))
-            //                //    {
-            //                //        ActivarAlarma(100);
-            //                //        return;
-            //                //    }
-            //                //}
-            //            }
-
-            //            bool epc_paso_por_caja = new ReadRepository().GetReadInBox(item.SubItems[1].Text);
-            //            if (epc_existe && !epc_paso_por_caja)
-            //            {
-            //                ActivarAlarma(100);
-            //            }
-
-            //        }
-            //    }
-            //}
-            //else
-            if(num <= 100)
+            if (num <= 100)
             {
-                string tagLeido = "";
 
                 for (long i = 0; i < num; i++)
                 {
@@ -3464,55 +3271,17 @@ namespace R2000Demo
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].moduloid.ToString());
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].modulorol);
 
-                    //Verificar si ya fue leido el EPC
                     string epc_leido = item.SubItems[1].Text;
                     string ant_leido = item.SubItems[5].Text;
                     IEnumerable<ListViewItem> lv = listView_Disp.Items.Cast<ListViewItem>();
                     bool epc_existe = lv.Where(r => r.SubItems[1].Text == epc_leido && r.SubItems[5].Text == ant_leido).Count() > 0;
 
-                    if ((cB_OutLineClear.Checked == true))
-                    {
-                        /* Calcular el tiempo sin conexión */
-                        if ((button_inv_mul.Text != "连续寻卡") && (button_inv_mul.Text != "Multiple"))
-                        {
-                            OutLineTime = DateTime.Now;
-                        }
-                        TimeSpan span = OutLineTime - m_SortTag[(i + 1).ToString()].times;
-                        if ((span.TotalSeconds >= 4) && (span.TotalSeconds < 8))
-                        {
-                            item.BackColor = Color.Orange;
-                            item.SubItems[8].Text = Color.Orange.Name.ToString();
-                        }
-                        else if (span.TotalSeconds >= 8)
-                        {
-                            item.BackColor = Color.Red;
-                            item.SubItems[8].Text = Color.Red.Name.ToString();
-                        }
-                        else
-                        {
-                            item.BackColor = Color.White;
-                            item.SubItems[8].Text = Color.White.Name.ToString();
-                        }
+                    var tagNuevo = BuscarEpc(epc_leido);
 
-                    }
-
-                    //TODO: Obtener el epc Leido
-                    tagLeido = m_SortTag[(i + 1).ToString()].epcid;
-                    //TODO: Buscar el epc leido 
-                    var tagNuevo = BuscarEpc(tagLeido);
+                    //tmr_CardHolder1.Enabled = true;
 
                     if (!epc_existe)
                     {
-
-                        var epcRepetido = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == tagLeido).Count() > 0;
-                        if (!epcRepetido)
-                        {
-                            listView_Disp.Items.Add(item);
-                            this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
-                        }
-
-                        tagNuevo = Guardarlectura(item);
-
                         //TODO: Si el tag es de tipo C traer la lista de tags de tipo A
 
                         if (tagNuevo.Tipo == "C")
@@ -3523,113 +3292,120 @@ namespace R2000Demo
 
                             listaTagsAsignados = GetTagsAsignados(tagNuevo.UsuarioId);
 
-                            listView_Disp.Items[listView_Disp.Items.Count - 1].BackColor = Color.DodgerBlue;
-                            listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text = Color.DodgerBlue.Name.ToString();
+                            item.BackColor = Color.DodgerBlue;
+                            item.SubItems[8].Text = Color.DodgerBlue.Name.ToString();
                             GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.DodgerBlue.Name.ToString());
                             GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
-                        
-                            return;
+
                         }
 
                         //TODO: Si el tag es de tipo A se almacena la lectura en una lista
                         if (tagNuevo.Tipo == "A")
                         {
                             guardarLecturaTipoA = tagNuevo.Tipo;
+                            guardarEpcTipoA = tagNuevo.Epc;
 
-                            listaTagsLeidos.Add(tagNuevo);
+                            if (listaTagsLeidos.Count == 0)
+                            {
+                                listaTagsLeidos.Add(tagNuevo);
+                            }
+                            else
+                            {
+                                var epcRepetidoTipoA = listaTagsLeidos.Where(x => x.Epc == epc_leido).Count() > 0;
+                                if (!epcRepetidoTipoA)
+                                {
+                                    listaTagsLeidos.Add(tagNuevo);
+                                }
+                            }
+
                         }
 
-                    }
-                    else
-                    {
-                        //TODO: Actualizar el color que tiene el epc de tipo A si es verde o rojo
-                        if (tagNuevo.Tipo == "A" && guardarLecturaTipoC == "C")
+                        var epcRepetido = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == epc_leido).Count() > 0;
+                        if (!epcRepetido)
                         {
-                           var itemToUpdate = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == tagNuevo.Epc).FirstOrDefault();
-                           itemToUpdate.SubItems[8].Text = tagNuevo.Color;
-                           itemToUpdate.BackColor = Color.FromName(tagNuevo.Color);   
+
+                            if (DateTime.Now - OutLineTime > TimeSpan.FromSeconds(1))
+                            {
+
+                                if (tagNuevo.Tipo == "A")
+                                {
+
+                                    listView_Disp.Items.Add(item);
+                                    listView_Disp.Items[listView_Disp.Items.Count - 1].BackColor = Color.Orange;
+                                    listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text = Color.Orange.Name.ToString();
+                                    this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
+                                    OutLineTime = DateTime.Now;
+                                    tagNuevo = Guardarlectura(item);
+                                }
+
+                                if (tagNuevo.Tipo == "C")
+                                {
+                                    listView_Disp.Items.Add(item);
+                                    this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
+                                    OutLineTime = DateTime.Now;
+                                    tagNuevo = Guardarlectura(item);
+                                }
+                            }
+
                         }
-                        
+
                     }
 
                     if (guardarLecturaTipoC == "C" && guardarLecturaTipoA == "A")
                     {
 
-                        AsignacionTag tagTipoA = listaTagsAsignados.Where(x => x.Epc == tagNuevo.Epc).FirstOrDefault();
+                        var intervalo = DateTime.Now - OutLineTime;
 
-                        foreach (AsignacionTag tag in listaTagsLeidos)
+                        //AsignacionTag tagTipoC = listaTagsAsignados.Where(x => x.Epc == tagNuevo.Epc).FirstOrDefault();
+
+                        if (intervalo.TotalSeconds >= 4)
                         {
-                            if (tag.Epc == tagNuevo.Epc)
-                            {
-                                //TODO: Si el tag tipo A fue encontrado en la lista de tags tipo C se guarda la lectura
-                                if (tagTipoA == null)
-                                {
+                            //listaTagsLeidosCopia = listaTagsLeidos.ToList();
 
-                                    item.BackColor = Color.Red;
-                                    item.SubItems[8].Text = Color.Red.Name.ToString();
-                                    GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Red.Name.ToString());
-                                    GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
-                                    ActivarAlarma(100);
-                                    break;
-                                    
-                                }
-                                else if (tagTipoA != null && tagTipoA.Epc == tag.Epc)
+                            foreach (AsignacionTag tag in listaTagsLeidos)
+                            {
+
+                                var tagTipoC = listaTagsAsignados.Where(x => x.Epc == tagNuevo.Epc).FirstOrDefault();
+
+                                if (tag.Epc == tagNuevo.Epc)
                                 {
-                                    //TODO: Si el tag tipo A no fue encontrado en la lista de tags tipo C se activa la alarma
-                                    item.BackColor = Color.Green;
-                                    item.SubItems[8].Text = Color.Green.Name.ToString();
-                                    GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Green.Name.ToString());
-                                    GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
+                                    if (tagTipoC == null)
+                                    {
+                                        item.BackColor = Color.Red;
+                                        item.SubItems[8].Text = Color.Red.Name.ToString();
+
+                                        var itemToUpdate = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == tag.Epc).FirstOrDefault();
+                                        itemToUpdate.SubItems[8].Text = tagNuevo.Color;
+                                        itemToUpdate.BackColor = Color.FromName(tagNuevo.Color);
+
+                                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Red.Name.ToString());
+                                        GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
+                                        ActivarAlarma(100);
+
+                                    }
+                                    else
+                                    {
+
+                                        item.BackColor = Color.Green;
+                                        item.SubItems[8].Text = Color.Green.Name.ToString();
+                                        var itemToUpdate = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == tag.Epc).FirstOrDefault();
+                                        itemToUpdate.SubItems[8].Text = tagNuevo.Color;
+                                        itemToUpdate.BackColor = Color.FromName(tagNuevo.Color);
+                                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Green.Name.ToString());
+                                        GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
+
+                                    }
 
                                 }
                             }
 
-                            if (guardarEpcTipoC != tagNuevo.Epc && tagNuevo.Tipo == "C")
-                            {
-                                if (ExisteTipoCenLista(listView_Disp))
-                                {
-                                    //Todo: Notificar que debe limpiar la lectura 
-                                    multiread();
-                                    DialogResult mensaje = MessageBox.Show("Se debe limpiar la lista de lecturas", "Lectura de Tags", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                                    break;
-                                    //TODO: Detener el ciclo aqui y que ya no pase por el For en la linea 3449
-
-
-                                }
-
-                            }
                         }
-
-                    }
-                    //TODO: Si el epc no a sido comparado se pintara de color orange
-                    else if (tagNuevo.Tipo == "A" || tagNuevo.Tipo == null)
-                    {
-
-                        item.BackColor = Color.Orange;
-                        item.SubItems[8].Text = Color.Orange.Name.ToString();
-
                     }
 
-                    //if (guardarEpcTipoC != tagNuevo.Epc && tagNuevo.Tipo == "C")
-                    //{
-                    //    if (ExisteTipoCenLista(listView_Disp))
-                    //    {
-                    //        //Todo: Notificar que debe limpiar la lectura 
-                    //        multiread();
-                    //        DialogResult mensaje = MessageBox.Show("Se debe limpiar la lista de lecturas", "Lectura de Tags", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    //        break;
-
-                    //    }
-
-                    //}
-
-                } 
-
+                }
             }
-            
         }
+       
 
         private Boolean ExisteTipoCenLista(ListView lista)
         {
