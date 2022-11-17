@@ -49,8 +49,9 @@ namespace R2000Demo
         DateTime beeptime1;
         DateTime netovertime;
         bool beepflag;
-
        
+        //declarar variable de inic8io de pintado de rojo
+
         public string guardarLecturaTipoC;
         public string guardarEpcTipoA;
         public string guardarEpcTipoC;
@@ -3295,7 +3296,7 @@ namespace R2000Demo
                             GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
 
                         }
-                        //TODO: Si el tag es de tipo A se almacena la lectura en una lista
+
                         if (tagNuevo.Tipo == "A")
                         {
                             guardarLecturaTipoA = tagNuevo.Tipo;
@@ -3345,12 +3346,16 @@ namespace R2000Demo
 
                         }
                     }
-
-                    //TODO: Validacion Card Holder
                     if (guardarLecturaTipoC == "C" && guardarLecturaTipoA == "A")
                     {
-                        if (DateTime.Now - OutLineTime > TimeSpan.FromSeconds(1))
+
+                        var intervalo = DateTime.Now - t1;
+                        MessageBox.Show("valor de intervalo: " + intervalo.ToString());
+
+                        //TODO: revisar tiempo para limpiar lista
+                        if (intervalo.TotalSeconds >= 4)
                         {
+
                             foreach (AsignacionTag tag in listaTagsLeidos)
                             {
 
@@ -3369,7 +3374,10 @@ namespace R2000Demo
                                         itemToUpdate.SubItems[8].Text = tagNuevo.Color;
                                         itemToUpdate.BackColor = Color.FromName(tagNuevo.Color);
 
+                                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Red.Name.ToString());
                                         //variable que registra la hora en que pinto rojo t1
+
+                                        GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
                                         ActivarAlarma(100);
 
                                     }
