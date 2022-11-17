@@ -3278,15 +3278,12 @@ namespace R2000Demo
 
                     var tagNuevo = BuscarEpc(epc_leido);
 
-                    //tmr_CardHolder1.Enabled = true;
-
                     if (!epc_existe)
                     {
                         //TODO: Si el tag es de tipo C traer la lista de tags de tipo A
 
                         if (tagNuevo.Tipo == "C")
                         {
-                            //GuardarLecturaTipoC debe obtener el tipo y el epc
                             guardarLecturaTipoC = tagNuevo.Tipo;
                             guardarEpcTipoC = tagNuevo.Epc;
 
@@ -3298,7 +3295,6 @@ namespace R2000Demo
                             GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
 
                         }
-
                         //TODO: Si el tag es de tipo A se almacena la lectura en una lista
                         if (tagNuevo.Tipo == "A")
                         {
@@ -3348,20 +3344,13 @@ namespace R2000Demo
                             }
 
                         }
-
                     }
 
+                    //TODO: Validacion Card Holder
                     if (guardarLecturaTipoC == "C" && guardarLecturaTipoA == "A")
                     {
-
-                        var intervalo = DateTime.Now - OutLineTime;
-
-                        //AsignacionTag tagTipoC = listaTagsAsignados.Where(x => x.Epc == tagNuevo.Epc).FirstOrDefault();
-
-                        if (intervalo.TotalSeconds >= 4)
+                        if (DateTime.Now - OutLineTime > TimeSpan.FromSeconds(1))
                         {
-                            //listaTagsLeidosCopia = listaTagsLeidos.ToList();
-
                             foreach (AsignacionTag tag in listaTagsLeidos)
                             {
 
@@ -3374,12 +3363,13 @@ namespace R2000Demo
                                         item.BackColor = Color.Red;
                                         item.SubItems[8].Text = Color.Red.Name.ToString();
 
+                                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Red.Name.ToString());
+                                        GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
                                         var itemToUpdate = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == tag.Epc).FirstOrDefault();
                                         itemToUpdate.SubItems[8].Text = tagNuevo.Color;
                                         itemToUpdate.BackColor = Color.FromName(tagNuevo.Color);
 
-                                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Red.Name.ToString());
-                                        GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
+                                        //variable que registra la hora en que pinto rojo t1
                                         ActivarAlarma(100);
 
                                     }
@@ -3388,11 +3378,12 @@ namespace R2000Demo
 
                                         item.BackColor = Color.Green;
                                         item.SubItems[8].Text = Color.Green.Name.ToString();
+                                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Green.Name.ToString());
+                                        GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
                                         var itemToUpdate = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == tag.Epc).FirstOrDefault();
                                         itemToUpdate.SubItems[8].Text = tagNuevo.Color;
                                         itemToUpdate.BackColor = Color.FromName(tagNuevo.Color);
-                                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Green.Name.ToString());
-                                        GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
+                                        //OutLineTime = DateTime.Now;
 
                                     }
 
@@ -3400,8 +3391,9 @@ namespace R2000Demo
                             }
 
                         }
-                    }
 
+                        listaTagsLeidos.Clear();
+                    }
                 }
             }
         }
