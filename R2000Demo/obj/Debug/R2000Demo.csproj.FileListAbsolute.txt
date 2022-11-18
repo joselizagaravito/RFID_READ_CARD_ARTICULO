@@ -1076,3 +1076,4 @@ C:\Users\User\Documents\Proyectos\Antihurtos\Osinerming\Desktop\RFID_READ_CARD_A
 C:\Users\User\Documents\Proyectos\Antihurtos\Osinerming\Desktop\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\Proyectos\Antihurtos\Osinerming\Desktop\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.exe
 C:\Users\User\Documents\Proyectos\Antihurtos\Osinerming\Desktop\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.pdb
+C:\Users\rober\Documents\GitHub\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.SuggestedBindingRedirects.cache

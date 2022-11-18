@@ -280,6 +280,12 @@ namespace R2000Demo
             ReaderParams.ModuloId = data[0].ToString("D8");
             ReaderParams.ModuloRol = ConfigurationManager.AppSettings["modulorol"];
 
+            //TODO: Agregar ModuloId por default
+            if (ReaderParams.ModuloId == "00000000")
+            {
+                ReaderParams.ModuloId = "28070074";
+            }
+
             button_inv_mul.Enabled = false;
             multiread();
             System.Threading.Thread.Sleep(100);
