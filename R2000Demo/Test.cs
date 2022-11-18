@@ -236,9 +236,9 @@ namespace R2000Demo
         private void Cb_Set_Click(object sender, EventArgs e)
         {
             Byte[] WriteBuf = new Byte[100];
-            int recount = 50000;     //重试次数
-            int revlen = 0;         //接收数据长度
-            Byte[] revbuf = new Byte[500];           //接收缓冲
+            int recount = 50000;     //重试次数 numero de reintentos
+            int revlen = 0;         //接收数据长度 Longitud de datos recibidos
+            Byte[] revbuf = new Byte[500];           //接收缓冲 Bufer de recepción
 
             if (cB_antSaveFlag.Checked == true)
             {

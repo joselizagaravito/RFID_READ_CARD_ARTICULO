@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型
 // 对 COM 组件不可见。如果需要从 COM 访问此程序集中的类型，

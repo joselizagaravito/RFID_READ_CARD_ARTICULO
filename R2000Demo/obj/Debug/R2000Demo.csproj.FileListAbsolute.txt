@@ -1077,3 +1077,28 @@ C:\Users\User\Documents\Proyectos\Antihurtos\Osinerming\Desktop\RFID_READ_CARD_A
 C:\Users\User\Documents\Proyectos\Antihurtos\Osinerming\Desktop\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.exe
 C:\Users\User\Documents\Proyectos\Antihurtos\Osinerming\Desktop\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.pdb
 C:\Users\rober\Documents\GitHub\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.SuggestedBindingRedirects.cache
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\log4net.config
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\UHF RFID Demo V2.1.25.5.exe.config
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\UHF RFID Demo V2.1.25.5.exe
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\UHF RFID Demo V2.1.25.5.pdb
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\log4net.dll
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\log4net.xml
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.SuggestedBindingRedirects.cache
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.ResolveComReference.cache
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.AdvanceParaSet.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.FormNET.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.OtherSet.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.PROFRECTESE.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.RegOperate.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.Form1.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.Aboutus.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.BasicParaSet.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.Properties.Resources.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.TagOperate.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.TagSpecial.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.Test.resources
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.GenerateResource.cache
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.CoreCompileInputs.cache
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.CopyComplete
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.exe
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\UHF RFID Demo V2.1.25.5.pdb

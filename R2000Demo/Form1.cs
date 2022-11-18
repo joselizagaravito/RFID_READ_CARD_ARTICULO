@@ -22,6 +22,8 @@ namespace R2000Demo
 {
     public partial class Form1 : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         List<TagInfo> TagList = new List<TagInfo>();
         Dictionary<string, TagInfo> m_Tags = new Dictionary<string, TagInfo>();
         Dictionary<string, TagInfo> m_SortTag = new Dictionary<string, TagInfo>();
@@ -39,8 +41,8 @@ namespace R2000Demo
         Byte u8HeadCnt;
         Byte u8DataPointer;
         Byte checkbyte;
-        Byte[] g_Revbuf = new Byte[1024];               //接收缓存
-        UInt16 g_RevDataLen;							//接收帧数据长度
+        Byte[] g_Revbuf = new Byte[1024];
+        UInt16 g_RevDataLen;
         bool bCheckRet;
         bool bGetDataComplete;
         DateTime MulStartTime;
@@ -49,26 +51,19 @@ namespace R2000Demo
         DateTime beeptime1;
         DateTime netovertime;
         bool beepflag;
-       
-        //declarar variable de inic8io de pintado de rojo
+
 
         public string guardarLecturaTipoC;
         public string guardarEpcTipoA;
         public string guardarEpcTipoC;
         public string guardarLecturaTipoA;
-        //variable global guardarLecturaTipoCTime
-        public DateTime guardarLecturaTipoCTime; 
-        //bool para messageBoxAbierto 
+        public DateTime guardarLecturaTipoCTime;
         public bool messageBoxAbierto = false;
         public List<AsignacionTag> listaTagsAsignados = new List<AsignacionTag>();
         public List<AsignacionTag> listaTagsLeidos = new List<AsignacionTag>();
 
-        //System.Media.SoundPlayer player = new System.Media.SoundPlayer(Application.StartupPath + @"/warning.wav");
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(R2000Demo.Properties.Resources.warning);
 
-        // 声明 
-        //uint beepI = 0x00000030;  
-        //public static extern bool MessageBeep(uint uType);
         UInt16[] RxAdcTable = new UInt16[] {0x0000,          /* -25dBm */
                                        0x0000,          /* -24dBm */
                                        0x0000,          /* -23dBm */
@@ -115,6 +110,9 @@ namespace R2000Demo
                                        0xFFFF,          /*  18dBm */
                                        };
 
+
+
+        bool estadoAlarmaActivada = false;
         public Form1()
         {
             InitializeComponent();
@@ -140,22 +138,15 @@ namespace R2000Demo
         {
             string[] ports = SerialPort.GetPortNames();
             Array.Sort(ports);
-            //cbB_COMID.Items.AddRange(new object[] {
-            //"NET181.65.15.45",
-            //"NET10.10.100.254",
-            //"NET192.168.1.13"});
             cbB_COMID.SelectedIndex = cbB_COMID.Items.Count > 0 ? 0 : -1;
-            //cbBPortId.SelectedIndex = comboBaudrate.Items.IndexOf("9600");
 
             Array.Sort(ports);
             cbB_COMID.Items.AddRange(ports);
 
-            //初始化SerialPort对象
             ReadWriteIO.comm.NewLine = "\r\n";
-            ReadWriteIO.comm.RtsEnable = true;//根据实际情况吧。
+            ReadWriteIO.comm.RtsEnable = true;
             try
             {
-                //player.Load();
                 player.LoadAsync();
             }
             catch (Exception ex)
@@ -174,18 +165,17 @@ namespace R2000Demo
             TagList.Clear();
             m_Tags.Clear();
 
-            //timer2.Enabled = true;
             threadFlag = 0;
 
             /*  */
             DisableOPT();
 
-            cB_Language.SelectedIndex = ReaderParams.LanguageFlag; //Actualización - Jose Liza: 20210123 
+            cB_Language.SelectedIndex = ReaderParams.LanguageFlag; //Actualización - Jose Liza: 20210123, Selecciona el idioma español en el combo
             cbB_Baud.SelectedIndex = 1;
             cB_protocoltype.SelectedIndex = 0;
             cB_OutLineClear.Checked = true;
             cB_Beep.Enabled = false;
-            comboBox1.SelectedIndex = ReaderParams.LanguageFlag;
+            comboBox1.SelectedIndex = ReaderParams.LanguageFlag; //TODO: Averiguar funcionalidad
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             if (cbB_COMID.CanFocus)
             {
@@ -201,11 +191,38 @@ namespace R2000Demo
             OtherSet.Enabled = set;
             天线设置ToolStripMenuItem.Enabled = set;
             AboutusSet.Enabled = set;
-            NETToolStripMenuItem.Enabled = !set;
+            NETToolStripMenuItem.Enabled = set;
+
+            
+        }
+        private void controles(bool set) {
+            BasicParaSet.Visible = set;
+            AdvanceParaSet.Visible = set;
+            TagOperate.Visible = set;
+            RegOperate.Visible = set;
+            OtherSet.Visible = set;
+            天线设置ToolStripMenuItem.Visible = set;
+            AboutusSet.Visible = set;
+            NETToolStripMenuItem.Visible = set;
+
+            天线设置ToolStripMenuItem.Visible = set;
+
+            chkTest.Visible = set;
+            button_export.Visible = set;
+            tb_P2J.Visible = set;
+            bt_J2.Visible = set;
+            button8.Visible = set;
+            button9.Visible = set;
+            bt_FPage.Visible = set;
+            button6.Visible = set;
+            lb_current.Visible = set;
+            label13.Visible = set;
+            lb_count.Visible = set;
+            textBox2.Visible = set;
+            cB_Language.Visible = set;
         }
         private void DisableOPT()
         {
-            //menuStrip1.Enabled = false;
             //NETToolStripMenuItem.Enabled = true;
             menu(false);
             button_singleInv.Enabled = false;
@@ -222,9 +239,7 @@ namespace R2000Demo
 
         private void EnableOPT()
         {
-            //menuStrip1.Enabled = true;
             menu(true);
-            //NETToolStripMenuItem.Enabled = false;
             cB_Beep.Enabled = true;
             button_singleInv.Enabled = true;
             button_inv_mul.Enabled = true;
@@ -267,7 +282,6 @@ namespace R2000Demo
             StartTime = DateTime.Now;
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
-            //limpiar variables (1) y (2)
             guardarLecturaTipoC = "";
             listaTagsAsignados.Clear();
 
@@ -276,20 +290,15 @@ namespace R2000Demo
         private void button_inv_mul_Click(object sender, EventArgs e)
         {
             UInt32[] data = new UInt32[1];
-            ReaderParams.Read_Reg_Data((byte)1, 0x0000000B, data);
+            ReaderParams.Read_Reg_Data((byte)1, 0x0000000B, data); //Obtiene el Id del Modulo
             ReaderParams.ModuloId = data[0].ToString("D8");
-            ReaderParams.ModuloRol = ConfigurationManager.AppSettings["modulorol"];
-
-            //TODO: Agregar ModuloId por default
-            if (ReaderParams.ModuloId == "00000000")
-            {
-                ReaderParams.ModuloId = "28070074";
-            }
+            ReaderParams.ModuloRol = ConfigurationManager.AppSettings["modulorol"]; //Proyecto Modulo-Puerta 
 
             button_inv_mul.Enabled = false;
             multiread();
             System.Threading.Thread.Sleep(100);
             button_inv_mul.Enabled = true;
+
         }
         private void multiread()//inicia las lecturas
         {
@@ -319,24 +328,13 @@ namespace R2000Demo
 
             if ((button_inv_mul.Text == "连续寻卡") || (button_inv_mul.Text == "Multiple"))
             {
-                if (0 == ReaderParams.LanguageFlag)
-                {
-                    button_inv_mul.Text = "停止";
-                }
-                else if (1 == ReaderParams.LanguageFlag)
-                {
-                    button_inv_mul.Text = "Stop";
-                }
-                // Actualización 2021-03-10 Jose Liza
-                else if (2 == ReaderParams.LanguageFlag)
+                if (2 == ReaderParams.LanguageFlag)
                 {
                     button_inv_mul.Text = "Parar";
                 }
-                //menuStrip1.Enabled = false;
 
                 menu(false);
                 NETToolStripMenuItem.Enabled = false;
-                //NETToolStripMenuItem.Enabled = true;
                 button_singleInv.Enabled = false;
                 cB_OutLineClear.Enabled = false;
                 cB_FastID.Enabled = false;
@@ -346,7 +344,6 @@ namespace R2000Demo
                 btn_OPEN_CLOSE.Enabled = false;
                 comboBox1.Enabled = false;
                 button1.Enabled = false;
-                //timer4.Enabled = true;
                 cB_Beep.Enabled = false;
                 UInt16 len = 2;
                 byte[] buf = new byte[2];
@@ -359,7 +356,6 @@ namespace R2000Demo
                 m_Tags.Clear();
                 m_IndTag.Clear();
                 m_SortTag.Clear();
-                //listView_Disp.Items.Clear();
                 timer6.Enabled = true;
                 buf[0] = (byte)(UInt16.Parse(textBox1.Text) >> 8);
                 buf[1] = (byte)(UInt16.Parse(textBox1.Text));
@@ -390,14 +386,7 @@ namespace R2000Demo
                     }
                     else
                     {
-                        if (0 == ReaderParams.LanguageFlag)
-                        {
-                            MessageBox.Show("端口未打开，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Do not open the port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        }
+                        MessageBox.Show("Puerto no esta abierto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
                         return;
                     }
@@ -414,14 +403,7 @@ namespace R2000Demo
                     }
                     else
                     {
-                        if (0 == ReaderParams.LanguageFlag)
-                        {
-                            MessageBox.Show("网口未连接，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Network port is not connected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        }
+                        MessageBox.Show("Puerto de red no esta conectada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
                         return;
                     }
@@ -430,22 +412,11 @@ namespace R2000Demo
                 timer1.Enabled = true;
 
                 RevDataFrom232.Start();
-                //Task.Factory.StartNew(ReceiveDataFromUART);
 
-                //Task.Factory.StartNew(PlaySound);
-                //                ReceiveDataFromUART();
             }
             else if ((button_inv_mul.Text == "停止") || ((button_inv_mul.Text == "Stop")) || ((button_inv_mul.Text == "Parar")))
             {
-                //timer2.Enabled = false; // Actualización 2021-03-10 Jose Liza
-                if (0 == ReaderParams.LanguageFlag)
-                {
-                    button_inv_mul.Text = "连续寻卡";
-                }
-                else
-                {
-                    button_inv_mul.Text = "Multiple";
-                }
+                button_inv_mul.Text = "Multiple";
                 if ((playsound != null) && (playsound.IsAlive))
                 {
                     playsound.Abort();
@@ -454,14 +425,11 @@ namespace R2000Demo
                 {
                     timer7.Enabled = false;
                 }
-                //timer4.Enabled = false;
                 System.Threading.Thread.Sleep(100);
                 StopInvMul();
                 button_singleInv.Enabled = true;
                 menu(true);
                 NETToolStripMenuItem.Enabled = false;
-                //menuStrip1.Enabled = true;
-                //NETToolStripMenuItem.Enabled = false;
                 timer1.Enabled = false;
                 cB_OutLineClear.Enabled = true;
                 cB_FastID.Enabled = true;
@@ -509,15 +477,7 @@ namespace R2000Demo
                 }
                 else
                 {
-                    if (0 == ReaderParams.LanguageFlag)
-                    {
-                        MessageBox.Show("端口未打开，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Do not open the port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-
+                    MessageBox.Show("No abre el puerto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
 
@@ -563,15 +523,7 @@ namespace R2000Demo
                 }
                 else
                 {
-                    if (0 == ReaderParams.LanguageFlag)
-                    {
-                        MessageBox.Show("网口未连接，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Network port is not connected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-
+                    MessageBox.Show("No abre el puerto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
 
@@ -622,7 +574,6 @@ namespace R2000Demo
             ReadWriteIO.device = int.Parse(textBox2.Text);
             //ManualResetEvent event();
 
-            //Juzgue la operación de acuerdo con el objeto de puerto serie actual
             if (("关闭" == btn_OPEN_CLOSE.Text) || ("Close" == btn_OPEN_CLOSE.Text))
             {
                 if (1 == threadFlag)
@@ -633,7 +584,6 @@ namespace R2000Demo
                     }
                 }
 
-                //Haga clic cuando esté abierto para cerrar el puerto 
                 if ("NET" == str)
                 {
                     ReaderParams.tcpClient.Close();
@@ -643,18 +593,10 @@ namespace R2000Demo
                     ReadWriteIO.comm.Close();
                 }
 
-                if (0 == ReaderParams.LanguageFlag)
-                {
-                    btn_OPEN_CLOSE.Text = "打开";
-                }
-                else
-                {
-                    btn_OPEN_CLOSE.Text = "Open";
-                }
+                btn_OPEN_CLOSE.Text = "Abierto";
 
                 cbB_COMID.Enabled = true;
                 cbB_Baud.Enabled = true;
-                //button4.Enabled = true;
                 DisableOPT();
                 cbB_Baud.Enabled = true;
             }
@@ -676,7 +618,7 @@ namespace R2000Demo
                         IAsyncResult ar = ReaderParams.tcpClient.BeginConnect(ipA, ReaderParams.ProtocoloTCPIP, null, null);
                         bool success = ar.AsyncWaitHandle.WaitOne(1000);
                         if (!success)
-                            if (0 == ReaderParams.LanguageFlag)
+                            if (2 == ReaderParams.LanguageFlag)
                             {
                                 throw new Exception("El período de tiempo de espera ha expirado y el servidor especificado no está conectado");
                             }
@@ -690,14 +632,7 @@ namespace R2000Demo
                     catch (Exception ex)
                     {
                         str = ex.Message;
-                        if (0 == ReaderParams.LanguageFlag)
-                        {
-                            str += "\r\n连接失败";
-                        }
-                        else
-                        {
-                            str += "\r\nConnect failed";
-                        }
+                        str += "\r\nConnect failed";
 
                         //显示异常信息给客户。   
                         MessageBox.Show(str, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -728,64 +663,27 @@ namespace R2000Demo
                     catch (Exception ex)
                     {
                         //捕获到异常信息，创建一个新的ReadWriteIO.comm对象，之前的不能用了。   
-                        //ReadWriteIO.comm = new SerialPort();
-                        str = ex.Message;
-                        if (0 == ReaderParams.LanguageFlag)
-                        {
-                            str += "\r\n当前串口可能被占用";
-                        }
-                        else
-                        {
-                            str += "\r\nThe port is used";
-                        }
+                                                str = ex.Message;
+                                                                                                                                                                        str += "\r\nThe port is used";
                         //显示异常信息给客户。   
                         MessageBox.Show(str, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return;
                     }
 
-                    ///* 获取模块ID号 */
-                    //UInt32[] ID = new UInt32[2];
-                    //int result = ReaderParams.GetModuleID(ID);
-                    //if (result != 0)
-                    //{
-                    //    ReadWriteIO.comm.Close();
-                    //    if (0 == ReaderParams.LanguageFlag)
-                    //    {
-                    //        MessageBox.Show("模块异常", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    //    }
-                    //    else
-                    //    {
-                    //        MessageBox.Show("Module Error", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    //    }
-                    //    return;
-                    //}
                 }
                 else
                 {
-                    if (0 == ReaderParams.LanguageFlag)
-                    {
-                        MessageBox.Show("端口输入错误", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                    else
-                    {
-                        MessageBox.Show("The Port ID Error", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
+
+                    MessageBox.Show("The Port ID Error", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                 
 
                     return;
                 }
 
-                if (0 == ReaderParams.LanguageFlag)
-                {
-                    btn_OPEN_CLOSE.Text = "关闭";
-                }
-                else
-                {
-                    btn_OPEN_CLOSE.Text = "Close";
-                }
-
+                btn_OPEN_CLOSE.Text = "Close";
+              
                 cbB_COMID.Enabled = false;
                 cbB_Baud.Enabled = false;
-                //button4.Enabled = false;
                 EnableOPT();
                 button_inv_mul.Focus();
             }
@@ -806,14 +704,9 @@ namespace R2000Demo
                 }
                 else
                 {
-                    if (0 == ReaderParams.LanguageFlag)
-                    {
-                        MessageBox.Show("端口未打开，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Do not open the port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
+                    
+                    MessageBox.Show("Do not open the port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            
                     return 0;
                 }
 
@@ -833,14 +726,8 @@ namespace R2000Demo
                 }
                 else
                 {
-                    if (0 == ReaderParams.LanguageFlag)
-                    {
-                        MessageBox.Show("网口未连接，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Network port is not connected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
+                    MessageBox.Show("Network port is not connected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                  
                     return 0;
                 }
 
@@ -891,20 +778,13 @@ namespace R2000Demo
             int revlen = 0;         //接收数据长度
             bool retval = false;
 
-            //if (RevDataFrom232.IsAlive == false)
-            //{
-            //    return false;
-            //}
 
             if (1 == ReaderParams.CommIntSelectFlag)
             {
                 while ((revlen == 0) && (recount != 0))
                 {
                     recount--;
-                    //if (RevDataFrom232.IsAlive == false)
-                    //{
-                    //    return retval;
-                    //}
+              
                     revlen = ReadWriteIO.comm.BytesToRead;
                 }
 
@@ -1089,22 +969,14 @@ namespace R2000Demo
             //= delay(CMD.TIMEOUT, WriteBuf, CMD.FRAME_CMD_SET_RF_LINK, len);
             if (result == 0)
             {
-                if (0 == ReaderParams.LanguageFlag)
-                {
-                    MessageBox.Show("接收数据超时", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
-                else
-                {
-                    MessageBox.Show("over time", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
+                MessageBox.Show("over time", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+             
                 return;
             }
             revbuf = g_Revbuf;
 
             if (0 == ReaderParams.ProtocolFlag)
             {
-                //if (CMD.FRAME_CMD_INVENTORY_SINGLE_RSP == checkRevData(revbuf, revlen))
-                //{
                 string epc_tmp = "";
                 string tid_tmp = "";
                 byte[] byte_epc = new byte[64];
@@ -1163,7 +1035,8 @@ namespace R2000Demo
                 tmp.antID = antid;
                 tmp.rptime = t.ToString();
                 tmp.color = "white"; //Actualización 2021-03-10 Jose Liza
-
+                tmp.moduloid = ReaderParams.ModuloId;
+                tmp.modulorol = ReaderParams.ModuloRol;
 
                 AddTagToBuf(tmp); //(1)
                 //UpdataListViewDisp(m_Tags[tmp.epcid + "-" + tmp.tid]);
@@ -1185,12 +1058,10 @@ namespace R2000Demo
                     tb_P2J.Text = lb_current.Text;
                 }
                 PageShow(sum);
-                //}
+                
             }
             else
             {
-                //if (0x96 == checkRevDataSUM(revbuf, revlen))
-                //{
                 string epc_tmp = "";
                 string tid_tmp = "";
                 byte[] byte_epc = new byte[64];
@@ -1262,8 +1133,7 @@ namespace R2000Demo
                     tb_P2J.Text = lb_current.Text;
                 }
                 PageShow(sum);
-                //UpdataListViewDisp(m_Tags[tmp.epcid + "-" + tmp.tid]);
-                //}         
+                     
             }
 
 
@@ -1460,6 +1330,10 @@ namespace R2000Demo
                     m_Tags[keystr].times = tag.times;
                     m_Tags[keystr].tid = tag.tid;
 
+                    //Actualización Jose Liza 2022-11-18
+                    m_Tags[keystr].moduloid = tag.moduloid;
+                    m_Tags[keystr].modulorol = tag.modulorol;
+
                     m_IndTag.TryGetValue(keystr, out vlue);
                     m_SortTag[vlue.ToString()].readcnt = m_Tags[keystr].readcnt;
                     m_SortTag[vlue.ToString()].rxrssi = tag.rxrssi;
@@ -1501,7 +1375,7 @@ namespace R2000Demo
                     viewitem.SubItems[5].Text = tag.antID.ToString();
                     viewitem.SubItems[6].Text = tag.times.ToString();
 
-                    //Actualizacion - Jose Liza: 20210123
+                    //Actualizacion - Jose Liza: 2021-01-23
                     //viewitem.SubItems[7].Text = tag.color.ToString();
 
                     flag = 1;
@@ -1581,21 +1455,9 @@ namespace R2000Demo
                 }
             }
 
-            //switch (cbB_EPCTIDTOG.SelectedIndex)
-            //{
-            //    case 0:
-
-            //        break;
-            //    case 1:
-            //        break;
-            //    case 2:
-            //        break;
-            //    default:
-            //        break;
-            //}
         }
 
-        //TODO: UNO
+        //TODO: Comprueba el estado de ejecuacion del Thread
         private bool IsReceiveData()
         {
             int recount = 50000;     //重试次数
@@ -1607,7 +1469,7 @@ namespace R2000Demo
                 return false;
             }
 
-            if (1 == ReaderParams.CommIntSelectFlag)
+            if (1 == ReaderParams.CommIntSelectFlag) //si la lectura se realiza por puerto serial
             {
                 while ((revlen == 0) && (recount != 0))
                 {
@@ -1624,7 +1486,7 @@ namespace R2000Demo
                     retval = true;
                 }
             }
-            else
+            else //si la lectura se realiza por puerto de red
             {
                 while ((recount != 0) && (false == ReaderParams.nsStream.DataAvailable))
                 {
@@ -1914,11 +1776,6 @@ namespace R2000Demo
                 {
                     tid_tmp += byte_tid[i].ToString("X2");
 
-                    //if (i >= 11)
-                    //{
-                    //    break;
-                    //}
-
                     if (i < (rlength - length - 8 - 5 - 1))
                     {
                         tid_tmp += "-";
@@ -1950,12 +1807,7 @@ namespace R2000Demo
             //this.BeginInvoke(mi, new Object[] { m_Tags[tmp.epcid+"-"+tmp.tid] });
             BeepInvoke beep = new BeepInvoke(beeping);
             this.BeginInvoke(beep);
-            //if (cB_Beep.Checked == true)
-            //{
-            //    //alarmQueue.Enqueue(true);    //加入队列  
-            //    beeptime1 = DateTime.Now;
-            //    beepflag = true;
-            //}
+           
             return true;
         }
         void beeping()
@@ -2006,11 +1858,6 @@ namespace R2000Demo
                 {
                     tid_tmp += byte_tid[i].ToString("X2");
 
-                    //if (i >= 11)
-                    //{
-                    //    break;
-                    //}
-
                     if (i < (rlength - length - 8 - 5 - 1 + 2))
                     {
                         tid_tmp += "-";
@@ -2029,9 +1876,7 @@ namespace R2000Demo
             tmp.rptime = MulTSum.ToString();
 
             AddTagToBuf(tmp);
-            //MyInvoke mi = new MyInvoke(UpdataListViewDisp);
-            //this.BeginInvoke(mi, new Object[] { m_Tags[tmp.epcid + "-" + tmp.tid] });
-
+          
             return true;
         }
 
@@ -2180,10 +2025,6 @@ namespace R2000Demo
             return retval;
         }
 
-        private void beep()
-        {
-
-        }
 
         //TODO: DOS
         private void ReceiveDataFromUART()
@@ -2295,109 +2136,9 @@ namespace R2000Demo
         {
             ReaderParams.LanguageFlag = (UInt16)cB_Language.SelectedIndex;
 
-            // 简体中文
-            if (0 == ReaderParams.LanguageFlag)
-            {
-                label1.Text = "端口号:";
-                label5.Text = "波特率:";
-                label2.Text = "标签个数:";
-                label3.Text = "识别速率:";
-                label4.Text = "识别时间:";
-                label6.Text = "读取次数:";
-
-                btn_OPEN_CLOSE.Text = "打开";
-                button_singleInv.Text = "单次寻卡";
-                button_inv_mul.Text = "连续寻卡";
-                button_export.Text = "导出";
-                button_clr.Text = "清除";
-
-                cB_OutLineClear.Text = "离线清除";
-                cB_FastID.Text = "FastID";
-                cB_TagFocus.Text = "TagFocus";
-
-                BasicParaSet.Text = "基本设置";
-                AdvanceParaSet.Text = "高级设置";
-                TagOperate.Text = "标签操作";
-                RegOperate.Text = "寄存器";
-                OtherSet.Text = "其他设置";
-                AboutusSet.Text = "关于我们";
-                天线设置ToolStripMenuItem.Text = "天线设置";
-                NETToolStripMenuItem.Text = "网口设置";
-
-                groupBox1.Text = "工作区:";
-                groupBox2.Text = "端口:";
-                groupBox3.Text = "信息统计:";
-
-                columnHeader1.Text = "标签";
-                columnHeader2.Text = "EPC";
-                columnHeader3.Text = "读取次数";
-                columnHeader4.Text = "RSSI(dBm)";
-                columnHeader5.Text = "天线号";
-                columnHeader6.Text = "Last Time";
-                columnHeader7.Text = "TID";
-                columnHeader8.Text = "首次读取耗时(ms)";
-
-                cB_Beep.Text = "寻卡响声";
-                bt_FPage.Text = "首页";
-                button6.Text = "上一页";
-                button9.Text = "下一页";
-                button8.Text = "尾页";
-                bt_J2.Text = "跳转";
-                label8.Text = "持续时间：";
-            }
-            else if (0 == ReaderParams.LanguageFlag)
-            {
-                label1.Text = "Port:";
-                label5.Text = "Baud:";
-                label2.Text = "Number:";
-                label3.Text = "Speed:";
-                label4.Text = "Time:";
-                label6.Text = "TotalTimes:";
-
-                btn_OPEN_CLOSE.Text = "Open";
-                button_singleInv.Text = "Single Inv";
-                button_inv_mul.Text = "Multiple";
-                button_export.Text = "Export";
-                button_clr.Text = "Clean";
-
-                cB_OutLineClear.Text = "Off-line Clean";
-                cB_FastID.Text = "FastID";
-                cB_TagFocus.Text = "TagFocus";
-
-                BasicParaSet.Text = "Basic Settings";
-                AdvanceParaSet.Text = "Advanced Settings";
-                TagOperate.Text = "Tag Operate";
-                RegOperate.Text = "Regs";
-                OtherSet.Text = "Other Settings";
-                天线设置ToolStripMenuItem.Text = "ANT SET";
-                NETToolStripMenuItem.Text = "Ethernet Setting";
-                AboutusSet.Text = "About us";
-
-                groupBox1.Text = "WorkSpace:";
-                groupBox2.Text = "Port:";
-                groupBox3.Text = "Information:";
-
-                columnHeader1.Text = "Tag";
-                columnHeader2.Text = "EPC";
-                columnHeader3.Text = "Inv Times";
-                columnHeader4.Text = "RSSI(dBm)";
-                columnHeader5.Text = "ANT ID";
-                columnHeader6.Text = "Last Time";
-                columnHeader7.Text = "TID";
-                columnHeader8.Text = "First Read time Cost(ms)";
-
-                cB_Beep.Text = "Beep";
-                bt_FPage.Text = "First";
-                button6.Text = "PREV";
-                button9.Text = "NEXT";
-                button8.Text = "Last";
-                bt_J2.Text = "JUMP";
-                label8.Text = "Duration:";
-
-
-            }
             //Actualización 2021-03-10 Jose Liza
-            else
+            if (2 == ReaderParams.LanguageFlag)
+
             {
                 label1.Text = "Port:";
                 label5.Text = "Baud:";
@@ -2486,14 +2227,8 @@ namespace R2000Demo
                 }
                 else
                 {
-                    if (0 == ReaderParams.LanguageFlag)
-                    {
-                        MessageBox.Show("端口未打开，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Do not open the port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
+                    MessageBox.Show("No abre el puerto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    
                     return;
                 }
 
@@ -2527,14 +2262,9 @@ namespace R2000Demo
                 }
                 else
                 {
-                    if (0 == ReaderParams.LanguageFlag)
-                    {
-                        MessageBox.Show("网口未连接，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Network port is not connected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
+                    
+                    MessageBox.Show("Puerto de red no conectado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                   
                     return;
                 }
 
@@ -2562,14 +2292,8 @@ namespace R2000Demo
                 && (revbuf[4] == CMD.FRAME_CMD_SET_FASTID_RSP)
                 && (revbuf[5] == 0x01)))
             {
-                if (0 == ReaderParams.LanguageFlag)
-                {
-                    MessageBox.Show("FastID设置失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
-                else
-                {
-                    MessageBox.Show("FastID Set Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
+                MessageBox.Show("Falló la configuracion de FastID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+              
                 return;
             }
         }
@@ -2607,14 +2331,8 @@ namespace R2000Demo
                 }
                 else
                 {
-                    if (0 == ReaderParams.LanguageFlag)
-                    {
-                        MessageBox.Show("端口未打开，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Do not open the port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
+                    MessageBox.Show("No abre el puerto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                  
                     return;
                 }
 
@@ -2648,14 +2366,9 @@ namespace R2000Demo
                 }
                 else
                 {
-                    if (0 == ReaderParams.LanguageFlag)
-                    {
-                        MessageBox.Show("网口未连接，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Network port is not connected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
+                
+                    MessageBox.Show("Puerto de red no conectado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                
                     return;
                 }
 
@@ -2683,14 +2396,8 @@ namespace R2000Demo
                 && (revbuf[4] == CMD.FRAME_CMD_SET_TAGFOCUS_RSP)
                 && (revbuf[5] == 0x01)))
             {
-                if (0 == ReaderParams.LanguageFlag)
-                {
-                    MessageBox.Show("TagFocus设置失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
-                else
-                {
-                    MessageBox.Show("TagFocus Set Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
+                MessageBox.Show("Falló configuracion del TagFocus", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+              
                 return;
             }
         }
@@ -2700,25 +2407,13 @@ namespace R2000Demo
             int oldcur = cbB_COMID.SelectionStart;
             int oldinx = cbB_COMID.SelectedIndex;
 
-            //cbB_COMID.SelectedIndex = 0;
-            // string str = cbB_COMID.Text;
-            //cbB_COMID.Items.Clear();
-            //cbB_COMID.Items.Add(str);
-            //cbB_COMID.Items.AddRange(new object[] {
-            //"NET192.168.1.13",
-            //"NET181.65.15.45",
-            //"NET10.10.100.254"
-            //});
-
             string[] ports = SerialPort.GetPortNames();
-            //Array.Sort(ports);
-            //cbB_COMID.Items.AddRange(ports);
+
             cbB_COMID.SelectedIndex = cbB_COMID.Items.Count > 0 ? 0 : -1;
 
             cbB_COMID.SelectedIndex = (oldinx > (cbB_COMID.Items.Count - 1) ? (cbB_COMID.Items.Count - 1) : oldinx);
             cbB_COMID.SelectionStart = oldcur;
-            //cbB_COMID.Focus();
-            //cbB_COMID.Select(this.cbB_COMID.Text.Length, 0);
+
         }
 
         private void cbB_COMID_SelectedIndexChanged(object sender, EventArgs e)
@@ -2756,14 +2451,7 @@ namespace R2000Demo
         public void ExportToExcel()
         {
             System.Windows.Forms.SaveFileDialog sfd = new SaveFileDialog();
-            //sfd.DefaultExt = ".csv";
-            //sfd.Filter = "*.csv|*.csv";
-            //if (sfd.ShowDialog() == DialogResult.OK)
-            //{
-            //    // DoExport(this.listView_Disp, sfd.FileName);
-            //    //  DoExporttag(sfd.FileName);
-            //    SaveCSV(this.listView_Disp, sfd.FileName);
-            //}
+
             string folder = ReaderParams.FolderCSV;
             string fileName = DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".csv";
             string path = folder + fileName;
@@ -2771,78 +2459,7 @@ namespace R2000Demo
             SaveCSV(this.listView_Disp, path);
 
         }
-        /// <summary>
-        /// 具体导出的方法
-        /// </summary>
-        /// <param name="listView">ListView</param>
-        /// <param name="strFileName">导出到的文件名</param>
-        //private void DoExport(ListView listView, string strFileName)
-        //{
-        //    try
-        //    {
-        //        int rowNum = listView.Items.Count;
-        //        int columnNum = listView.Items[0].SubItems.Count;
-        //        int rowIndex = 1;
-        //        int columnIndex = 0;
-        //        if (rowNum == 0 || string.IsNullOrEmpty(strFileName))
-        //        {
-        //            return;
-        //        }
-        //        if (rowNum > 0)
-        //        {
 
-        //            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
-        //            if (xlApp == null)
-        //            {
-        //                MessageBox.Show("无法创建excel对象，可能您的系统没有安装excel");
-        //                return;
-        //            }
-        //            xlApp.DefaultFilePath = "";
-        //            xlApp.DisplayAlerts = true;
-        //            xlApp.SheetsInNewWorkbook = 1;
-        //            Microsoft.Office.Interop.Excel.Workbook xlBook = xlApp.Workbooks.Add(true);
-        //            //将ListView的列名导入Excel表第一行
-        //            foreach (ColumnHeader dc in listView.Columns)
-        //            {
-        //                columnIndex++;
-        //                xlApp.Cells[rowIndex, columnIndex] = dc.Text;
-        //            }
-        //            //将ListView中的数据导入Excel中
-        //            for (int i = 0; i < rowNum; i++)
-        //            {
-        //                rowIndex++;
-        //                columnIndex = 0;
-        //                for (int j = 0; j < columnNum; j++)
-        //                {
-        //                    columnIndex++;
-        //                    //注意这个在导出的时候加了“\t” 的目的就是避免导出的数据显示为科学计数法。可以放在每行的首尾。
-        //                    xlApp.Cells[rowIndex, columnIndex] = Convert.ToString(listView.Items[i].SubItems[j].Text) + "\t";
-        //                }
-        //            }
-        //            //例外需要说明的是用strFileName,Excel.XlFileFormat.xlExcel9795保存方式时 当你的Excel版本不是95、97 而是2003、2007 时导出的时候会报一个错误：异常来自 HRESULT:0x800A03EC。 解决办法就是换成strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal。
-        //            xlBook.SaveAs(strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-        //            xlApp = null;
-        //            xlBook = null;
-        //            MessageBox.Show("Export OK!");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string str = ex.Message;
-        //        if (0 == ReaderParams.LanguageFlag)
-        //        {
-        //            str += "\r\n导出失败";
-        //        }
-        //        else
-        //        {
-        //            str += "\r\nExport failed";
-        //        }
-
-        //        //显示异常信息给客户。   
-        //        MessageBox.Show(str, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-        //        return;
-        //    }
-        //}
         public void SaveCSV(ListView listView, string fullPath)
         {
             int rowNum = tagnum;
@@ -2857,7 +2474,6 @@ namespace R2000Demo
                 fi.Directory.Create();
             }
             FileStream fs = new FileStream(fullPath, System.IO.FileMode.Create, System.IO.FileAccess.Write);
-            //StreamWriter sw = new StreamWriter(fs, System.Text.Encoding.Default);
             StreamWriter sw = new StreamWriter(fs, System.Text.Encoding.UTF8);
             string data = "";
             //写出列名称
@@ -2872,7 +2488,7 @@ namespace R2000Demo
 
             StringBuilder sb = new StringBuilder();
 
-            //Actualización - Jose Liza: 20210124
+            //Actualización - Jose Liza: 2021-01-24
             //sw.WriteLine(data);
             sb.AppendLine(data);
 
@@ -2888,7 +2504,7 @@ namespace R2000Demo
             sw.Close();
             fs.Close();
 
-            //Actualizacion - Jose Liza: 20210125
+            //Actualizacion - Jose Liza: 2021-01-25
 
             //EmitirSonido();
             ActivarGPIO("3", true);
@@ -2896,7 +2512,7 @@ namespace R2000Demo
 
         }
 
-        //Actualizacion - Jose Liza: 20210125
+        //Actualizacion - Jose Liza: 2021-01-25
         //Procedimientos Nuevos
         private static void EmitirSonido()
         {
@@ -3038,10 +2654,7 @@ namespace R2000Demo
         {
             Test frm = new Test();
             frm.ShowDialog();
-            //if (frm.ShowDialog() == DialogResult.OK)
-            //{
-            //    timer3.Enabled = true;
-            //}
+           
         }
 
         private void cB_protocoltype_SelectedIndexChanged(object sender, EventArgs e)
@@ -3320,19 +2933,15 @@ namespace R2000Demo
                                     listaTagsLeidos.Add(tagNuevo);
                                 }
                             }
-
                         }
 
                         var epcRepetido = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == epc_leido).Count() > 0;
                         if (!epcRepetido)
                         {
-
                             if (DateTime.Now - OutLineTime > TimeSpan.FromSeconds(1))
                             {
-
                                 if (tagNuevo.Tipo == "A")
                                 {
-
                                     listView_Disp.Items.Add(item);
                                     listView_Disp.Items[listView_Disp.Items.Count - 1].BackColor = Color.Orange;
                                     listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text = Color.Orange.Name.ToString();
@@ -3349,7 +2958,6 @@ namespace R2000Demo
                                     tagNuevo = Guardarlectura(item);
                                 }
                             }
-
                         }
                     }
 
@@ -3404,14 +3012,14 @@ namespace R2000Demo
                 }
             }
         }
-       
+
 
         private Boolean ExisteTipoCenLista(ListView lista)
         {
             bool result = false;
             for (int i = 0; i < lista.Items.Count; i++)
             {
-                if (listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text=="DodgerBlue")
+                if (listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text == "DodgerBlue")
                 {
                     result = true;
                 }
@@ -3560,11 +3168,7 @@ namespace R2000Demo
         int LastTotalNumOfTags = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //DateTime nowTime = DateTime.Now;
-            //double tOfDay = nowTime.TimeOfDay.TotalMilliseconds; 
-            //double tStart = StartTime.TimeOfDay.TotalMilliseconds;
-            //double totalMs = nowTime.TimeOfDay.TotalMilliseconds - StartTime.TimeOfDay.TotalMilliseconds;
-            int totalNumOfTags = 0;
+              int totalNumOfTags = 0;
 
             for (int i = 0; i < tagnum; i++)
             {
@@ -3619,14 +3223,7 @@ namespace R2000Demo
                 System.Threading.Thread.Sleep(1000);
                 button_inv_mul.Enabled = true;
             }
-            //EmitirSonido();
-
-            //ActivarGPIO("3", true);
-            //Thread.Sleep(300);
-            //ActivarGPIO("3", false);
-
-            //label_NumOfTags.Text = (listView_Disp.Items.Count).ToString();
-            //tB_NowTimes.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now);
+            
         }
         private void timer3_Tick(object sender, EventArgs e)
         {
@@ -3649,19 +3246,12 @@ namespace R2000Demo
                     //开始
 
                     beepflag = false;
-                    //label10.Text = "on";
-                    //player .Load();
-                    //player.PlayLooping();
                     player.PlaySync();
 
                 }
                 else
                 {
-                    //label10.Text = "off";
-                    //player.Stop();
-                    //timer3.Enabled = true;
-                    // timer4.Enabled = false;
-                    //停止
+                   
                 }
             }
         }
@@ -3738,11 +3328,18 @@ namespace R2000Demo
                         bool success = ar.AsyncWaitHandle.WaitOne(1000);
                         if (!success)
                         {
-
+                            if (2 == ReaderParams.LanguageFlag)
+                            {
+                                throw new Exception("El período de tiempo de espera ha expirado y el servidor especificado no está conectado");
+                            }
+                            else
+                            {
+                                throw new Exception("OVER TIME");
+                            }
                         }
                         else
                         {
-                            if (0 == ReaderParams.ProtocolFlag)
+                            if (2 == ReaderParams.ProtocolFlag)
                             {
                                 RevDataFrom232 = new Thread(new ThreadStart(ReceiveDataFromUART));
                             }
@@ -3766,13 +3363,9 @@ namespace R2000Demo
                 }
                 //throw new Exception("超时时间已到，未连接到指定服务器");
                 //str = ex.Message;
-                if (0 == ReaderParams.LanguageFlag)
+                if (2 == ReaderParams.LanguageFlag)
                 {
-                    str += "超时时间已到，未连接到指定服务器\r\n连接失败";
-                }
-                else
-                {
-                    str += "over time\r\nConnect failed";
+                    str += "over time\r\nConección fallida";
                 }
 
                 //显示异常信息给客户。   
@@ -3781,13 +3374,12 @@ namespace R2000Demo
             }
         }
 
-        bool EstaAlarmaActivada = false;
         private void ActivarAlarma(int intervalMiliSeg)
         {
-            if (EstaAlarmaActivada)
+            if (estadoAlarmaActivada)
                 return;
 
-            EstaAlarmaActivada = true;
+            estadoAlarmaActivada = true;
             timPIO.Interval = intervalMiliSeg;
             timPIO.Enabled = true;
             timPIO.Start();
@@ -3797,12 +3389,12 @@ namespace R2000Demo
         private void timPIO_Tick(object sender, EventArgs e)
         {
 
-            ActivarGPIO("3", false);
-            EstaAlarmaActivada = false;
+            ActivarGPIO("3", false); //Salida numero 3 del Modulo
+            estadoAlarmaActivada = false;
             timPIO.Enabled = false;
             timPIO.Stop();
             multiread();
-            EstaAlarmaActivada = false;
+            //estadoAlarmaActivada = false;
         }
         private void btnTest_Click(object sender, EventArgs e)
         {
@@ -3816,36 +3408,17 @@ namespace R2000Demo
             button_clr.Enabled = true;
         }
 
-        private void textBox4_KeyUp(object sender, KeyEventArgs e)
+
+        void mnuChangeVisiblity()
         {
-            if (textBox4.Text=="jose")
-            {
-                BasicParaSet.Visible = !BasicParaSet.Visible;
-                AdvanceParaSet.Visible = !AdvanceParaSet.Visible;
-                TagOperate.Visible = !TagOperate.Visible;
-                RegOperate.Visible = !RegOperate.Visible;
-                OtherSet.Visible = !OtherSet.Visible;
-                btnTest.Visible = !btnTest.Visible;
+            controles(!BasicParaSet.Visible);
 
-                chkTest.Visible = !chkTest.Visible;
-                button_export.Visible = !button_export.Visible;
-                tb_P2J.Visible = !tb_P2J.Visible;
-                bt_J2.Visible = !bt_J2.Visible;
-                button8.Visible = !button8.Visible;
-                button9.Visible = !button9.Visible;
-                bt_FPage.Visible = !bt_FPage.Visible;
-                button6.Visible = !button6.Visible;
-                lb_current.Visible = !lb_current.Visible;
-                label13.Visible = !label13.Visible;
-                lb_count.Visible = !lb_count.Visible;
-                textBox2.Visible = !textBox2.Visible;
-                cB_Language.Visible = !cB_Language.Visible;
+        }
 
-
-                天线设置ToolStripMenuItem.Visible = !天线设置ToolStripMenuItem.Visible;
-
-                textBox4.Text = String.Empty;
-            }
+        private void btnChangeVisibility_Click(object sender, EventArgs e)
+        {
+            mnuChangeVisiblity();
+            btnChangeVisibility.Text = BasicParaSet.Visible ? "Menú Visible: SI" : "Menú Visible: NO";
         }
     }
 

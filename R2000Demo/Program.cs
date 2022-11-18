@@ -7,12 +7,14 @@ namespace R2000Demo
 {
     static class Program
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
         static void Main()
         {
+            log.Info("***********Mensaje de prueba***********");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

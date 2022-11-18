@@ -46,7 +46,7 @@ namespace R2000Demo
 
             CommIntSelectFlag = 0;
 
-            LanguageFlag = 2; //Actualización Jose Liza 2021-03-11
+            LanguageFlag = 2; //Actualización Jose Liza 2021-03-11. Selecciona el idioma Español
             FolderCSV = Properties.Resources.ResourceManager.GetString("folderCSV");
             ProtocolFlag = 0;
             ProtocoloTCPIP = 20108; //Actualizacion - Jose Liza: 20210123 

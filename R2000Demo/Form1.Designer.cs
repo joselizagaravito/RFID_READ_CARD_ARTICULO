@@ -55,7 +55,7 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnChangeVisibility = new System.Windows.Forms.Button();
             this.chkTest = new System.Windows.Forms.CheckBox();
             this.btnTest = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -139,7 +139,7 @@
             this.NETToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 26);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -148,36 +148,32 @@
             this.BasicParaSet.BackColor = System.Drawing.Color.DarkKhaki;
             this.BasicParaSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.BasicParaSet.Name = "BasicParaSet";
-            this.BasicParaSet.Size = new System.Drawing.Size(75, 20);
+            this.BasicParaSet.Size = new System.Drawing.Size(94, 22);
             this.BasicParaSet.Text = "基本设置";
-            this.BasicParaSet.Visible = false;
             this.BasicParaSet.Click += new System.EventHandler(this.ParaSet_Click);
             // 
             // AdvanceParaSet
             // 
             this.AdvanceParaSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AdvanceParaSet.Name = "AdvanceParaSet";
-            this.AdvanceParaSet.Size = new System.Drawing.Size(75, 20);
+            this.AdvanceParaSet.Size = new System.Drawing.Size(94, 22);
             this.AdvanceParaSet.Text = "高级设置";
-            this.AdvanceParaSet.Visible = false;
             this.AdvanceParaSet.Click += new System.EventHandler(this.标签操作ToolStripMenuItem_Click);
             // 
             // TagOperate
             // 
             this.TagOperate.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TagOperate.Name = "TagOperate";
-            this.TagOperate.Size = new System.Drawing.Size(75, 20);
+            this.TagOperate.Size = new System.Drawing.Size(94, 22);
             this.TagOperate.Text = "标签操作";
-            this.TagOperate.Visible = false;
             this.TagOperate.Click += new System.EventHandler(this.空口协议设置ToolStripMenuItem_Click);
             // 
             // RegOperate
             // 
             this.RegOperate.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.RegOperate.Name = "RegOperate";
-            this.RegOperate.Size = new System.Drawing.Size(61, 20);
+            this.RegOperate.Size = new System.Drawing.Size(76, 22);
             this.RegOperate.Text = "寄存器";
-            this.RegOperate.Visible = false;
             this.RegOperate.Click += new System.EventHandler(this.辅助信息ToolStripMenuItem_Click);
             // 
             // OtherSet
@@ -188,15 +184,14 @@
             this.双间隙读取测试ToolStripMenuItem});
             this.OtherSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.OtherSet.Name = "OtherSet";
-            this.OtherSet.Size = new System.Drawing.Size(75, 20);
+            this.OtherSet.Size = new System.Drawing.Size(94, 22);
             this.OtherSet.Text = "其他设置";
-            this.OtherSet.Visible = false;
             this.OtherSet.Click += new System.EventHandler(this.在线下载ToolStripMenuItem_Click);
             // 
             // 测试板切换分路功能ToolStripMenuItem
             // 
             this.测试板切换分路功能ToolStripMenuItem.Name = "测试板切换分路功能ToolStripMenuItem";
-            this.测试板切换分路功能ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.测试板切换分路功能ToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.测试板切换分路功能ToolStripMenuItem.Text = "测试板切换分路功能";
             this.测试板切换分路功能ToolStripMenuItem.Visible = false;
             this.测试板切换分路功能ToolStripMenuItem.Click += new System.EventHandler(this.测试板切换分路功能ToolStripMenuItem_Click);
@@ -204,7 +199,7 @@
             // 读卡统计ToolStripMenuItem
             // 
             this.读卡统计ToolStripMenuItem.Name = "读卡统计ToolStripMenuItem";
-            this.读卡统计ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.读卡统计ToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.读卡统计ToolStripMenuItem.Text = "读卡统计";
             this.读卡统计ToolStripMenuItem.Visible = false;
             this.读卡统计ToolStripMenuItem.Click += new System.EventHandler(this.读卡统计ToolStripMenuItem_Click);
@@ -212,7 +207,7 @@
             // 双间隙读取测试ToolStripMenuItem
             // 
             this.双间隙读取测试ToolStripMenuItem.Name = "双间隙读取测试ToolStripMenuItem";
-            this.双间隙读取测试ToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.双间隙读取测试ToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.双间隙读取测试ToolStripMenuItem.Text = "双间隙连续读取测试";
             this.双间隙读取测试ToolStripMenuItem.Visible = false;
             this.双间隙读取测试ToolStripMenuItem.Click += new System.EventHandler(this.双间隙读取测试ToolStripMenuItem_Click);
@@ -221,27 +216,24 @@
             // 
             this.天线设置ToolStripMenuItem.Font = new System.Drawing.Font("SimSun", 10.5F);
             this.天线设置ToolStripMenuItem.Name = "天线设置ToolStripMenuItem";
-            this.天线设置ToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.天线设置ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.天线设置ToolStripMenuItem.Text = "天线设置";
-            this.天线设置ToolStripMenuItem.Visible = false;
             this.天线设置ToolStripMenuItem.Click += new System.EventHandler(this.天线设置ToolStripMenuItem_Click);
             // 
             // AboutusSet
             // 
             this.AboutusSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AboutusSet.Name = "AboutusSet";
-            this.AboutusSet.Size = new System.Drawing.Size(75, 20);
+            this.AboutusSet.Size = new System.Drawing.Size(94, 22);
             this.AboutusSet.Text = "关于我们";
-            this.AboutusSet.Visible = false;
             this.AboutusSet.Click += new System.EventHandler(this.AboutusSet_Click);
             // 
             // NETToolStripMenuItem
             // 
             this.NETToolStripMenuItem.Font = new System.Drawing.Font("SimSun", 10.5F);
             this.NETToolStripMenuItem.Name = "NETToolStripMenuItem";
-            this.NETToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.NETToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.NETToolStripMenuItem.Text = "网口设置";
-            this.NETToolStripMenuItem.Visible = false;
             this.NETToolStripMenuItem.Click += new System.EventHandler(this.网口模块ToolStripMenuItem_Click);
             // 
             // listView_Disp
@@ -334,7 +326,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.btnChangeVisibility);
             this.groupBox1.Controls.Add(this.chkTest);
             this.groupBox1.Controls.Add(this.btnTest);
             this.groupBox1.Controls.Add(this.label13);
@@ -361,24 +353,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "工作区:";
             // 
-            // textBox4
+            // btnChangeVisibility
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox4.Location = new System.Drawing.Point(1025, 367);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.PasswordChar = '*';
-            this.textBox4.Size = new System.Drawing.Size(129, 21);
-            this.textBox4.TabIndex = 26;
-            this.textBox4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyUp);
+            this.btnChangeVisibility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChangeVisibility.Location = new System.Drawing.Point(1005, 366);
+            this.btnChangeVisibility.Name = "btnChangeVisibility";
+            this.btnChangeVisibility.Size = new System.Drawing.Size(149, 23);
+            this.btnChangeVisibility.TabIndex = 26;
+            this.btnChangeVisibility.Text = "Menú Visible: SI";
+            this.btnChangeVisibility.UseVisualStyleBackColor = true;
+            this.btnChangeVisibility.Click += new System.EventHandler(this.btnChangeVisibility_Click);
             // 
             // chkTest
             // 
             this.chkTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkTest.AutoSize = true;
-            this.chkTest.Location = new System.Drawing.Point(877, 373);
+            this.chkTest.Location = new System.Drawing.Point(860, 370);
             this.chkTest.Name = "chkTest";
-            this.chkTest.Size = new System.Drawing.Size(60, 16);
+            this.chkTest.Size = new System.Drawing.Size(77, 19);
             this.chkTest.TabIndex = 25;
             this.chkTest.Text = "Alarma";
             this.chkTest.UseVisualStyleBackColor = true;
@@ -389,7 +381,7 @@
             this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTest.Location = new System.Drawing.Point(943, 367);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.Size = new System.Drawing.Size(56, 23);
             this.btnTest.TabIndex = 24;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
@@ -402,7 +394,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(454, 372);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(11, 12);
+            this.label13.Size = new System.Drawing.Size(15, 15);
             this.label13.TabIndex = 17;
             this.label13.Text = "/";
             // 
@@ -412,7 +404,7 @@
             this.lb_count.AutoSize = true;
             this.lb_count.Location = new System.Drawing.Point(476, 372);
             this.lb_count.Name = "lb_count";
-            this.lb_count.Size = new System.Drawing.Size(11, 12);
+            this.lb_count.Size = new System.Drawing.Size(15, 15);
             this.lb_count.TabIndex = 18;
             this.lb_count.Text = "0";
             // 
@@ -422,7 +414,7 @@
             this.lb_current.AutoSize = true;
             this.lb_current.Location = new System.Drawing.Point(396, 372);
             this.lb_current.Name = "lb_current";
-            this.lb_current.Size = new System.Drawing.Size(11, 12);
+            this.lb_current.Size = new System.Drawing.Size(15, 15);
             this.lb_current.TabIndex = 16;
             this.lb_current.Text = "0";
             // 
@@ -431,7 +423,7 @@
             this.tb_P2J.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tb_P2J.Location = new System.Drawing.Point(729, 368);
             this.tb_P2J.Name = "tb_P2J";
-            this.tb_P2J.Size = new System.Drawing.Size(45, 21);
+            this.tb_P2J.Size = new System.Drawing.Size(45, 25);
             this.tb_P2J.TabIndex = 22;
             this.tb_P2J.Text = "1";
             this.tb_P2J.Visible = false;
@@ -497,7 +489,7 @@
             this.textBox1.Location = new System.Drawing.Point(156, 368);
             this.textBox1.MaxLength = 5;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(37, 21);
+            this.textBox1.Size = new System.Drawing.Size(37, 25);
             this.textBox1.TabIndex = 12;
             this.textBox1.Text = "0";
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Mul_Key_Sum);
@@ -561,7 +553,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(815, 15);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 12);
+            this.label10.Size = new System.Drawing.Size(23, 15);
             this.label10.TabIndex = 37;
             this.label10.Text = "ms";
             this.label10.Visible = false;
@@ -571,7 +563,7 @@
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBox3.Location = new System.Drawing.Point(765, 12);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(44, 21);
+            this.textBox3.Size = new System.Drawing.Size(44, 25);
             this.textBox3.TabIndex = 36;
             this.textBox3.Text = "5000";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -610,7 +602,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(332, 16);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(39, 21);
+            this.textBox2.Size = new System.Drawing.Size(39, 25);
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "0";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -640,20 +632,21 @@
             this.cbB_Baud.Location = new System.Drawing.Point(222, 16);
             this.cbB_Baud.Margin = new System.Windows.Forms.Padding(2);
             this.cbB_Baud.Name = "cbB_Baud";
-            this.cbB_Baud.Size = new System.Drawing.Size(105, 20);
+            this.cbB_Baud.Size = new System.Drawing.Size(105, 23);
             this.cbB_Baud.TabIndex = 3;
             // 
             // cbB_COMID
             // 
             this.cbB_COMID.FormattingEnabled = true;
             this.cbB_COMID.Items.AddRange(new object[] {
+            "NET190.42.236.238",
             "NET192.168.1.13",
             "NET181.65.15.45",
             "NET10.10.100.254"});
             this.cbB_COMID.Location = new System.Drawing.Point(50, 16);
             this.cbB_COMID.Margin = new System.Windows.Forms.Padding(2);
             this.cbB_COMID.Name = "cbB_COMID";
-            this.cbB_COMID.Size = new System.Drawing.Size(128, 20);
+            this.cbB_COMID.Size = new System.Drawing.Size(128, 23);
             this.cbB_COMID.TabIndex = 1;
             this.cbB_COMID.SelectedIndexChanged += new System.EventHandler(this.cbB_COMID_SelectedIndexChanged);
             this.cbB_COMID.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbB_COMID_MouseClick);
@@ -664,7 +657,7 @@
             this.label5.Location = new System.Drawing.Point(182, 19);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 12);
+            this.label5.Size = new System.Drawing.Size(60, 15);
             this.label5.TabIndex = 2;
             this.label5.Text = "波特率:";
             // 
@@ -674,7 +667,7 @@
             this.label1.Location = new System.Drawing.Point(6, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
+            this.label1.Size = new System.Drawing.Size(60, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "端口号:";
             // 
@@ -729,7 +722,7 @@
             this.cB_Beep.AutoSize = true;
             this.cB_Beep.Location = new System.Drawing.Point(486, 86);
             this.cB_Beep.Name = "cB_Beep";
-            this.cB_Beep.Size = new System.Drawing.Size(72, 16);
+            this.cB_Beep.Size = new System.Drawing.Size(89, 19);
             this.cB_Beep.TabIndex = 33;
             this.cB_Beep.Text = "寻卡响声";
             this.cB_Beep.UseVisualStyleBackColor = true;
@@ -755,16 +748,15 @@
             "TAG"});
             this.comboBox1.Location = new System.Drawing.Point(717, 85);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(52, 20);
+            this.comboBox1.Size = new System.Drawing.Size(52, 23);
             this.comboBox1.TabIndex = 41;
-            this.comboBox1.Visible = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(624, 89);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 12);
+            this.label9.Size = new System.Drawing.Size(112, 15);
             this.label9.TabIndex = 40;
             this.label9.Text = "测试版分路切换";
             this.label9.Visible = false;
@@ -786,7 +778,7 @@
             this.LossShow.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.LossShow.Location = new System.Drawing.Point(769, 63);
             this.LossShow.Name = "LossShow";
-            this.LossShow.Size = new System.Drawing.Size(0, 21);
+            this.LossShow.Size = new System.Drawing.Size(0, 27);
             this.LossShow.TabIndex = 3;
             // 
             // Cb_Test
@@ -794,7 +786,7 @@
             this.Cb_Test.AutoSize = true;
             this.Cb_Test.Location = new System.Drawing.Point(563, 43);
             this.Cb_Test.Name = "Cb_Test";
-            this.Cb_Test.Size = new System.Drawing.Size(48, 16);
+            this.Cb_Test.Size = new System.Drawing.Size(59, 19);
             this.Cb_Test.TabIndex = 31;
             this.Cb_Test.Text = "测试";
             this.Cb_Test.UseVisualStyleBackColor = true;
@@ -805,9 +797,9 @@
             // 
             this.cB_TagFocus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cB_TagFocus.AutoSize = true;
-            this.cB_TagFocus.Location = new System.Drawing.Point(486, 64);
+            this.cB_TagFocus.Location = new System.Drawing.Point(486, 61);
             this.cB_TagFocus.Name = "cB_TagFocus";
-            this.cB_TagFocus.Size = new System.Drawing.Size(72, 16);
+            this.cB_TagFocus.Size = new System.Drawing.Size(93, 19);
             this.cB_TagFocus.TabIndex = 32;
             this.cB_TagFocus.Text = "TagFocus";
             this.cB_TagFocus.UseVisualStyleBackColor = true;
@@ -817,9 +809,9 @@
             // 
             this.cB_FastID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cB_FastID.AutoSize = true;
-            this.cB_FastID.Location = new System.Drawing.Point(486, 20);
+            this.cB_FastID.Location = new System.Drawing.Point(486, 17);
             this.cB_FastID.Name = "cB_FastID";
-            this.cB_FastID.Size = new System.Drawing.Size(60, 16);
+            this.cB_FastID.Size = new System.Drawing.Size(77, 19);
             this.cB_FastID.TabIndex = 29;
             this.cB_FastID.Text = "FastID";
             this.cB_FastID.UseVisualStyleBackColor = true;
@@ -829,9 +821,9 @@
             // 
             this.cB_OutLineClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cB_OutLineClear.AutoSize = true;
-            this.cB_OutLineClear.Location = new System.Drawing.Point(486, 42);
+            this.cB_OutLineClear.Location = new System.Drawing.Point(486, 39);
             this.cB_OutLineClear.Name = "cB_OutLineClear";
-            this.cB_OutLineClear.Size = new System.Drawing.Size(72, 16);
+            this.cB_OutLineClear.Size = new System.Drawing.Size(89, 19);
             this.cB_OutLineClear.TabIndex = 30;
             this.cB_OutLineClear.Text = "离线清除";
             this.cB_OutLineClear.UseVisualStyleBackColor = true;
@@ -843,7 +835,7 @@
             this.label_SpeedOfInv.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_SpeedOfInv.Location = new System.Drawing.Point(141, 38);
             this.label_SpeedOfInv.Name = "label_SpeedOfInv";
-            this.label_SpeedOfInv.Size = new System.Drawing.Size(0, 19);
+            this.label_SpeedOfInv.Size = new System.Drawing.Size(0, 24);
             this.label_SpeedOfInv.TabIndex = 0;
             // 
             // label_speed
@@ -853,7 +845,7 @@
             this.label_speed.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_speed.Location = new System.Drawing.Point(141, 38);
             this.label_speed.Name = "label_speed";
-            this.label_speed.Size = new System.Drawing.Size(0, 19);
+            this.label_speed.Size = new System.Drawing.Size(0, 24);
             this.label_speed.TabIndex = 0;
             // 
             // label3
@@ -863,7 +855,7 @@
             this.label3.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(42, 38);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 19);
+            this.label3.Size = new System.Drawing.Size(123, 24);
             this.label3.TabIndex = 25;
             this.label3.Text = "识别速率:";
             // 
@@ -874,7 +866,7 @@
             this.label_NumOfTags.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_NumOfTags.Location = new System.Drawing.Point(147, 79);
             this.label_NumOfTags.Name = "label_NumOfTags";
-            this.label_NumOfTags.Size = new System.Drawing.Size(0, 19);
+            this.label_NumOfTags.Size = new System.Drawing.Size(0, 24);
             this.label_NumOfTags.TabIndex = 0;
             // 
             // lb_totaltimes
@@ -884,7 +876,7 @@
             this.lb_totaltimes.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb_totaltimes.Location = new System.Drawing.Point(368, 79);
             this.lb_totaltimes.Name = "lb_totaltimes";
-            this.lb_totaltimes.Size = new System.Drawing.Size(0, 19);
+            this.lb_totaltimes.Size = new System.Drawing.Size(0, 24);
             this.lb_totaltimes.TabIndex = 0;
             // 
             // lB_times
@@ -894,7 +886,7 @@
             this.lB_times.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lB_times.Location = new System.Drawing.Point(368, 38);
             this.lB_times.Name = "lB_times";
-            this.lB_times.Size = new System.Drawing.Size(0, 19);
+            this.lB_times.Size = new System.Drawing.Size(0, 24);
             this.lB_times.TabIndex = 0;
             // 
             // label6
@@ -904,7 +896,7 @@
             this.label6.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.Location = new System.Drawing.Point(262, 79);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 19);
+            this.label6.Size = new System.Drawing.Size(123, 24);
             this.label6.TabIndex = 28;
             this.label6.Text = "读取次数:";
             // 
@@ -915,7 +907,7 @@
             this.label8.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.Location = new System.Drawing.Point(692, 38);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 19);
+            this.label8.Size = new System.Drawing.Size(123, 24);
             this.label8.TabIndex = 38;
             this.label8.Text = "识别时间:";
             // 
@@ -926,7 +918,7 @@
             this.label4.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.Location = new System.Drawing.Point(262, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 19);
+            this.label4.Size = new System.Drawing.Size(123, 24);
             this.label4.TabIndex = 27;
             this.label4.Text = "识别时间:";
             // 
@@ -937,7 +929,7 @@
             this.label2.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(41, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 19);
+            this.label2.Size = new System.Drawing.Size(123, 24);
             this.label2.TabIndex = 26;
             this.label2.Text = "标签个数:";
             // 
@@ -960,7 +952,7 @@
             "Español"});
             this.cB_Language.Location = new System.Drawing.Point(506, 29);
             this.cB_Language.Name = "cB_Language";
-            this.cB_Language.Size = new System.Drawing.Size(130, 20);
+            this.cB_Language.Size = new System.Drawing.Size(130, 23);
             this.cB_Language.TabIndex = 6;
             this.cB_Language.Visible = false;
             this.cB_Language.SelectedIndexChanged += new System.EventHandler(this.cB_Language_SelectedIndexChanged);
@@ -978,7 +970,7 @@
             "Other"});
             this.cB_protocoltype.Location = new System.Drawing.Point(571, 55);
             this.cB_protocoltype.Name = "cB_protocoltype";
-            this.cB_protocoltype.Size = new System.Drawing.Size(65, 20);
+            this.cB_protocoltype.Size = new System.Drawing.Size(65, 23);
             this.cB_protocoltype.TabIndex = 8;
             this.cB_protocoltype.Visible = false;
             this.cB_protocoltype.SelectedIndexChanged += new System.EventHandler(this.cB_protocoltype_SelectedIndexChanged);
@@ -988,7 +980,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(506, 61);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.Size = new System.Drawing.Size(82, 15);
             this.label7.TabIndex = 7;
             this.label7.Text = "协议类型：";
             this.label7.Visible = false;
@@ -1024,7 +1016,6 @@
             // 
             // timPIO
             // 
-            this.timPIO.Interval = 300;
             this.timPIO.Tick += new System.EventHandler(this.timPIO_Tick);
             // 
             // tmr_Limpiar_TipoC
@@ -1034,7 +1025,7 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1180, 610);
@@ -1159,7 +1150,7 @@
         private System.Windows.Forms.CheckBox chkTest;
         private System.Windows.Forms.Timer tmr_Limpiar_TipoC;
         private System.Windows.Forms.Timer timer8;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button btnChangeVisibility;
     }
 }
 

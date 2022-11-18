@@ -23,7 +23,7 @@ namespace R2000Demo
         {
             List<ReadTag> Result = new List<ReadTag>();
             string constr = ConfigurationManager.ConnectionStrings["cnn"].ToString();
-
+            //
             using (SqlConnection con = new SqlConnection(constr))
             {
                 SqlCommand com = new SqlCommand("usp_GetReadTags", con);
@@ -86,7 +86,6 @@ namespace R2000Demo
                 com.Parameters.AddWithValue("@Color", obj.Color);
                 com.Parameters.AddWithValue("@ModuloId", obj.ModuloId);
                 com.Parameters.AddWithValue("@ModuloRol", obj.ModuloRol);
-
 
                 try
                 {
