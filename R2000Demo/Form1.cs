@@ -289,8 +289,11 @@ namespace R2000Demo
         }
         private void button_inv_mul_Click(object sender, EventArgs e)
         {
+            //Todo: StopInvMul() revisar 
+            StopInvMul();
             UInt32[] data = new UInt32[1];
             ReaderParams.Read_Reg_Data((byte)1, 0x0000000B, data); //Obtiene el Id del Modulo
+            
             ReaderParams.ModuloId = data[0].ToString("D8");
             ReaderParams.ModuloRol = ConfigurationManager.AppSettings["modulorol"]; //Proyecto Modulo-Puerta 
 
@@ -643,6 +646,8 @@ namespace R2000Demo
                     ReaderParams.nsStream = ReaderParams.tcpClient.GetStream();
 
                     //Actualización José Liza 2021-03-14
+                    //Todo: StopInvMul() revisar 
+                    StopInvMul();
                     UInt32[] data = new UInt32[1];
                     ReaderParams.Read_Reg_Data((byte)1, 0x0000000B, data);
                     ReaderParams.ModuloId = data[0].ToString("D8");

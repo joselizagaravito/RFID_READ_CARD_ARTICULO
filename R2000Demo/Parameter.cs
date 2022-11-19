@@ -221,19 +221,18 @@ namespace R2000Demo
                 recount = ReaderParams.Netrecount;
                 if (true == ReaderParams.nsStream.CanRead)
                 {
-                    while (true == ReaderParams.nsStream.DataAvailable)
+                    while(true == ReaderParams.nsStream.DataAvailable)
                     {
                         ReaderParams.nsStream.Read(revbuf, 0, revbuf.Length);
                     }
                     revlen = 0;
-                    ReaderParams.nsStream.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));//发送测试信息
+                    ReaderParams.nsStream.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));
                 }
                 else
                 {
                     MessageBox.Show("网口未连接，操作失败", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return -1;
                 }
-
 
                 while ((recount != 0) && (false == ReaderParams.nsStream.DataAvailable))
                 {
@@ -248,16 +247,17 @@ namespace R2000Demo
                 {
                     System.Threading.Thread.Sleep(100);
                     revlen = ReaderParams.nsStream.Read(revbuf, 0, revbuf.Length);
-                }
+                }       
+
             }
 
             //判断是否设置成功
-            if (!((revbuf[0] == CMD.FRAME_HEAD_FIRST)
+            if (!((revbuf[0] == CMD.FRAME_HEAD_FIRST) 
                 && (revbuf[1] == CMD.FRAME_HEAD_SECOND)
                 && (revbuf[2] == 0x00) && (revbuf[3] == 0x11)
                 && (revbuf[4] == CMD.FRAME_CMD_GET_REQ_RSP)
                 && (revbuf[5] == 0x01)))
-            {
+            {                
                 return -1;
             }
 
