@@ -52,6 +52,8 @@ namespace R2000Demo
         DateTime netovertime;
         bool beepflag;
 
+        //Actualizacion Jose Liza 2022-11-19
+        bool estadoLectura=false;
 
         public string guardarLecturaTipoC;
         public string guardarEpcTipoA;
@@ -282,19 +284,20 @@ namespace R2000Demo
             StartTime = DateTime.Now;
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
-            guardarLecturaTipoC = "";
-            listaTagsAsignados.Clear();
+            //guardarLecturaTipoC = "";
+            //listaTagsAsignados.Clear();
 
 
         }
         private void button_inv_mul_Click(object sender, EventArgs e)
         {
-            //Todo: StopInvMul() revisar 
-            StopInvMul();
-            UInt32[] data = new UInt32[1];
-            ReaderParams.Read_Reg_Data((byte)1, 0x0000000B, data); //Obtiene el Id del Modulo
-            
-            ReaderParams.ModuloId = data[0].ToString("D8");
+            clicBtnMultiple();
+
+        }
+        private void clicBtnMultiple()
+        {
+            //TODO: Jose Liza 2022-11-19
+            ReaderParams.ModuloId = ConfigurationManager.AppSettings["tiempo01"];
             ReaderParams.ModuloRol = ConfigurationManager.AppSettings["modulorol"]; //Proyecto Modulo-Puerta 
 
             button_inv_mul.Enabled = false;
@@ -305,6 +308,127 @@ namespace R2000Demo
         }
         private void multiread()//inicia las lecturas
         {
+            if ((button_inv_mul.Text == "连续寻卡") || (button_inv_mul.Text == "Multiple"))
+            {
+                ActivarLecturas();
+            }
+            else if ((button_inv_mul.Text == "停止") || ((button_inv_mul.Text == "Stop")) || ((button_inv_mul.Text == "Parar")))
+            {
+                DetenerLecturas();
+            }
+        }
+
+        //Actualización José Liza 2022-11-19
+        private void ActivarLecturas() {
+            Byte[] revbuf = new Byte[500];           //Recibir búfer
+            MulStartTime = DateTime.Now;
+            OutLineTime = DateTime.Now;
+            if ((ReaderParams.tcpClient != null) && (ReaderParams.tcpClient.Connected))
+            {
+                netovertime = DateTime.Now;
+                timer7.Enabled = true;
+            }
+            if (cB_Beep.Checked == true)
+            {
+                timer4.Enabled = true;
+                beepflag = false;
+            }
+            if (0 == ReaderParams.ProtocolFlag)
+            {
+                RevDataFrom232 = new Thread(new ThreadStart(ReceiveDataFromUART));
+            }
+            else
+            {
+                RevDataFrom232 = new Thread(new ThreadStart(ReceiveDataFromUARTSUM));
+            }
+
+            threadFlag = 1;
+            if (2 == ReaderParams.LanguageFlag)
+            {
+                button_inv_mul.Text = "Parar";
+            }
+
+            menu(false);
+            NETToolStripMenuItem.Enabled = false;
+            button_singleInv.Enabled = false;
+            cB_OutLineClear.Enabled = false;
+            cB_FastID.Enabled = false;
+            cB_TagFocus.Enabled = false;
+            listView_Disp.FullRowSelect = false;
+            button_export.Enabled = false;
+            btn_OPEN_CLOSE.Enabled = false;
+            comboBox1.Enabled = false;
+            button1.Enabled = false;
+            cB_Beep.Enabled = false;
+            UInt16 len = 2;
+            byte[] buf = new byte[2];
+            button2.Enabled = false;
+            /* 获取当前时间，计算标签识别速率用的 */
+            StartTime = DateTime.Now;
+            lb_current.Text = "0";
+            lb_count.Text = "0";
+            tagnum = 0;
+            m_Tags.Clear();
+            m_IndTag.Clear();
+            m_SortTag.Clear();
+            timer6.Enabled = true;
+            buf[0] = (byte)(UInt16.Parse(textBox1.Text) >> 8);
+            buf[1] = (byte)(UInt16.Parse(textBox1.Text));
+
+            if (0 == ReaderParams.ProtocolFlag)
+            {
+                ReadWriteIO.sendFrameBuild(buf, CMD.FRAME_CMD_INVENTORY_MUL, len);
+            }
+            else
+            {
+                ReadWriteIO.sendFrameBuild(buf, 0x17, len);
+            }
+
+            if (1 == ReaderParams.CommIntSelectFlag)
+            {
+                if (ReadWriteIO.comm.IsOpen)
+                {
+                    ReadWriteIO.comm.DiscardInBuffer();
+                    ReadWriteIO.comm.DiscardOutBuffer();
+                    if (0 == ReaderParams.ProtocolFlag)
+                    {
+                        ReadWriteIO.comm.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));
+                    }
+                    else
+                    {
+                        ReadWriteIO.comm.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN - 2));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Puerto no esta abierto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                    return;
+                }
+            }
+            else
+            {
+                if (true == ReaderParams.nsStream.CanRead)
+                {
+                    while (true == ReaderParams.nsStream.DataAvailable)
+                    {
+                        ReaderParams.nsStream.Read(revbuf, 0, revbuf.Length);
+                    }
+                    ReaderParams.nsStream.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));//发送测试信息
+                }
+                else
+                {
+                    MessageBox.Show("Puerto de red no esta conectada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                    return;
+                }
+            }
+
+            timer1.Enabled = true;
+
+            RevDataFrom232.Start();
+        }
+        private void DetenerLecturas() {
             Byte[] revbuf = new Byte[500];           //Recibir búfer
             MulStartTime = DateTime.Now;
             OutLineTime = DateTime.Now;
@@ -329,128 +453,38 @@ namespace R2000Demo
 
             threadFlag = 1;
 
-            if ((button_inv_mul.Text == "连续寻卡") || (button_inv_mul.Text == "Multiple"))
+            button_inv_mul.Text = "Multiple";
+            if ((playsound != null) && (playsound.IsAlive))
             {
-                if (2 == ReaderParams.LanguageFlag)
-                {
-                    button_inv_mul.Text = "Parar";
-                }
-
-                menu(false);
-                NETToolStripMenuItem.Enabled = false;
-                button_singleInv.Enabled = false;
-                cB_OutLineClear.Enabled = false;
-                cB_FastID.Enabled = false;
-                cB_TagFocus.Enabled = false;
-                listView_Disp.FullRowSelect = false;
-                button_export.Enabled = false;
-                btn_OPEN_CLOSE.Enabled = false;
-                comboBox1.Enabled = false;
-                button1.Enabled = false;
-                cB_Beep.Enabled = false;
-                UInt16 len = 2;
-                byte[] buf = new byte[2];
-                button2.Enabled = false;
-                /* 获取当前时间，计算标签识别速率用的 */
-                StartTime = DateTime.Now;
-                lb_current.Text = "0";
-                lb_count.Text = "0";
-                tagnum = 0;
-                m_Tags.Clear();
-                m_IndTag.Clear();
-                m_SortTag.Clear();
-                timer6.Enabled = true;
-                buf[0] = (byte)(UInt16.Parse(textBox1.Text) >> 8);
-                buf[1] = (byte)(UInt16.Parse(textBox1.Text));
-
-                if (0 == ReaderParams.ProtocolFlag)
-                {
-                    ReadWriteIO.sendFrameBuild(buf, CMD.FRAME_CMD_INVENTORY_MUL, len);
-                }
-                else
-                {
-                    ReadWriteIO.sendFrameBuild(buf, 0x17, len);
-                }
-
-                if (1 == ReaderParams.CommIntSelectFlag)
-                {
-                    if (ReadWriteIO.comm.IsOpen)
-                    {
-                        ReadWriteIO.comm.DiscardInBuffer();
-                        ReadWriteIO.comm.DiscardOutBuffer();
-                        if (0 == ReaderParams.ProtocolFlag)
-                        {
-                            ReadWriteIO.comm.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));
-                        }
-                        else
-                        {
-                            ReadWriteIO.comm.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN - 2));
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Puerto no esta abierto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
-                        return;
-                    }
-                }
-                else
-                {
-                    if (true == ReaderParams.nsStream.CanRead)
-                    {
-                        while (true == ReaderParams.nsStream.DataAvailable)
-                        {
-                            ReaderParams.nsStream.Read(revbuf, 0, revbuf.Length);
-                        }
-                        ReaderParams.nsStream.Write(ReadWriteIO.SendBuf, 0, (len + CMD.FRAME_HEADEND_LEN));//发送测试信息
-                    }
-                    else
-                    {
-                        MessageBox.Show("Puerto de red no esta conectada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
-                        return;
-                    }
-                }
-
-                timer1.Enabled = true;
-
-                RevDataFrom232.Start();
-
+                playsound.Abort();
             }
-            else if ((button_inv_mul.Text == "停止") || ((button_inv_mul.Text == "Stop")) || ((button_inv_mul.Text == "Parar")))
+            if ((ReaderParams.tcpClient != null) && (ReaderParams.tcpClient.Connected))
             {
-                button_inv_mul.Text = "Multiple";
-                if ((playsound != null) && (playsound.IsAlive))
-                {
-                    playsound.Abort();
-                }
-                if ((ReaderParams.tcpClient != null) && (ReaderParams.tcpClient.Connected))
-                {
-                    timer7.Enabled = false;
-                }
-                System.Threading.Thread.Sleep(100);
-                StopInvMul();
-                button_singleInv.Enabled = true;
-                menu(true);
-                NETToolStripMenuItem.Enabled = false;
-                timer1.Enabled = false;
-                cB_OutLineClear.Enabled = true;
-                cB_FastID.Enabled = true;
-                cB_TagFocus.Enabled = true;
-                listView_Disp.FullRowSelect = true;
-                button_export.Enabled = true;
-                btn_OPEN_CLOSE.Enabled = true;
-                LastTotalNumOfTags = 0;
-                comboBox1.Enabled = true;
-                button1.Enabled = true;
-                timer4.Enabled = false;
-                cB_Beep.Enabled = true;
-                button2.Enabled = true;
-                timer6.Enabled = false;
-                OutLineTime = DateTime.Now;
-
+                timer7.Enabled = false;
             }
+            System.Threading.Thread.Sleep(100);
+            StopInvMul();
+            button_singleInv.Enabled = true;
+            menu(true);
+            NETToolStripMenuItem.Enabled = false;
+            timer1.Enabled = false;
+            cB_OutLineClear.Enabled = true;
+            cB_FastID.Enabled = true;
+            cB_TagFocus.Enabled = true;
+            listView_Disp.FullRowSelect = true;
+            button_export.Enabled = true;
+            btn_OPEN_CLOSE.Enabled = true;
+            LastTotalNumOfTags = 0;
+            comboBox1.Enabled = true;
+            button1.Enabled = true;
+            timer4.Enabled = false;
+            cB_Beep.Enabled = true;
+            button2.Enabled = true;
+            timer6.Enabled = false;
+            OutLineTime = DateTime.Now;
+
         }
+
         private void StopInvMul()
         {
             UInt16 len = 0;
@@ -645,13 +679,9 @@ namespace R2000Demo
                     //获得与服务器数据交互的流通道（NetworkStream)
                     ReaderParams.nsStream = ReaderParams.tcpClient.GetStream();
 
-                    //Actualización José Liza 2021-03-14
-                    //Todo: StopInvMul() revisar 
-                    StopInvMul();
-                    UInt32[] data = new UInt32[1];
-                    ReaderParams.Read_Reg_Data((byte)1, 0x0000000B, data);
-                    ReaderParams.ModuloId = data[0].ToString("D8");
-
+                    //Actualización José Liza 2022-11-19                   
+                    //ReaderParams.ModuloId = data[0].ToString("D8");
+                    ReaderParams.ModuloId = ConfigurationManager.AppSettings["tiempo01"];
 
                 }
                 else if ("COM" == str)
@@ -2992,6 +3022,10 @@ namespace R2000Demo
                                         //variable que registra la hora en que pinto rojo t1
                                         ActivarAlarma(100);
 
+                                        //TODO: Detener Lectura
+                                        clicBtnMultiple();
+
+                                        //Fin
                                     }
                                     else
                                     {
@@ -3394,7 +3428,7 @@ namespace R2000Demo
         private void timPIO_Tick(object sender, EventArgs e)
         {
 
-            ActivarGPIO("3", false); //Salida numero 3 del Modulo
+            ActivarGPIO("3", false); //Salida numero 3 del Modulo para detener el sonido
             estadoAlarmaActivada = false;
             timPIO.Enabled = false;
             timPIO.Stop();
