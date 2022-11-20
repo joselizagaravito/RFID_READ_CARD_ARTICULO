@@ -3023,7 +3023,11 @@ namespace R2000Demo
                                         ActivarAlarma(100);
 
                                         //TODO: Detener Lectura
+<<<<<<< HEAD
                                         clicBtnMultiple();
+=======
+
+>>>>>>> 59330be06ccaa37e1434473e06a0c972a68b3d06
 
                                         //Fin
                                     }
