@@ -1106,3 +1106,4 @@ C:\Users\rober\Documents\GitHub\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\log4
 C:\Users\rober\Documents\GitHub\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\log4net.dll
 C:\Users\rober\Documents\GitHub\RFID_READ_CARD_ARTICULO\R2000Demo\bin\Debug\log4net.xml
 C:\Users\rober\Documents\GitHub\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.CopyComplete
+C:\Mis Documentos\PedroClavijo\Santos\RFID_READ_CARD_ARTICULO\R2000Demo\obj\Debug\R2000Demo.csproj.AssemblyReference.cache
