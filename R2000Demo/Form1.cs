@@ -2907,10 +2907,13 @@ namespace R2000Demo
 
             if (num <= 100)
             {
-
+                
+                //listaTagsLeidos.Clear();
                 for (long i = 0; i < num; i++)
                 {
                     ListViewItem item = new ListViewItem((listView_Disp.Items.Count + 1).ToString());
+                
+
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].epcid);
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].tid);
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].readcnt.ToString());
@@ -3022,13 +3025,11 @@ namespace R2000Demo
                                         //variable que registra la hora en que pinto rojo t1
                                         ActivarAlarma(100);
 
-                                        //TODO: Detener Lectura
-<<<<<<< HEAD
+                                        //TODO: Detener Lectura                          
                                         clicBtnMultiple();
-=======
-
->>>>>>> 59330be06ccaa37e1434473e06a0c972a68b3d06
-
+                                        Thread.Sleep(3000);
+                                        listView_Disp.Items.Clear();
+                                        clicBtnMultiple();
                                         //Fin
                                     }
                                     else
@@ -3050,7 +3051,16 @@ namespace R2000Demo
 
                         }
 
-                        listaTagsLeidos.Clear();
+                        //listaTagsLeidos.Clear();
+
+                        //TODO: Limpiar el ListView cuando todos los tags esten Authorizados
+                        if (listaTagsAsignados.Count == listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[8].Text == "Green").Count())
+                        {                            
+                            clicBtnMultiple();
+                            Thread.Sleep(3000);
+                            listView_Disp.Items.Clear();
+                            clicBtnMultiple();
+                        }
                     }
                 }
             }
