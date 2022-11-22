@@ -2901,10 +2901,13 @@ namespace R2000Demo
         }
 
         DateTime OutLineTime;
+        //guardar un listview en un string 
+        
+        //ListViewItem itemCoincide = new ListViewItem();
 
         public void PageShow(int num)
         {
-
+            //listView_Disp.Items.Clear();
             if (num <= 100)
             {
                 
@@ -2912,8 +2915,8 @@ namespace R2000Demo
                 for (long i = 0; i < num; i++)
                 {
                     ListViewItem item = new ListViewItem((listView_Disp.Items.Count + 1).ToString());
-                
 
+                    //System.Threading.Thread.Sleep(1000);
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].epcid);
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].tid);
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].readcnt.ToString());
@@ -2998,6 +3001,8 @@ namespace R2000Demo
                             }
                         }
                     }
+                    
+                    //limpiar las variables
 
                     //TODO: Validacion Card Holder
                     if (guardarLecturaTipoC == "C" && guardarLecturaTipoA == "A")
@@ -3019,17 +3024,24 @@ namespace R2000Demo
                                         GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Red.Name.ToString());
                                         GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
                                         var itemToUpdate = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == tag.Epc).FirstOrDefault();
-                                        itemToUpdate.SubItems[8].Text = tagNuevo.Color;
                                         itemToUpdate.BackColor = Color.FromName(tagNuevo.Color);
+                                        itemToUpdate.SubItems[8].Text = tagNuevo.Color;
+
 
                                         //variable que registra la hora en que pinto rojo t1
                                         ActivarAlarma(100);
 
-                                        //TODO: Detener Lectura                          
-                                        clicBtnMultiple();
-                                        Thread.Sleep(3000);
+                                        //TODO: Detener Lectura
+                                        System.Threading.Thread.Sleep(1000);
+                                        button_inv_mul.PerformClick();
                                         listView_Disp.Items.Clear();
-                                        clicBtnMultiple();
+                                        guardarLecturaTipoC = "";
+                                        guardarLecturaTipoA = "";
+
+                                        button_inv_mul.PerformClick();
+
+
+
                                         //Fin
                                     }
                                     else
@@ -3051,15 +3063,17 @@ namespace R2000Demo
 
                         }
 
-                        //listaTagsLeidos.Clear();
+                        listaTagsLeidos.Clear();
 
-                        //TODO: Limpiar el ListView cuando todos los tags esten Authorizados
                         if (listaTagsAsignados.Count == listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[8].Text == "Green").Count())
-                        {                            
-                            clicBtnMultiple();
-                            Thread.Sleep(3000);
+                        {
+                            button_inv_mul.PerformClick();
                             listView_Disp.Items.Clear();
-                            clicBtnMultiple();
+                            guardarLecturaTipoC = "";
+                            guardarLecturaTipoA = "";
+                            System.Threading.Thread.Sleep(1000);
+                            button_inv_mul.PerformClick();
+
                         }
                     }
                 }
@@ -3447,7 +3461,7 @@ namespace R2000Demo
             timPIO.Enabled = false;
             timPIO.Stop();
             multiread();
-            //estadoAlarmaActivada = false;
+            estadoAlarmaActivada = false;
         }
         private void btnTest_Click(object sender, EventArgs e)
         {
