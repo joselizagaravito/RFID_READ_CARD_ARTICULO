@@ -118,6 +118,7 @@
             this.timPIO = new System.Windows.Forms.Timer(this.components);
             this.tmr_Limpiar_TipoC = new System.Windows.Forms.Timer(this.components);
             this.timer8 = new System.Windows.Forms.Timer(this.components);
+            this.StopClear = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -139,7 +140,7 @@
             this.NETToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 26);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -148,7 +149,7 @@
             this.BasicParaSet.BackColor = System.Drawing.Color.DarkKhaki;
             this.BasicParaSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.BasicParaSet.Name = "BasicParaSet";
-            this.BasicParaSet.Size = new System.Drawing.Size(94, 26);
+            this.BasicParaSet.Size = new System.Drawing.Size(94, 22);
             this.BasicParaSet.Text = "基本设置";
             this.BasicParaSet.Click += new System.EventHandler(this.ParaSet_Click);
             // 
@@ -156,7 +157,7 @@
             // 
             this.AdvanceParaSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AdvanceParaSet.Name = "AdvanceParaSet";
-            this.AdvanceParaSet.Size = new System.Drawing.Size(94, 26);
+            this.AdvanceParaSet.Size = new System.Drawing.Size(94, 22);
             this.AdvanceParaSet.Text = "高级设置";
             this.AdvanceParaSet.Click += new System.EventHandler(this.标签操作ToolStripMenuItem_Click);
             // 
@@ -164,7 +165,7 @@
             // 
             this.TagOperate.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TagOperate.Name = "TagOperate";
-            this.TagOperate.Size = new System.Drawing.Size(94, 26);
+            this.TagOperate.Size = new System.Drawing.Size(94, 22);
             this.TagOperate.Text = "标签操作";
             this.TagOperate.Click += new System.EventHandler(this.空口协议设置ToolStripMenuItem_Click);
             // 
@@ -172,7 +173,7 @@
             // 
             this.RegOperate.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.RegOperate.Name = "RegOperate";
-            this.RegOperate.Size = new System.Drawing.Size(76, 26);
+            this.RegOperate.Size = new System.Drawing.Size(76, 22);
             this.RegOperate.Text = "寄存器";
             this.RegOperate.Click += new System.EventHandler(this.辅助信息ToolStripMenuItem_Click);
             // 
@@ -184,7 +185,7 @@
             this.双间隙读取测试ToolStripMenuItem});
             this.OtherSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.OtherSet.Name = "OtherSet";
-            this.OtherSet.Size = new System.Drawing.Size(94, 26);
+            this.OtherSet.Size = new System.Drawing.Size(94, 22);
             this.OtherSet.Text = "其他设置";
             this.OtherSet.Click += new System.EventHandler(this.在线下载ToolStripMenuItem_Click);
             // 
@@ -216,7 +217,7 @@
             // 
             this.天线设置ToolStripMenuItem.Font = new System.Drawing.Font("SimSun", 10.5F);
             this.天线设置ToolStripMenuItem.Name = "天线设置ToolStripMenuItem";
-            this.天线设置ToolStripMenuItem.Size = new System.Drawing.Size(94, 26);
+            this.天线设置ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.天线设置ToolStripMenuItem.Text = "天线设置";
             this.天线设置ToolStripMenuItem.Click += new System.EventHandler(this.天线设置ToolStripMenuItem_Click);
             // 
@@ -224,7 +225,7 @@
             // 
             this.AboutusSet.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AboutusSet.Name = "AboutusSet";
-            this.AboutusSet.Size = new System.Drawing.Size(94, 26);
+            this.AboutusSet.Size = new System.Drawing.Size(94, 22);
             this.AboutusSet.Text = "关于我们";
             this.AboutusSet.Click += new System.EventHandler(this.AboutusSet_Click);
             // 
@@ -232,7 +233,7 @@
             // 
             this.NETToolStripMenuItem.Font = new System.Drawing.Font("SimSun", 10.5F);
             this.NETToolStripMenuItem.Name = "NETToolStripMenuItem";
-            this.NETToolStripMenuItem.Size = new System.Drawing.Size(94, 26);
+            this.NETToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.NETToolStripMenuItem.Text = "网口设置";
             this.NETToolStripMenuItem.Click += new System.EventHandler(this.网口模块ToolStripMenuItem_Click);
             // 
@@ -675,6 +676,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.StopClear);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.cB_Beep);
             this.groupBox3.Controls.Add(this.button1);
@@ -1023,6 +1025,16 @@
             this.tmr_Limpiar_TipoC.Interval = 9000;
             this.tmr_Limpiar_TipoC.Tick += new System.EventHandler(this.tmr_Limpiar_TipoC_Tick);
             // 
+            // StopClear
+            // 
+            this.StopClear.Location = new System.Drawing.Point(1005, 17);
+            this.StopClear.Name = "StopClear";
+            this.StopClear.Size = new System.Drawing.Size(75, 23);
+            this.StopClear.TabIndex = 43;
+            this.StopClear.Text = "Detener";
+            this.StopClear.UseVisualStyleBackColor = true;
+            this.StopClear.Click += new System.EventHandler(this.StopClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1151,6 +1163,7 @@
         private System.Windows.Forms.Timer tmr_Limpiar_TipoC;
         private System.Windows.Forms.Timer timer8;
         private System.Windows.Forms.Button btnChangeVisibility;
+        private System.Windows.Forms.Button StopClear;
     }
 }
 
