@@ -409,3 +409,8 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
+.vs/R2000Demo/v17/.suo
+R2000Demo/bin/Debug/UHF RFID Demo V2.1.25.5.exe
+R2000Demo/bin/Debug/UHF RFID Demo V2.1.25.5.pdb
+R2000Demo/obj/Debug/UHF RFID Demo V2.1.25.5.exe
+R2000Demo/obj/Debug/UHF RFID Demo V2.1.25.5.pdb
