@@ -271,6 +271,12 @@ namespace R2000Demo
 
         private void button_clr_Click(object sender, EventArgs e)
         {
+            limpiar();
+
+        }
+
+        private void limpiar()
+        {
             m_Tags.Clear();
             m_IndTag.Clear();
             m_SortTag.Clear();
@@ -284,9 +290,6 @@ namespace R2000Demo
             //StartTime = DateTime.Now;
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
-            //guardarLecturaTipoC = "";
-            //listaTagsAsignados.Clear();
-
         }
 
         private void button_inv_mul_Click(object sender, EventArgs e)
@@ -2904,14 +2907,13 @@ namespace R2000Demo
 
         public void PageShow(int num)
         {
-            //listView_Disp.Items.Clear();
-            if (num <= 100)
+            
+            //Crear un sistema que muestre en un listview si el usuario esta autorizado o no usando un tag de tipo C para cardHolder y un tag de tipo A para el tag no autorizado
+            if(num <= 100)
             {
-                for (long i = 0; i < num; i++)
+                for (int i = 0; i < num; i++)
                 {
                     ListViewItem item = new ListViewItem((listView_Disp.Items.Count + 1).ToString());
-
-                    //System.Threading.Thread.Sleep(1000);
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].epcid);
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].tid);
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].readcnt.ToString());
@@ -2920,147 +2922,166 @@ namespace R2000Demo
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].times.ToString());
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].rptime);
 
-                    //Actualizacion - Jose Liza: 2021-01-24
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].color);
 
-                    //Actualizacion - José Liza: 2021-03-14 - Agregar columnas ModuloId y ModuloRol
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].moduloid.ToString());
                     item.SubItems.Add(m_SortTag[(i + 1).ToString()].modulorol);
 
                     string epc_leido = item.SubItems[1].Text;
                     string ant_leido = item.SubItems[5].Text;
+
                     IEnumerable<ListViewItem> lv = listView_Disp.Items.Cast<ListViewItem>();
                     bool epc_existe = lv.Where(r => r.SubItems[1].Text == epc_leido && r.SubItems[5].Text == ant_leido).Count() > 0;
 
                     var tagNuevo = BuscarEpc(epc_leido);
 
-                    if (!epc_existe)
+                    //si el tag no existe y es de tipo C lo agrego a la lista de autorizados
+                    if(!epc_existe)
                     {
-                        //TODO: Si el tag es de tipo C traer la lista de tags de tipo A
-
-                        if (tagNuevo.Tipo == "C")
+                        if (tagNuevo != null)
                         {
-                            guardarLecturaTipoC = tagNuevo.Tipo;
-                            guardarEpcTipoC = tagNuevo.Epc;
-
-                            listaTagsAsignados = GetTagsAsignados(tagNuevo.UsuarioId);
-
-                            item.BackColor = Color.DodgerBlue;
-                            item.SubItems[8].Text = Color.DodgerBlue.Name.ToString();
-                            GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.DodgerBlue.Name.ToString());
-                            GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
-
-                        }
-                        //TODO: Si el tag es de tipo A se almacena la lectura en una lista
-                        if (tagNuevo.Tipo == "A")
-                        {
-                            guardarLecturaTipoA = tagNuevo.Tipo;
-                            guardarEpcTipoA = tagNuevo.Epc;
-
-                            if (listaTagsLeidos.Count == 0)
+                            if (tagNuevo.Tipo == "C")
                             {
-                                listaTagsLeidos.Add(tagNuevo);
+                                //guardar el epc en una variable para luego comparar si el tag esta autorizado o no
+                                guardarLecturaTipoC = tagNuevo.Tipo;
+                                guardarEpcTipoC = tagNuevo.Epc;
+
+                                //guardar en una lista los tags autorizados
+                                listaTagsAsignados = GetTagsAsignados(tagNuevo.UsuarioId);
+
+                                //guardar el color del tag en la base de datos
+                                item.BackColor = Color.DodgerBlue;
+                                item.SubItems[8].Text = Color.DodgerBlue.Name.ToString();
+                                GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.DodgerBlue.Name.ToString());
+                                GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
+                                
                             }
-                            else
+
+                            //si el tag es de tipo A lo agrego a una lista para luego comparar si el tag esta autorizado o no
+                            if (tagNuevo.Tipo == "A")
                             {
-                                var epcRepetidoTipoA = listaTagsLeidos.Where(x => x.Epc == epc_leido).Count() > 0;
-                                if (!epcRepetidoTipoA)
+                                guardarLecturaTipoA = tagNuevo.Tipo;
+                                guardarEpcTipoA = tagNuevo.Epc;
+
+                                //alamacenar los tags de tipo A en un lista para luego usarla en la funcion de comparacion pero esta lista no debe tener tags repetidos 
+                                if(listaTagsLeidos.Count == 0)
                                 {
                                     listaTagsLeidos.Add(tagNuevo);
                                 }
+                                else
+                                {
+                                    var tagRepetido = listaTagsLeidos.Where(r => r.Epc == tagNuevo.Epc).FirstOrDefault();
+                                    if(tagRepetido == null)
+                                    {
+                                        listaTagsLeidos.Add(tagNuevo);
+                                    }
+                                }
+                                
                             }
-                        }
 
-                        var epcRepetido = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == epc_leido).Count() > 0;
-                        if (!epcRepetido)
-                        {
-                            if (DateTime.Now - OutLineTime > TimeSpan.FromSeconds(1))
+                            //aplicar un filtro para que no se dupliquen los tags en la lista
+                            var epcRepetido = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == epc_leido).Count() > 0;
+                            
+                            if (!epcRepetido)
                             {
+                                // listaTagsLeidos.Add(tagNuevo);
+                                //si el tag es de tipo A lo agrega al listview con un color naranja para que espere a ser comparado
                                 if (tagNuevo.Tipo == "A")
                                 {
                                     listView_Disp.Items.Add(item);
                                     listView_Disp.Items[listView_Disp.Items.Count - 1].BackColor = Color.Orange;
                                     listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text = Color.Orange.Name.ToString();
-                                    this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
-                                    OutLineTime = DateTime.Now;
+                                    this.listView_Disp.Items[listView_Disp.Items.Count - 1].EnsureVisible();
                                     tagNuevo = Guardarlectura(item);
                                 }
 
+                                //si el tag es de tipo C lo agrega al listview con el color que le corresponde
                                 if (tagNuevo.Tipo == "C")
                                 {
                                     listView_Disp.Items.Add(item);
-                                    this.listView_Disp.Items[this.listView_Disp.Items.Count - 1].EnsureVisible();
-                                    OutLineTime = DateTime.Now;
+                                    this.listView_Disp.Items[listView_Disp.Items.Count - 1].EnsureVisible();
                                     tagNuevo = Guardarlectura(item);
                                 }
+
                             }
+
                         }
                     }
 
-                    //TODO: Validacion Card Holder
-                    if (guardarLecturaTipoC == "C" && guardarLecturaTipoA == "A")
+                }
+
+                //TODO: Comprobacion si el usuario esta autorizado o no 
+                if (listaTagsLeidos.Count > 0 && listaTagsAsignados.Count > 0)
+                {
+                    switch (guardarLecturaTipoA)
                     {
-                        if (DateTime.Now - OutLineTime > TimeSpan.FromSeconds(1))
-                        {
-                            foreach (AsignacionTag tag in listaTagsLeidos)
+                        case "A":
+                            if (guardarLecturaTipoC == "C")
                             {
-
-                                var tagTipoC = listaTagsAsignados.Where(x => x.Epc == tagNuevo.Epc).FirstOrDefault();
-
-                                if (tag.Epc == tagNuevo.Epc)
+                                var tagAutorizado = listaTagsLeidos.Where(r => r.Epc == guardarEpcTipoA).FirstOrDefault();
+                                if (tagAutorizado != null)
                                 {
-                                    if (tagTipoC == null)
+                                    var tagAsignado = listaTagsAsignados.Where(r => r.Epc == guardarEpcTipoA).FirstOrDefault();
+                                    if (tagAsignado != null)
                                     {
-                                        item.BackColor = Color.Red;
-                                        item.SubItems[8].Text = Color.Red.Name.ToString();
+                                        var tagEnLista = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == guardarEpcTipoA).FirstOrDefault();
+                                        if (tagEnLista != null)
+                                        {
+                                            tagEnLista.BackColor = Color.Green;
+                                            tagEnLista.SubItems[8].Text = Color.Green.Name.ToString();
+                                            GuardarColor(tagEnLista.SubItems[1].Text, tagEnLista.SubItems[5].Text, Color.Green.Name.ToString());
+                                            GuardarColorAsignacionTag(tagEnLista.SubItems[1].Text, Convert.ToDateTime(tagEnLista.SubItems[6].Text), tagEnLista.SubItems[8].Text, Convert.ToInt32(tagEnLista.SubItems[9].Text));
 
-                                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Red.Name.ToString());
-                                        GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
-                                        var itemToUpdate = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == tag.Epc).FirstOrDefault();
-                                        itemToUpdate.BackColor = Color.FromName(tagNuevo.Color);
-                                        itemToUpdate.SubItems[8].Text = tagNuevo.Color;
-                                        ActivarAlarma(100);
+                                            listView_Disp.Refresh();
 
+                                        }
 
-                                        //TODO: Detener Lectura
-                                        //clicBtnMultiple();
-                                        //System.Threading.Thread.Sleep(1000);
-                                        //Fin
                                     }
+                                    //si el tag es de tipo A y no esta autorizado se colorea de rojo en el listview solo ese tag
                                     else
                                     {
+                                        var tagEnLista = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == guardarEpcTipoA).FirstOrDefault();
+                                        if (tagEnLista != null)
+                                        {
+                                            tagEnLista.BackColor = Color.Red;
+                                            tagEnLista.SubItems[8].Text = Color.Red.Name.ToString();
+                                            GuardarColor(tagEnLista.SubItems[1].Text, tagEnLista.SubItems[5].Text, Color.Red.Name.ToString());
+                                            GuardarColorAsignacionTag(tagEnLista.SubItems[1].Text, Convert.ToDateTime(tagEnLista.SubItems[6].Text), tagEnLista.SubItems[8].Text, Convert.ToInt32(tagEnLista.SubItems[9].Text));
+                                            listView_Disp.Refresh();
 
-                                        item.BackColor = Color.Green;
-                                        item.SubItems[8].Text = Color.Green.Name.ToString();
-                                        GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.Green.Name.ToString());
-                                        GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
-                                        var itemToUpdate = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == tag.Epc).FirstOrDefault();
-                                        itemToUpdate.SubItems[8].Text = tagNuevo.Color;
-                                        itemToUpdate.BackColor = Color.FromName(tagNuevo.Color);
+                                            Thread.Sleep(2000);
+                                            //suena la alarma
+                                            ActivarAlarma(100);
+                                            //si la alarma sono esperar 5 segundos para que termine de sonar y detener la lectura
+                                            if (estadoAlarmaActivada == true)
+                                            {
+                                                estadoAlarmaActivada = false;
+                                                //detener la lectura
+                                                clicBtnMultiple();
+
+                                            }
+
+                                        }
+                                    }
+
+                                    if (listaTagsAsignados.Count == listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[8].Text == "Green").Count())
+                                    {
+                                        clicBtnMultiple();
+                                        detenerLectura_Clear();
                                     }
 
                                 }
                             }
-
-                        }
-
-                        listaTagsLeidos.Clear();
-
-                        if (estadoAlarmaActivada == true)
-                        {
-                            clicBtnMultiple();
-                            System.Threading.Thread.Sleep(2000);
-                        }
-
-                        if (listaTagsAsignados.Count == listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[8].Text == "Green").Count())
-                        {
-                            detenerLectura_Clear();
-                            System.Threading.Thread.Sleep(1000);
-                        }
+                            break;
 
                     }
+
                 }
+
+
             }
+            
+            
         }
 
 
@@ -3479,12 +3500,15 @@ namespace R2000Demo
                 //crear boton que detenga la lectura y limpie el listview y el label de lecturas 
         private void detenerLectura_Clear()
         {
-            m_Tags.Clear();
-            m_IndTag.Clear();
-            m_SortTag.Clear();
-            tagnum = 0;
-            lb_current.Text = "0";
-            lb_count.Text = "0";
+            //DetenerLecturas();
+            System.Threading.Thread.Sleep(1000);
+
+            //m_Tags.Clear();
+            //m_IndTag.Clear();
+            //m_SortTag.Clear();
+            //tagnum = 0;
+            //lb_current.Text = "0";
+            //lb_count.Text = "0";
             listView_Disp.Items.Clear();
             label_speed.Text = "";
             label_NumOfTags.Text = "";
@@ -3492,8 +3516,8 @@ namespace R2000Demo
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
 
-            DetenerLecturas();
             System.Threading.Thread.Sleep(1000);
+
             ActivarLecturas();
         }
     }
