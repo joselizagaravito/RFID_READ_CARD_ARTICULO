@@ -59,6 +59,7 @@ namespace R2000Demo
         public string guardarEpcTipoA;
         public string guardarEpcTipoC;
         public string guardarLecturaTipoA;
+        public DateTime guardarFechaTipoC;
         public DateTime guardarLecturaTipoCTime;
         public bool messageBoxAbierto = false;
         public List<AsignacionTag> listaTagsAsignados = new List<AsignacionTag>();
@@ -2905,6 +2906,7 @@ namespace R2000Demo
 
         DateTime OutLineTime;
 
+        ListViewItem primerItem;
         public void PageShow(int num)
         {
             
@@ -2984,16 +2986,6 @@ namespace R2000Demo
                             
                             if (!epcRepetido)
                             {
-                                // listaTagsLeidos.Add(tagNuevo);
-                                //si el tag es de tipo A lo agrega al listview con un color naranja para que espere a ser comparado
-                                if (tagNuevo.Tipo == "A")
-                                {
-                                    listView_Disp.Items.Add(item);
-                                    listView_Disp.Items[listView_Disp.Items.Count - 1].BackColor = Color.Orange;
-                                    listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text = Color.Orange.Name.ToString();
-                                    this.listView_Disp.Items[listView_Disp.Items.Count - 1].EnsureVisible();
-                                    tagNuevo = Guardarlectura(item);
-                                }
 
                                 //si el tag es de tipo C lo agrega al listview con el color que le corresponde
                                 if (tagNuevo.Tipo == "C")
@@ -3003,6 +2995,15 @@ namespace R2000Demo
                                     tagNuevo = Guardarlectura(item);
                                 }
 
+                                //si el tag es de tipo A lo agrega al listview con un color naranja para que espere a ser comparado
+                                if (tagNuevo.Tipo == "A")
+                                {
+                                    listView_Disp.Items.Add(item);
+                                    listView_Disp.Items[listView_Disp.Items.Count - 1].BackColor = Color.Orange;
+                                    listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text = Color.Orange.Name.ToString();
+                                    this.listView_Disp.Items[listView_Disp.Items.Count - 1].EnsureVisible();
+                                    tagNuevo = Guardarlectura(item);
+                                }
                             }
 
                         }
@@ -3010,44 +3011,45 @@ namespace R2000Demo
 
                 }
 
-                //TODO: Comprobar si el usuario esta autorizado para retirar el activo o no 
+                //TODO: Comprobar si el usuario esta autorizado
                 if (guardarLecturaTipoC == "C" && guardarLecturaTipoA == "A")
                 {
-                    var tagAutorizado = listaTagsAsignados.Where(r => r.Epc == guardarEpcTipoA).FirstOrDefault();
-                    if (tagAutorizado != null)
-                    {
-                        //si el tag esta autorizado se le asigna el color verde
-                        var tag = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == guardarEpcTipoA).FirstOrDefault();
-                        if (tag != null)
-                        {
-                            tag.BackColor = Color.Green;
-                            tag.SubItems[8].Text = Color.Green.Name.ToString();
-                            GuardarColor(tag.SubItems[1].Text, tag.SubItems[5].Text, Color.Green.Name.ToString());
-                            GuardarColorAsignacionTag(tag.SubItems[1].Text, Convert.ToDateTime(tag.SubItems[6].Text), tag.SubItems[8].Text, Convert.ToInt32(tag.SubItems[9].Text));
+                    
+                    var tagAutorizado = listaTagsAsignados.Where(x => listaTagsLeidos.Any(y => y.Epc == x.Epc)).ToList();
+                    var tagNoAutorizado = listaTagsLeidos.Where(x => !listaTagsAsignados.Any(y => y.Epc == x.Epc)).ToList();
+                    var tag = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == listView_Disp.Items.Cast<ListViewItem>().Where(y => y.SubItems[8].Text == "Orange").OrderBy(z => z.SubItems[6].Text).FirstOrDefault().SubItems[1].Text).FirstOrDefault();
 
-                        }
-                    }
-                    else
+                    if (tagNoAutorizado.Any(x => x.Epc == tag.SubItems[1].Text))
                     {
-                        //si el tag no esta autorizado se le asigna el color rojo
-                        var tag = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == guardarEpcTipoA).FirstOrDefault();
-                        if (tag != null)
-                        {
-                            tag.BackColor = Color.Red;
-                            tag.SubItems[8].Text = Color.Red.Name.ToString();
-                            GuardarColor(tag.SubItems[1].Text, tag.SubItems[5].Text, Color.Red.Name.ToString());
-                            GuardarColorAsignacionTag(tag.SubItems[1].Text, Convert.ToDateTime(tag.SubItems[6].Text), tag.SubItems[8].Text, Convert.ToInt32(tag.SubItems[9].Text));
-                            //Thread.Sleep(2000);
-                            //suena la alarma
-                            ActivarAlarma(100);
-                            
-                            clicBtnMultiple();
-
-                        }
+                        tag.BackColor = Color.Red;
+                        tag.SubItems[8].Text = Color.Red.Name.ToString();
+                        GuardarColor(tag.SubItems[1].Text, tag.SubItems[5].Text, Color.Red.Name.ToString());
+                        GuardarColorAsignacionTag(tag.SubItems[1].Text, Convert.ToDateTime(tag.SubItems[6].Text), tag.SubItems[8].Text, Convert.ToInt32(tag.SubItems[9].Text));
+                        ActivarAlarma(100);
+                        //clicBtnMultiple();
                     }
+                    //si el tag esta autorizado se debe cambiar el color a verde
+                    else if (tagAutorizado.Any(x => x.Epc == tag.SubItems[1].Text))
+                    {
+                        tag.BackColor = Color.Green;
+                        tag.SubItems[8].Text = Color.Green.Name.ToString();
+                        GuardarColor(tag.SubItems[1].Text, tag.SubItems[5].Text, Color.Green.Name.ToString());
+                        GuardarColorAsignacionTag(tag.SubItems[1].Text, Convert.ToDateTime(tag.SubItems[6].Text), tag.SubItems[8].Text, Convert.ToInt32(tag.SubItems[9].Text));
+                        
+                    }
+
+
                     listView_Disp.Refresh();
+                    //listaTagsLeidos.Clear();
+                    //listaTagsAsignados.Clear();
 
-                    if (listaTagsAsignados.Count == listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[8].Text == "Green").Count())
+                    //si suena la alarma
+                    if (estadoAlarmaActivada == true)
+                    {
+                        clicBtnMultiple();
+                    }
+
+                    if (listaTagsLeidos.Count == listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[8].Text == "Green").Count())
                     {
                         clicBtnMultiple();
                         Thread.Sleep(100);
@@ -3491,6 +3493,11 @@ namespace R2000Demo
             lB_times.Text = "";
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
+
+            listaTagsAsignados.Clear();
+            listaTagsLeidos.Clear();
+            guardarEpcTipoA = "";
+            guardarEpcTipoC = "";
 
             System.Threading.Thread.Sleep(1000);
 
