@@ -291,6 +291,13 @@ namespace R2000Demo
             //StartTime = DateTime.Now;
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
+
+            guardarLecturaTipoC = "";
+            guardarLecturaTipoA = "";
+            guardarEpcTipoA = "";
+            guardarEpcTipoC = "";
+            listaTagsAsignados.Clear();
+            listaTagsLeidos.Clear();
         }
 
         private void button_inv_mul_Click(object sender, EventArgs e)
@@ -3017,8 +3024,9 @@ namespace R2000Demo
                     
                     var tagAutorizado = listaTagsAsignados.Where(x => listaTagsLeidos.Any(y => y.Epc == x.Epc)).ToList();
                     var tagNoAutorizado = listaTagsLeidos.Where(x => !listaTagsAsignados.Any(y => y.Epc == x.Epc)).ToList();
+                    //TODO: tag null ?
                     var tag = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == listView_Disp.Items.Cast<ListViewItem>().Where(y => y.SubItems[8].Text == "Orange").OrderBy(z => z.SubItems[6].Text).FirstOrDefault().SubItems[1].Text).FirstOrDefault();
-
+                    log.Info(tag.SubItems[1].Text);
                     if (tagNoAutorizado.Any(x => x.Epc == tag.SubItems[1].Text))
                     {
                         tag.BackColor = Color.Red;
@@ -3496,6 +3504,8 @@ namespace R2000Demo
 
             listaTagsAsignados.Clear();
             listaTagsLeidos.Clear();
+            guardarLecturaTipoA = "";
+            guardarLecturaTipoC = "";
             guardarEpcTipoA = "";
             guardarEpcTipoC = "";
 
