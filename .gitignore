@@ -1,8 +1,10 @@
 *.cache
-.vs/
+.vs
 packages/
 R2000Demo/bin/
 R2000Demo/obj/
 *.exe
 *.json
-.vs/
+R2000Demo/obj/Debug
+.vs/R2000Demo/v17/.suo
+R2000Demo/obj/Debug/R2000Demo.csproj.FileListAbsolute.txt
