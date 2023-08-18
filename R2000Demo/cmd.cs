@@ -4,8 +4,6 @@ namespace R2000Demo
 {
     public class CMD
     {
-        /* 宏定义区 */
-        //帧头
         public const byte FRAME_HEAD_FIRST                  = 0xA5;
         public const byte FRAME_HEAD_SECOND                 = 0x5A;
 
