@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<configuration>
+  <appSettings>
+    <add key="modulorol"      value="Caja" />
+    <add key="tiempo01"       value="28070074" />
+    <add key="RfidServerUrl"  value="http://38.253.180.55/api/v1/read-tags" />
+    <add key="SyncIntervalMs" value="60000" />
+  </appSettings>
+  <connectionStrings>
+    <!-- Reemplazar con la cadena de conexion real del entorno -->
+    <add name="cnn"
+         connectionString="Data Source=SERVIDOR;Initial Catalog=BASE_DE_DATOS;User Id=USUARIO;Password=CONTRASENA"
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.8" />
+  </startup>
+</configuration>
