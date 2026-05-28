@@ -2946,8 +2946,8 @@ namespace R2000Demo
                         {
                             if (tipoTag == "PALLET")
                             {
-                                item.BackColor = Color.DodgerBlue;
-                                item.SubItems[8].Text = Color.DodgerBlue.Name;
+                                item.BackColor = Color.Cyan;
+                                item.SubItems[8].Text = Color.Cyan.Name;
                             }
                             else // LPN
                             {
