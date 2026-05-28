@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +16,9 @@ using System.Runtime.InteropServices;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Net.Http;
+using System.Net.NetworkInformation;
+using System.Web.Script.Serialization;
 using R2000Demo.Model;
 
 namespace R2000Demo
@@ -184,6 +187,9 @@ namespace R2000Demo
             {
                 cbB_COMID.Focus();
             }
+
+            // Sprint 7 / T-C#: iniciar timer y suscripción a eventos de red
+            InicializarSincronizacion();
         }
         private void menu(bool set)
         {
@@ -3084,6 +3090,179 @@ namespace R2000Demo
             return result;
         }
 
+        // ════════════════════════════════════════════════════════════════════
+        // Sprint 7 / T-C# — Integración HTTP + Sincronización Offline
+        // Autor: Jose Liza
+        // ════════════════════════════════════════════════════════════════════
+
+        // HttpClient estático: una sola instancia por proceso (mejores prácticas .NET)
+        private static readonly HttpClient _httpClient = new HttpClient
+        {
+            Timeout = TimeSpan.FromSeconds(8)
+        };
+
+        // Candado que garantiza que solo un hilo ejecuta SincronizarPendientes a la vez.
+        // SemaphoreSlim(1,1) = mutex async-compatible, no bloquea el ThreadPool.
+        private readonly System.Threading.SemaphoreSlim _syncLock =
+            new System.Threading.SemaphoreSlim(1, 1);
+
+        // Timer periódico de reintento (60 segundos).
+        // System.Timers.Timer dispara en ThreadPool — no bloquea la UI.
+        private System.Timers.Timer _syncTimer;
+
+        /// <summary>
+        /// Inicializa el timer de sincronización y se suscribe al evento de red.
+        /// Llamar una sola vez desde Form1_Load.
+        /// </summary>
+        private void InicializarSincronizacion()
+        {
+            // Timer: dispara cada 60 seg mientras la app esté abierta
+            int intervaloMs = 60000;
+            if (int.TryParse(ConfigurationManager.AppSettings["SyncIntervalMs"], out int cfg))
+                intervaloMs = cfg;
+
+            _syncTimer = new System.Timers.Timer(intervaloMs) { AutoReset = true };
+            _syncTimer.Elapsed += (s, e) =>
+            {
+                log.Debug("[SYNC] Timer disparado — revisando pendientes.");
+                SincronizarPendientesAsync();
+            };
+            _syncTimer.Start();
+
+            // Evento de red: disparo inmediato cuando el SO detecta conectividad
+            NetworkChange.NetworkAvailabilityChanged += (s, e) =>
+            {
+                if (e.IsAvailable)
+                {
+                    log.Info("[SYNC] Red disponible — sincronizando pendientes.");
+                    SincronizarPendientesAsync();
+                }
+            };
+
+            log.InfoFormat("[SYNC] Sincronización iniciada — intervalo {0} ms.", intervaloMs);
+        }
+
+        /// <summary>
+        /// Envía un tag al servidor HTTP.
+        /// Si falla, el registro queda con EnviadoHttp=0 y será reintentado
+        /// por SincronizarPendientesAsync.
+        /// No lanza excepción — todos los errores van a log4net.
+        /// </summary>
+        private async Task<bool> EnviarTagHttpAsync(ReadTag tag)
+        {
+            string url = ConfigurationManager.AppSettings["RfidServerUrl"]
+                         ?? "http://38.253.180.55/api/v1/read-tags";
+            try
+            {
+                string json = SerializarTag(tag);
+                log.DebugFormat("[HTTP] JSON enviado — {0}", json);  // TEMP Sprint7 — quitar post-prueba
+                var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await _httpClient.PostAsync(url, httpContent)
+                                                                .ConfigureAwait(false);
+                if (response.IsSuccessStatusCode)
+                {
+                    log.DebugFormat("[HTTP] OK — EPC {0}", tag.EPC);
+                    return true;
+                }
+                log.WarnFormat("[HTTP] {0} {1} — EPC {2}",
+                    (int)response.StatusCode, response.ReasonPhrase, tag.EPC);
+                return false;
+            }
+            catch (TaskCanceledException)
+            {
+                log.WarnFormat("[HTTP] Timeout — EPC {0}", tag.EPC);
+                return false;
+            }
+            catch (HttpRequestException ex)
+            {
+                log.WarnFormat("[HTTP] Sin conexión — EPC {0}: {1}", tag.EPC, ex.Message);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                log.ErrorFormat("[HTTP] Error inesperado — EPC {0}: {1}", tag.EPC, ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Recupera todos los ReadTag con EnviadoHttp=0 y los envía al servidor.
+        /// Usa _syncLock para evitar ejecuciones concurrentes (timer + evento de red).
+        /// </summary>
+        private void SincronizarPendientesAsync()
+        {
+            Task.Run(async () =>
+            {
+                // Si ya hay una sincronización en curso, salir sin bloquear
+                if (!await _syncLock.WaitAsync(0).ConfigureAwait(false))
+                {
+                    log.Debug("[SYNC] Ya en curso — omitiendo.");
+                    return;
+                }
+                try
+                {
+                    var repo = new ReadRepository();
+                    List<ReadTag> pendientes = repo.GetPendientesHttp();
+
+                    if (pendientes.Count == 0)
+                    {
+                        log.Debug("[SYNC] Sin pendientes.");
+                        return;
+                    }
+
+                    log.InfoFormat("[SYNC] {0} pendiente(s) a sincronizar.", pendientes.Count);
+                    int enviados = 0;
+
+                    foreach (ReadTag tag in pendientes)
+                    {
+                        bool ok = await EnviarTagHttpAsync(tag).ConfigureAwait(false);
+                        if (ok)
+                        {
+                            repo.MarcarEnviadoHttp(tag.Id);
+                            enviados++;
+                        }
+                        else
+                        {
+                            // Falla de red: no tiene sentido continuar con el resto
+                            log.WarnFormat("[SYNC] Abortando — error en EPC {0}. " +
+                                           "Se reintentará en el próximo ciclo.", tag.EPC);
+                            break;
+                        }
+                    }
+                    log.InfoFormat("[SYNC] {0}/{1} enviados.", enviados, pendientes.Count);
+                }
+                catch (Exception ex)
+                {
+                    log.Error("[SYNC] Error en sincronización.", ex);
+                }
+                finally
+                {
+                    _syncLock.Release();
+                }
+            });
+        }
+
+        /// <summary>Serializa un ReadTag al JSON esperado por /api/v1/read-tags.</summary>
+        private static string SerializarTag(ReadTag tag)
+        {
+            var payload = new
+            {
+                epc = tag.EPC,
+                tag = tag.TAG,
+                tid = tag.TID,
+                rssi = tag.RSSI,
+                antId = tag.AntID,
+                moduloId = tag.ModuloId,
+                moduloRol = tag.ModuloRol,
+                color = tag.Color,
+                lastTime = tag.LastTime.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"),
+                firstUpdate = tag.FirstReadTime.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+            };
+            return new JavaScriptSerializer().Serialize(payload);
+        }
+
+        // ════════════════════════════════════════════════════════════════════
+
         private void GuardarColor(string epc, string ant, string color)
         {
             ReadRepository readRepository = new ReadRepository();
@@ -3103,10 +3282,10 @@ namespace R2000Demo
             return ValidarPago(id);
         }
         //Actualizacion - Jose Liza: 20210131
+        //Actualizacion Sprint 7 T-C# - Jose Liza: SQL local siempre; HTTP fire-and-forget
         private AsignacionTag Guardarlectura(ListViewItem item)
         {
-            ReadRepository obj = new ReadRepository();
-            return obj.AddReadTag(new ReadTag(
+            var tag = new ReadTag(
                 item.SubItems[0].Text,
                 item.SubItems[1].Text,
                 item.SubItems[2].Text,
@@ -3117,7 +3296,22 @@ namespace R2000Demo
                 DateTime.Parse(item.SubItems[7].Text),
                 item.SubItems[8].Text,
                 int.Parse(item.SubItems[9].Text),
-                item.SubItems[10].Text));
+                item.SubItems[10].Text);
+
+            // 1. SQL local — fuente de verdad. EnviadoHttp queda en 0 por DEFAULT.
+            var repo   = new ReadRepository();
+            var result = repo.AddReadTag(tag);
+
+            // 2. Intento HTTP inmediato (fire-and-forget).
+            //    Si falla, el timer / evento de red sincronizará más tarde.
+            tag.Id = result.Idlectura;
+            Task.Run(async () =>
+            {
+                bool ok = await EnviarTagHttpAsync(tag).ConfigureAwait(false);
+                if (ok) repo.MarcarEnviadoHttp(tag.Id);
+            });
+
+            return result;
         }
 
         //buscar epc 
