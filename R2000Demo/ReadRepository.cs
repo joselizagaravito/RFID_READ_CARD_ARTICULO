@@ -165,21 +165,39 @@ namespace R2000Demo
         }
 
         /// <summary>
-        /// Sprint 7: Determina si el EPC corresponde a un Pallet o LPN.
-        /// Retorna "PALLET" si existe en pallet_tags, "LPN" en caso contrario.
+        /// Determina el tipo de tag según esta prioridad:
+        /// 1. Si EPC está en pallet_tags → PALLET
+        /// 2. Si TID contiene el keyword configurado → PALLET
+        /// 3. En cualquier otro caso → LPN
         /// </summary>
-        public string ObtenerTipoTag(string epc)
+        public string ObtenerTipoTag(string epc, string tid = "")
         {
             using (var con = new SqlConnection(_connStr))
-            using (var com = new SqlCommand("usp_EsPallet", con))
             {
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@EPC", epc);
                 try
                 {
                     con.Open();
-                    var resultado = Convert.ToInt32(com.ExecuteScalar());
-                    return resultado > 0 ? "PALLET" : "LPN";
+
+                    // 1. Verificar tabla pallet_tags
+                    System.Diagnostics.Debug.WriteLine($"[TIPO] EPC recibido: '{epc}' | sin guiones: '{epc.Replace("-", "")}'");
+                    using (var com = new SqlCommand(
+                        "SELECT COUNT(1) FROM pallet_tags WHERE EPC = @EPC", con))
+                    {
+                        com.Parameters.AddWithValue("@EPC", epc.Replace("-", ""));
+                        int count = Convert.ToInt32(com.ExecuteScalar());
+                        if (count > 0) return "PALLET";
+                    }
+
+                    // 2. Verificar TID con keyword de configuración
+                    string keyword = ConfigurationManager.AppSettings["PalletTidKeyword"] ?? "PALLET";
+                    if (!string.IsNullOrEmpty(tid) &&
+                        tid.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return "PALLET";
+                    }
+
+                    // 3. Default
+                    return "LPN";
                 }
                 catch (Exception ex)
                 {
@@ -187,7 +205,6 @@ namespace R2000Demo
                 }
             }
         }
-
         // ── Actualizaciones ─────────────────────────────────────────────────
 
         public void UpdateReadTag(string epc, string ant, string color)
@@ -290,7 +307,7 @@ namespace R2000Demo
         {
             using (var con = new SqlConnection(_connStr))
             using (var com = new SqlCommand(
-                "UPDATE ReadTag SET EnviadoHttp = 1 WHERE Id = @Id", con))
+                "UPDATE read_tags SET EnviadoHttp = 1 WHERE Idlectura = @Id", con))
             {
                 com.Parameters.AddWithValue("@Id", id);
                 try

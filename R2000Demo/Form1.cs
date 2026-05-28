@@ -2936,7 +2936,7 @@ namespace R2000Demo
                     if (!epc_existe)
                     {
                         var repo = new ReadRepository();
-                        string tipoTag = repo.ObtenerTipoTag(epc_leido);
+                        string tipoTag = repo.ObtenerTipoTag(epc_leido, item.SubItems[2].Text);
 
                         var epcRepetido = listView_Disp.Items
                                             .Cast<ListViewItem>()
