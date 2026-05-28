@@ -164,37 +164,28 @@ namespace R2000Demo
             return result;
         }
 
-        public AsignacionTag BuscarEpc(string epc)
+        /// <summary>
+        /// Sprint 7: Determina si el EPC corresponde a un Pallet o LPN.
+        /// Retorna "PALLET" si existe en pallet_tags, "LPN" en caso contrario.
+        /// </summary>
+        public string ObtenerTipoTag(string epc)
         {
-            var result = new AsignacionTag();
             using (var con = new SqlConnection(_connStr))
-            using (var com = new SqlCommand("usp_BuscarTag", con))
+            using (var com = new SqlCommand("usp_EsPallet", con))
             {
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@EPC", epc);
                 try
                 {
                     con.Open();
-                    using (var dr = com.ExecuteReader())
-                    {
-                        if (dr.Read())
-                        {
-                            result.UsuarioId       = dr.GetInt32(0);
-                            result.Epc             = dr.GetString(1);
-                            result.Tipo            = dr.GetString(2);
-                            result.Color           = dr.GetString(3);
-                            result.Modulo          = dr.GetInt32(4);
-                            result.FechaAsignacion = dr.GetDateTime(5);
-                            result.FechaSalida     = dr.GetDateTime(6);
-                        }
-                    }
+                    var resultado = Convert.ToInt32(com.ExecuteScalar());
+                    return resultado > 0 ? "PALLET" : "LPN";
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("BuscarEpc: " + ex.Message, ex);
+                    throw new Exception("ObtenerTipoTag: " + ex.Message, ex);
                 }
             }
-            return result;
         }
 
         // ── Actualizaciones ─────────────────────────────────────────────────
@@ -254,10 +245,10 @@ namespace R2000Demo
             var result = new List<ReadTag>();
             using (var con = new SqlConnection(_connStr))
             using (var com = new SqlCommand(
-                "SELECT Id, TAG, EPC, TID, InvTimes, RSSI, AntID, " +
-                "LastTime, FirstReadTime, Color, ModuloId, ModuloRol " +
-                "FROM ReadTag WHERE EnviadoHttp = 0 " +
-                "ORDER BY FirstReadTime ASC", con))
+    "SELECT Idlectura, TAG, EPC, TID, RSSI, AntID, " +
+    "FirstReadTime, LastTime, Color, ModuloId, ModuloRol " +
+    "FROM read_tags WHERE EnviadoHttp = 0 " +
+    "ORDER BY CreatedAt ASC", con))
             {
                 try
                 {
@@ -266,7 +257,18 @@ namespace R2000Demo
                     {
                         while (dr.Read())
                         {
-                            var tag = MapReadTag(dr, columnOffset: 1);
+                            var tag = new ReadTag(
+                                tag: dr.IsDBNull(1) ? "" : dr.GetString(1),
+                                epc: dr.IsDBNull(2) ? "" : dr.GetString(2),
+                                tid: dr.IsDBNull(3) ? "" : dr.GetString(3),
+                                invtimes: 0,
+                                rssi: dr.IsDBNull(4) ? 0 : dr.GetInt32(4),
+                                antid: dr.IsDBNull(5) ? 0 : dr.GetInt32(5),
+                                lasttime: dr.IsDBNull(7) ? DateTime.Now : dr.GetDateTime(7),
+                                firstreadtime: dr.IsDBNull(6) ? DateTime.Now : dr.GetDateTime(6),
+                                color: dr.IsDBNull(8) ? "" : dr.GetString(8),
+                                moduloid: dr.IsDBNull(9) ? 0 : (int.TryParse(dr.GetString(9), out int mid) ? mid : 0),
+                                modulorol: dr.IsDBNull(10) ? "" : dr.GetString(10));
                             tag.Id = dr.GetInt32(0);
                             result.Add(tag);
                         }

@@ -58,16 +58,6 @@ namespace R2000Demo
         //Actualizacion Jose Liza 2022-11-19
         bool estadoLectura=false;
 
-        public string guardarLecturaTipoC;
-        public string guardarEpcTipoA;
-        public string guardarEpcTipoC;
-        public string guardarLecturaTipoA;
-        public DateTime guardarFechaTipoC;
-        public DateTime guardarLecturaTipoCTime;
-        public bool messageBoxAbierto = false;
-        public List<AsignacionTag> listaTagsAsignados = new List<AsignacionTag>();
-        public List<AsignacionTag> listaTagsLeidos = new List<AsignacionTag>();
-
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(R2000Demo.Properties.Resources.warning);
 
         UInt16[] RxAdcTable = new UInt16[] {0x0000,          /* -25dBm */
@@ -298,12 +288,6 @@ namespace R2000Demo
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
 
-            guardarLecturaTipoC = "";
-            guardarLecturaTipoA = "";
-            guardarEpcTipoA = "";
-            guardarEpcTipoC = "";
-            listaTagsAsignados.Clear();
-            listaTagsLeidos.Clear();
         }
 
         private void button_inv_mul_Click(object sender, EventArgs e)
@@ -2948,147 +2932,42 @@ namespace R2000Demo
                     IEnumerable<ListViewItem> lv = listView_Disp.Items.Cast<ListViewItem>();
                     bool epc_existe = lv.Where(r => r.SubItems[1].Text == epc_leido && r.SubItems[5].Text == ant_leido).Count() > 0;
 
-                    var tagNuevo = BuscarEpc(epc_leido);
-
-                    //si el tag no existe y es de tipo C lo agrego a la lista de autorizados
-                    if(!epc_existe)
+                    // Sprint 7: Flujo simplificado — Pallet vs LPN
+                    if (!epc_existe)
                     {
-                        if (tagNuevo != null)
+                        var repo = new ReadRepository();
+                        string tipoTag = repo.ObtenerTipoTag(epc_leido);
+
+                        var epcRepetido = listView_Disp.Items
+                                            .Cast<ListViewItem>()
+                                            .Any(r => r.SubItems[1].Text == epc_leido);
+
+                        if (!epcRepetido)
                         {
-                            if (tagNuevo.Tipo == "C")
+                            if (tipoTag == "PALLET")
                             {
-                                //guardar el epc en una variable para luego comparar si el tag esta autorizado o no
-                                guardarLecturaTipoC = tagNuevo.Tipo;
-                                guardarEpcTipoC = tagNuevo.Epc;
-
-                                //guardar en una lista los tags autorizados
-                                listaTagsAsignados = GetTagsAsignados(tagNuevo.UsuarioId);
-
-                                //guardar el color del tag en la base de datos
                                 item.BackColor = Color.DodgerBlue;
-                                item.SubItems[8].Text = Color.DodgerBlue.Name.ToString();
-                                GuardarColor(item.SubItems[1].Text, item.SubItems[5].Text, Color.DodgerBlue.Name.ToString());
-                                GuardarColorAsignacionTag(item.SubItems[1].Text, Convert.ToDateTime(item.SubItems[6].Text), item.SubItems[8].Text, Convert.ToInt32(item.SubItems[9].Text));
-                                
+                                item.SubItems[8].Text = Color.DodgerBlue.Name;
                             }
-
-                            //si el tag es de tipo A lo agrego a una lista para luego comparar si el tag esta autorizado o no
-                            if (tagNuevo.Tipo == "A")
+                            else // LPN
                             {
-                                guardarLecturaTipoA = tagNuevo.Tipo;
-                                guardarEpcTipoA = tagNuevo.Epc;
-
-                                //alamacenar los tags de tipo A en un lista para luego usarla en la funcion de comparacion pero esta lista no debe tener tags repetidos 
-                                if(listaTagsLeidos.Count == 0)
-                                {
-                                    listaTagsLeidos.Add(tagNuevo);
-                                }
-                                else
-                                {
-                                    var tagRepetido = listaTagsLeidos.Where(r => r.Epc == tagNuevo.Epc).FirstOrDefault();
-                                    if(tagRepetido == null)
-                                    {
-                                        listaTagsLeidos.Add(tagNuevo);
-                                    }
-                                }
-                                
+                                item.BackColor = Color.LightGreen;
+                                item.SubItems[8].Text = Color.LightGreen.Name;
                             }
 
-                            //aplicar un filtro para que no se dupliquen los tags en la lista
-                            var epcRepetido = listView_Disp.Items.Cast<ListViewItem>().Where(r => r.SubItems[1].Text == epc_leido).Count() > 0;
-                            
-                            if (!epcRepetido)
-                            {
-
-                                //si el tag es de tipo C lo agrega al listview con el color que le corresponde
-                                if (tagNuevo.Tipo == "C")
-                                {
-                                    listView_Disp.Items.Add(item);
-                                    this.listView_Disp.Items[listView_Disp.Items.Count - 1].EnsureVisible();
-                                    tagNuevo = Guardarlectura(item);
-                                }
-
-                                //si el tag es de tipo A lo agrega al listview con un color naranja para que espere a ser comparado
-                                if (tagNuevo.Tipo == "A")
-                                {
-                                    listView_Disp.Items.Add(item);
-                                    listView_Disp.Items[listView_Disp.Items.Count - 1].BackColor = Color.Orange;
-                                    listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text = Color.Orange.Name.ToString();
-                                    this.listView_Disp.Items[listView_Disp.Items.Count - 1].EnsureVisible();
-                                    tagNuevo = Guardarlectura(item);
-                                }
-                            }
-
+                            listView_Disp.Items.Add(item);
+                            listView_Disp.Items[listView_Disp.Items.Count - 1].EnsureVisible();
+                            Guardarlectura(item);
                         }
                     }
 
                 }
 
-                //TODO: Comprobar si el usuario esta autorizado
-                if (guardarLecturaTipoC == "C" && guardarLecturaTipoA == "A")
-                {
-                    
-                    var tagAutorizado = listaTagsAsignados.Where(x => listaTagsLeidos.Any(y => y.Epc == x.Epc)).ToList();
-                    var tagNoAutorizado = listaTagsLeidos.Where(x => !listaTagsAsignados.Any(y => y.Epc == x.Epc)).ToList();
-                    //TODO: tag null ?
-                    var tag = listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[1].Text == listView_Disp.Items.Cast<ListViewItem>().Where(y => y.SubItems[8].Text == "Orange").OrderBy(z => z.SubItems[6].Text).FirstOrDefault().SubItems[1].Text).FirstOrDefault();
-                    log.Info(tag.SubItems[1].Text);
-                    if (tagNoAutorizado.Any(x => x.Epc == tag.SubItems[1].Text))
-                    {
-                        tag.BackColor = Color.Red;
-                        tag.SubItems[8].Text = Color.Red.Name.ToString();
-                        GuardarColor(tag.SubItems[1].Text, tag.SubItems[5].Text, Color.Red.Name.ToString());
-                        GuardarColorAsignacionTag(tag.SubItems[1].Text, Convert.ToDateTime(tag.SubItems[6].Text), tag.SubItems[8].Text, Convert.ToInt32(tag.SubItems[9].Text));
-                        ActivarAlarma(100);
-                        //clicBtnMultiple();
-                    }
-                    //si el tag esta autorizado se debe cambiar el color a verde
-                    else if (tagAutorizado.Any(x => x.Epc == tag.SubItems[1].Text))
-                    {
-                        tag.BackColor = Color.Green;
-                        tag.SubItems[8].Text = Color.Green.Name.ToString();
-                        GuardarColor(tag.SubItems[1].Text, tag.SubItems[5].Text, Color.Green.Name.ToString());
-                        GuardarColorAsignacionTag(tag.SubItems[1].Text, Convert.ToDateTime(tag.SubItems[6].Text), tag.SubItems[8].Text, Convert.ToInt32(tag.SubItems[9].Text));
-                        
-                    }
-
-
-                    listView_Disp.Refresh();
-                    //listaTagsLeidos.Clear();
-                    //listaTagsAsignados.Clear();
-
-                    //si suena la alarma
-                    if (estadoAlarmaActivada == true)
-                    {
-                        clicBtnMultiple();
-                    }
-
-                    if (listaTagsLeidos.Count == listView_Disp.Items.Cast<ListViewItem>().Where(x => x.SubItems[8].Text == "Green").Count())
-                    {
-                        clicBtnMultiple();
-                        Thread.Sleep(100);
-                        detenerLectura_Clear();
-                    }
-                }
-
             }
             
             
         }
 
-
-        private Boolean ExisteTipoCenLista(ListView lista)
-        {
-            bool result = false;
-            for (int i = 0; i < lista.Items.Count; i++)
-            {
-                if (listView_Disp.Items[listView_Disp.Items.Count - 1].SubItems[8].Text == "DodgerBlue")
-                {
-                    result = true;
-                }
-            }
-            return result;
-        }
 
         // ════════════════════════════════════════════════════════════════════
         // Sprint 7 / T-C# — Integración HTTP + Sincronización Offline
@@ -3247,9 +3126,9 @@ namespace R2000Demo
         {
             var payload = new
             {
-                epc = tag.EPC,
+                epc = tag.EPC.Replace("-", ""),
                 tag = tag.TAG,
-                tid = tag.TID,
+                tid = tag.TID.Replace("-", ""),
                 rssi = tag.RSSI,
                 antId = tag.AntID,
                 moduloId = tag.ModuloId,
@@ -3267,13 +3146,6 @@ namespace R2000Demo
         {
             ReadRepository readRepository = new ReadRepository();
             readRepository.UpdateReadTag(epc, ant, color);
-        }
-
-        //Actualizar AsignacionagColor
-        private void GuardarColorAsignacionTag(string epc, DateTime fechaSalida, string color, int modulo)
-        {
-            ReadRepository readRepository = new ReadRepository();
-            readRepository.UpdateAsignacionTag(epc, fechaSalida, color, modulo);
         }
 
         //private bool PasoPorCaja(ListViewItem item)
@@ -3314,35 +3186,6 @@ namespace R2000Demo
             return result;
         }
 
-        //buscar epc 
-        private AsignacionTag BuscarEpc(string epc)
-        {
-            ReadRepository obj = new ReadRepository();
-            return obj.BuscarEpc(epc);
-        }
-
-        private List<AsignacionTag> GetTagsAsignados(int idUsuario)
-        {
-            ReadRepository obj = new ReadRepository();
-            return obj.GetTagsAsignados(idUsuario);
-        }
-        private int GuardarIncidencia(ListViewItem item)
-        {
-            ReadRepository obj = new ReadRepository();
-
-            return obj.AddIncidenciaReadTag(new ReadTag(
-                item.SubItems[0].Text,
-                item.SubItems[1].Text,
-                item.SubItems[2].Text,
-                int.Parse(item.SubItems[3].Text),
-                int.Parse(item.SubItems[4].Text),
-                int.Parse(item.SubItems[5].Text),
-                DateTime.Parse(item.SubItems[6].Text),
-                DateTime.Parse(item.SubItems[7].Text),
-                item.SubItems[8].Text,
-                int.Parse(item.SubItems[9].Text),
-                item.SubItems[10].Text));
-        }
         private bool ValidarPago(int id)
         {
             bool result;
@@ -3538,7 +3381,12 @@ namespace R2000Demo
         }
         private void timer6_Tick(object sender, EventArgs e)
         {
-            //listView_Disp.Items.Clear();
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => timer6_Tick(sender, e)));
+                return;
+            }
+
             int sum = tagnum;
             int shang = sum / 100;
             int yushu = sum % 100;
@@ -3695,13 +3543,6 @@ namespace R2000Demo
             lB_times.Text = "";
             LastTotalNumOfTags = 0;
             lb_totaltimes.Text = "";
-
-            listaTagsAsignados.Clear();
-            listaTagsLeidos.Clear();
-            guardarLecturaTipoA = "";
-            guardarLecturaTipoC = "";
-            guardarEpcTipoA = "";
-            guardarEpcTipoC = "";
 
             System.Threading.Thread.Sleep(1000);
 
