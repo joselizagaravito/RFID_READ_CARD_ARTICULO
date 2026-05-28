@@ -640,9 +640,9 @@
             // 
             this.cbB_COMID.FormattingEnabled = true;
             this.cbB_COMID.Items.AddRange(new object[] {
+            "NET192.168.18.132",
+            "NET192.168.18.133",
             "NET190.42.236.238",
-            "NET192.168.1.13",
-            "NET181.65.15.45",
             "NET10.10.100.254"});
             this.cbB_COMID.Location = new System.Drawing.Point(50, 16);
             this.cbB_COMID.Margin = new System.Windows.Forms.Padding(2);
