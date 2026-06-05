@@ -206,6 +206,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="app.config.dev" />
+    <None Include="app.config.prod" />
+    <None Include="deploy-rfid.ps1" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

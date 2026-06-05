@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  R2000Demo — Configuración PRODUCCIÓN                        ║
+  ║  Servidor : 38.253.180.55 (servidor central — Internet)      ║
+  ║  INSTRUCCIÓN: copiar este archivo como "app.config"          ║
+  ║               en bin\Release\ antes de distribuir al cliente ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<configuration>
+
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.8"/>
+  </startup>
+
+  <connectionStrings>
+    <add name="RfidDb"
+         connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=rfid_db;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=30;"
+         providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+
+  <appSettings>
+
+    <!-- URL del read-tag-service via Nginx en servidor central -->
+    <add key="RfidServerUrl"    value="http://38.253.180.55/api/v1/read-tags"/>
+
+    <!--
+      ModuloId: CADA PC lectora en producción debe tener un ID diferente.
+      Formato: PORTAL-[TIENDA]-[NUMERO]
+      Ejemplos: PORTAL-ALMACEN-01, PORTAL-TIENDA-LIMA-01
+      Cambiar antes de distribuir el ZIP a cada punto.
+    -->
+    <add key="ModuloId"         value="PORTAL-ALMACEN-01"/>
+    <add key="ModuloRol"        value="puerta1"/>
+
+    <!-- Keyword en el TID que identifica un tag como PALLET -->
+    <add key="PalletTidKeyword" value="PALLET"/>
+
+    <!-- Timer de reintento offline: 60 s en producción -->
+    <add key="SyncIntervalMs"   value="60000"/>
+
+  </appSettings>
+
+</configuration>

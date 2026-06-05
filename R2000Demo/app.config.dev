@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  R2000Demo — Configuración DESARROLLO                        ║
+  ║  Servidor : 192.168.18.15 (red local Pystelectronic)        ║
+  ║  INSTRUCCIÓN: copiar este archivo como "app.config"          ║
+  ║               en bin\Release\ antes de probar en red local   ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<configuration>
+
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.8"/>
+  </startup>
+
+  <connectionStrings>
+    <add name="RfidDb"
+         connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=rfid_db;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=30;"
+         providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+
+  <appSettings>
+
+    <!-- URL del read-tag-service en red local (sin Nginx, puerto directo) -->
+    <add key="RfidServerUrl"    value="http://192.168.18.15:8082/api/v1/read-tags"/>
+
+    <!-- Identificador único de esta PC lectora en el sistema -->
+    <add key="ModuloId"         value="PORTAL-DEV-01"/>
+    <add key="ModuloRol"        value="puerta1"/>
+
+    <!-- Keyword en el TID que identifica un tag como PALLET -->
+    <add key="PalletTidKeyword" value="PALLET"/>
+
+    <!-- Timer de reintento offline: 30 s en dev (más frecuente para depurar) -->
+    <add key="SyncIntervalMs"   value="30000"/>
+
+  </appSettings>
+
+</configuration>
